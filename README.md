@@ -2,7 +2,8 @@
 
 Shows you which buildings in Austin recyle and which ones do not. 
 
-This is an open-source project through [Open-Austin](http://www.open-austin.org/)
+This is an open-source project through [Open-Austin](http://www.open-austin.org/).
+
 This is a fork of https://github.com/open-city/recycling.
 
 ### Goals for this fork are to build:
