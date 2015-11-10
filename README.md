@@ -17,6 +17,14 @@ This is a fork of https://github.com/open-city/recycling.
 ### Purpose of this fork
 This repo is a front end component that consumes the API provided by https://github.com/open-austin/recycling-bin
 
+### Resources
+
+Check out more awesome Open-Austin Projects [Here](https://github.com/open-austin)
+
+Interested in a particular project? Come to the next Open-Austin [Meetup](http://www.meetup.com/Open-Government-Civic-Technology-Meetup-by-Open-Austin/)
+
+
+
 
       #### License
 
