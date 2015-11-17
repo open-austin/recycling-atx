@@ -1,6 +1,7 @@
-var foo = require ("./foo");
-console.log(foo.bar);
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-console.log(foo.add(7,8));
-
-
+ReactDOM.render(
+  <h1>Hello, world!</h1>,
+  document.getElementById('app')
+);
