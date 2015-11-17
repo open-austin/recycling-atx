@@ -1,10 +1,18 @@
 ## Recycling-atx :recycle:
 
-Shows you which buildings in Austin recyle and which ones do not. 
+Shows you which buildings in Austin recyle and which ones do not.
 
 This is an open-source project through [Open-Austin](http://www.open-austin.org/).
 
 This is a fork of https://github.com/open-city/recycling.
+
+### Developing locally
+
+1. Clone this repo
+2. `npm install` - Install dependencies
+3. `gulp build` - Build javascript and css assets
+4. `gulp webserver` - Spin up a local webserver
+5. `gulp deploy-gh-pages` - Ship it! :shipit:
 
 ### Goals for this fork are to build:
 
@@ -33,4 +41,3 @@ Interested in a particular project? Come to the next Open-Austin [Meetup](http:/
       #### Contributing
 
       Please see [CONTRIBUTING.md](CONTRIBUTING.md).
-

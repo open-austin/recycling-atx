@@ -152,7 +152,7 @@ gulp.task('deploy-gh-pages', function() {
     var ghPages = require('gulp-gh-pages');
 
     return gulp.src('./build/**/**/*.*')
-        .pipe(ghPages({message: 'Deploy to gh-pages :deciduous_tree: ' + new Date()}));
+        .pipe(ghPages({message: 'Deploy to gh-pages :recycle: ' + new Date()}));
 });
 
 // (ohgodwhy)

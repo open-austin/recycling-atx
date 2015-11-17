@@ -16,7 +16,6 @@
     "url": "https://github.com/mapineda/recycling-atx/issues"
   },
   "homepage": "https://github.com/mapineda/recycling-atx#readme",
-
   "devDependencies": {
     "autoprefixer-core": "^5.1.7",
     "babelify": "^6.1.2",
@@ -36,10 +35,11 @@
     "gulp-util": "^3.0.4",
     "gulp-wait": "0.0.2",
     "gulp-watch": "~0.6.5",
+    "react": "^0.14.2",
+    "react-dom": "^0.14.2",
     "reactify": "^1.0.0",
     "stringify": "^3.1.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^2.4.0"
   }
-} 
-
+}
