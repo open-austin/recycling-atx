@@ -19,6 +19,7 @@ export default class MapView extends React.Component {
 
     //marker
     var marker = L.marker([30.2669444, -97.7427778]).addTo(map);
+    marker.bindPopup("<b>Address</b><br>View.").openPopup();
   }
 
   render() {
