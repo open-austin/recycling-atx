@@ -115,7 +115,7 @@ var App = (function (_React$Component) {
     value: function render() {
       return _react2['default'].createElement(
         'div',
-        null,
+        { className: 'content' },
         _react2['default'].createElement(_searchBarJsx2['default'], { address: this.state.address }),
         _react2['default'].createElement(_mapViewJsx2['default'], { locations: this.state.locations })
       );
@@ -251,7 +251,7 @@ var SearchBar = (function (_React$Component) {
         _react2["default"].createElement(
           "span",
           null,
-          _react2["default"].createElement("i", { className: "fa fa-map-marker fa-2x pindrop" })
+          _react2["default"].createElement("i", { className: "fa fa-map-marker fa-3x pindrop" })
         ),
         _react2["default"].createElement("input", {
           type: "text",
