@@ -17,9 +17,6 @@ export default class MapView extends React.Component {
       accessToken: 'pk.eyJ1IjoibWFwaW5lZGEiLCJhIjoiY2loOWgybDhnMHR4eHUwa2xhOHRnYTJ3aiJ9.OLTnRf2Py_IXUBSfG8dbPQ'
     }).addTo(map);
 
-    //marker
-    var marker = L.marker([30.2669444, -97.7427778]).addTo(map);
-
     this.map = map;
   }
 
@@ -27,10 +24,10 @@ export default class MapView extends React.Component {
   refreshMap() {
     const map = this.map;
     const markers = this.props.locations.map((loc) => {
-      return L.marker([loc.coordinates.x, loc.coordinates.y]);
+      return L.marker([loc.coordinates.x, loc.coordinates.y])
+        .bindPopup(`<h4>${loc.address}</h4><a href="#">View</a>`);
     });
     const group = L.featureGroup(markers).addTo(map);
-    map.fitBounds(group.getBounds());
   }
 
   componentDidUpdate() {
