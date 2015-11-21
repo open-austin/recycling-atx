@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchBar from './search-bar.jsx';
 import MapView from './map-view.jsx';
+import Api from './api';
 
 export default class App extends React.Component {
 
@@ -13,10 +14,14 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    // TODO fetch locations
-
-    // TODO update the state.locations
-
+    Api.getAllLocations(function(err, locations) {
+    	if (err) {
+	  console.log(err);
+	  return;
+    	}
+	console.log(locations);
+        this.setState({locations: locations});
+    }
   }
 
   render() {
