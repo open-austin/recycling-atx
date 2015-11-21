@@ -12,7 +12,7 @@ export default class MapView extends React.Component {
   }
 
   render() {
-    return <div>
+    return <div id="map">
       Map view code
     </div>;
   }
