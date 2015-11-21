@@ -10,7 +10,7 @@ export default class SearchBar extends React.Component {
 
   render() {
     return <div className="search-bar-container">
-      <span><i className="fa fa-map-marker fa-2x pindrop"></i></span>
+      <span><i className="fa fa-map-marker fa-3x pindrop"></i></span>
       <input
         type="text"
         placeholder="Enter Address"

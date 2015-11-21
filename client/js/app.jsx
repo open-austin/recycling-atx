@@ -24,7 +24,7 @@ export default class App extends React.Component {
   }
 
   render() {
-    return <div>
+    return <div className="content">
       <SearchBar address={this.state.address} />
       <MapView locations={this.state.locations} />
     </div>;
