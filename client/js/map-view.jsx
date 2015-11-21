@@ -7,6 +7,10 @@ export default class MapView extends React.Component {
     this.state = {};
   }
 
+  componentDidMount() {
+    // TODO init leaflet plugin
+  }
+
   render() {
     return <div>
       Map view code
