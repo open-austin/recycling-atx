@@ -18,7 +18,7 @@ export default class MapView extends React.Component {
 }).addTo(map);
 
     //marker
-    var marker = L.marker([30.2669444, -97.7427778]).addTo(leafletMap);
+    var marker = L.marker([30.2669444, -97.7427778]).addTo(map);
   }
 
   render() {
