@@ -69,8 +69,16 @@ export default class MapView extends React.Component {
     }
   }
 
+  pan() {
+    // Pan map if the coordinates change
+    if (this.props.coordinates.lat && this.props.coordinates.lng) {
+      this.map.panTo(this.props.coordinates, { animate: true });
+    }
+  }
+
   componentDidUpdate() {
     this.drawMarkers();
+    this.pan();
   }
 
   render() {

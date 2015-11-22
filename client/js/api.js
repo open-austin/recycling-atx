@@ -8,8 +8,13 @@ const api = {
       .fail((response, status, err) => { callback(err); });
   },
 
-  getLocation: function(id, callback) {
-
+  getLocation: function(address, callback) {
+    $.ajax({
+      url: `${baseUrl}/locations`,
+      data: { address: address }
+    })
+      .done((data) => { callback(null, data); })
+      .fail((response, status, err) => { callback(err); });
   },
 
   createLocation: function(location, callback) {

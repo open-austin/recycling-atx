@@ -3,6 +3,7 @@ import SearchBar from './search-bar.jsx';
 import MapView from './map-view.jsx';
 import AddNew from './add-new.jsx';
 import api from './api';
+import GeoCoder from './geocoder';
 
 export default class App extends React.Component {
 
@@ -10,7 +11,8 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       locations: [],
-      address: null
+      address: null,
+      coordinates: { lat: null, lng: null }
     };
   }
 
@@ -29,12 +31,33 @@ export default class App extends React.Component {
   }
 
   onSearchClick(event) {
-    // TODO geocode this address to coordinates
-    // TODO zoom into coordinates
-    // TODO look up address via api
-        //    1. location found = show details & leave report
-        //    2. location not found = create location & leave report
-    // console.log(this.state.address);
+    if (!this.state.address) return;
+    api.getLocation(this.state.address, (err, location) => {
+      if (err) {
+        console.log('unable to get location', err);
+        return;
+      }
+
+      if (!location) {
+        // Location doesn't exist, drop new marker
+        GeoCoder.geocode(this.state.address, (err, response) => {
+          if (err) {
+            console.log(err);
+            return;
+          }
+          // TODO add marker popup to prompt adding location
+          this.setState({ coordinates: response.coordinates });
+        });
+      } else {
+        // TODO add marker popup for existing location
+        this.setState({
+          coordinates: {
+            lat: location.coordinates.x,
+            lng: location.coordinates.y
+          }
+        });
+      }
+    });
   }
 
   render() {
@@ -43,7 +66,9 @@ export default class App extends React.Component {
         onAddressChange={this.onAddressChange.bind(this)}
         onSearchClick={this.onSearchClick.bind(this)}
         address={this.state.address} />
-      <MapView locations={this.state.locations} />
+      <MapView
+        locations={this.state.locations}
+        coordinates={this.state.coordinates} />
     </div>;
   }
 }
