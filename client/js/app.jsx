@@ -10,9 +10,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       locations: [],
-      address: null,
-      lat: null,
-      long: null
+      address: null
     };
   }
 
