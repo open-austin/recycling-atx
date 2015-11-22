@@ -6,11 +6,13 @@ export default class MapView extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      loaded: false
+    };
   }
 
   initMap() {
-    var map = L.map('map').setView([30.27, -97.746], 15);
+    const map = L.map('map').setView([30.27, -97.746], 15);
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwaW5lZGEiLCJhIjoiY2loOWgybDhnMHR4eHUwa2xhOHRnYTJ3aiJ9.OLTnRf2Py_IXUBSfG8dbPQ', {
       attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
       maxZoom: 18,
@@ -55,22 +57,23 @@ export default class MapView extends React.Component {
     this.zoomCurrentLocation();
   }
 
-
-  refreshMap() {
+  drawMarkers() {
     const map = this.map;
-    const markers = this.props.locations.map((loc) => {
-      return L.marker([loc.coordinates.x, loc.coordinates.y])
-        .bindPopup(`<h4>${loc.address}</h4><a href="#">View</a>`);
-    });
-    const group = L.featureGroup(markers).addTo(map);
+    if (!this.state.loaded) {
+      const markers = this.props.locations.map((loc) => {
+        return L.marker([loc.coordinates.x, loc.coordinates.y])
+          .bindPopup(`<h4>${loc.address}</h4><a href="#">View</a>`);
+      });
+      L.featureGroup(markers).addTo(map);
+      this.setState({ loaded: true });
+    }
   }
 
   componentDidUpdate() {
-    this.refreshMap();
+    this.drawMarkers();
   }
 
   render() {
-    return <div id="map">
-    </div>;
+    return <div id="map"></div>;
   }
 }
