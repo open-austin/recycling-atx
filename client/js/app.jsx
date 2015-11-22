@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchBar from './search-bar.jsx';
 import MapView from './map-view.jsx';
+import AddNew from './add-new.jsx';
 import api from './api';
 
 export default class App extends React.Component {
@@ -23,9 +24,25 @@ export default class App extends React.Component {
     });
   }
 
+  onAddressChange(event) {
+    this.setState({ address: event.target.value });
+  }
+
+  onSearchClick(event) {
+    // TODO geocode this address to coordinates
+    // TODO zoom into coordinates
+    // TODO look up address via api
+        //    1. location found = show details & leave report
+        //    2. location not found = create location & leave report
+    // console.log(this.state.address);
+  }
+
   render() {
     return <div className="content">
-      <SearchBar address={this.state.address} />
+      <SearchBar
+        onAddressChange={this.onAddressChange.bind(this)}
+        onSearchClick={this.onSearchClick.bind(this)}
+        address={this.state.address} />
       <MapView locations={this.state.locations} />
     </div>;
   }

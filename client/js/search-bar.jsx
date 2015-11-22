@@ -15,10 +15,14 @@ export default class SearchBar extends React.Component {
         type="text"
         placeholder="Enter Address"
         className="input-address"
-        value={this.props.address}>
+        value={this.props.address}
+        onChange={this.props.onAddressChange}>
       </input>
-      <span className="icon-container"><i className="fa fa-search fa-2x search-bar-icon"></i></span>
-        {/*<button className="search-button">Find</button>*/}
+      <span
+        className="icon-container"
+        onClick={this.props.onSearchClick}>
+        <i className="fa fa-search fa-2x search-bar-icon"></i>
+      </span>
     </div>;
   }
 }
