@@ -12,11 +12,10 @@ export default class App extends React.Component {
       locations: [],
       address: null,
       lat: null,
-      long: null,
-      
+      long: null
     };
   }
-    
+
   componentDidMount() {
     api.getAllLocations((err, locations) => {
       if (err) {
@@ -26,14 +25,26 @@ export default class App extends React.Component {
       this.setState({ locations: locations });
     });
   }
-    
+
   onAddressChange(event) {
-    console.log(event.target.value);
+    this.setState({ address: event.target.value });
+  }
+
+  onSearchClick(event) {
+    // TODO geocode this address to coordinates
+    // TODO zoom into coordinates
+    // TODO look up address via api
+        //    1. location found = show details & leave report
+        //    2. location not found = create location & leave report
+    // console.log(this.state.address);
   }
 
   render() {
     return <div className="content">
-      <SearchBar onAddressChange={this.addressChange} address={this.state.address} />
+      <SearchBar
+        onAddressChange={this.onAddressChange.bind(this)}
+        onSearchClick={this.onSearchClick.bind(this)}
+        address={this.state.address} />
       <MapView locations={this.state.locations} />
     </div>;
   }

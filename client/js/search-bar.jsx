@@ -8,11 +8,6 @@ export default class SearchBar extends React.Component {
     };
   }
 
-  setAddress(event) {
-      event.preventDefault();
-      
-  }
-    
   render() {
     return <div className="search-bar-container">
       <span className="icon-container"><i className="fa fa-map-marker fa-2x search-bar-icon"></i></span>
@@ -23,8 +18,11 @@ export default class SearchBar extends React.Component {
         value={this.props.address}
         onChange={this.props.onAddressChange}>
       </input>
-      <span className="icon-container"><i className="fa fa-search fa-2x search-bar-icon"></i></span>
-        {/*<button className="search-button">Find</button>*/}
+      <span
+        className="icon-container"
+        onClick={this.props.onSearchClick}>
+        <i className="fa fa-search fa-2x search-bar-icon"></i>
+      </span>
     </div>;
   }
 }
