@@ -159,7 +159,16 @@ var api = {
     });
   },
 
-  getLocation: function getLocation(id, callback) {},
+  getLocation: function getLocation(address, callback) {
+    _jquery2['default'].ajax({
+      url: _config.baseUrl + '/locations',
+      data: { address: address }
+    }).done(function (data) {
+      callback(null, data);
+    }).fail(function (response, status, err) {
+      callback(err);
+    });
+  },
 
   createLocation: function createLocation(location, callback) {},
 
@@ -206,6 +215,10 @@ var _api = require('./api');
 
 var _api2 = _interopRequireDefault(_api);
 
+var _geocoder = require('./geocoder');
+
+var _geocoder2 = _interopRequireDefault(_geocoder);
+
 var App = (function (_React$Component) {
   _inherits(App, _React$Component);
 
@@ -215,7 +228,8 @@ var App = (function (_React$Component) {
     _get(Object.getPrototypeOf(App.prototype), 'constructor', this).call(this, props);
     this.state = {
       locations: [],
-      address: null
+      address: null,
+      coordinates: { lat: null, lng: null }
     };
   }
 
@@ -240,12 +254,35 @@ var App = (function (_React$Component) {
   }, {
     key: 'onSearchClick',
     value: function onSearchClick(event) {
-      // TODO geocode this address to coordinates
-      // TODO zoom into coordinates
-      // TODO look up address via api
-      //    1. location found = show details & leave report
-      //    2. location not found = create location & leave report
-      // console.log(this.state.address);
+      var _this2 = this;
+
+      if (!this.state.address) return;
+      _api2['default'].getLocation(this.state.address, function (err, location) {
+        if (err) {
+          console.log('unable to get location', err);
+          return;
+        }
+
+        if (!location) {
+          // Location doesn't exist, drop new marker
+          _geocoder2['default'].geocode(_this2.state.address, function (err, response) {
+            if (err) {
+              console.log(err);
+              return;
+            }
+            // TODO add marker popup to prompt adding location
+            _this2.setState({ coordinates: response.coordinates });
+          });
+        } else {
+          // TODO add marker popup for existing location
+          _this2.setState({
+            coordinates: {
+              lat: location.coordinates.x,
+              lng: location.coordinates.y
+            }
+          });
+        }
+      });
     }
   }, {
     key: 'render',
@@ -257,7 +294,9 @@ var App = (function (_React$Component) {
           onAddressChange: this.onAddressChange.bind(this),
           onSearchClick: this.onSearchClick.bind(this),
           address: this.state.address }),
-        _react2['default'].createElement(_mapViewJsx2['default'], { locations: this.state.locations })
+        _react2['default'].createElement(_mapViewJsx2['default'], {
+          locations: this.state.locations,
+          coordinates: this.state.coordinates })
       );
     }
   }]);
@@ -268,7 +307,7 @@ var App = (function (_React$Component) {
 exports['default'] = App;
 module.exports = exports['default'];
 
-},{"./add-new.jsx":"/Users/preston/projects/recycling-atx/client/js/add-new.jsx","./api":"/Users/preston/projects/recycling-atx/client/js/api.js","./map-view.jsx":"/Users/preston/projects/recycling-atx/client/js/map-view.jsx","./search-bar.jsx":"/Users/preston/projects/recycling-atx/client/js/search-bar.jsx","react":"/Users/preston/projects/recycling-atx/node_modules/react/react.js"}],"/Users/preston/projects/recycling-atx/client/js/config.js":[function(require,module,exports){
+},{"./add-new.jsx":"/Users/preston/projects/recycling-atx/client/js/add-new.jsx","./api":"/Users/preston/projects/recycling-atx/client/js/api.js","./geocoder":"/Users/preston/projects/recycling-atx/client/js/geocoder.js","./map-view.jsx":"/Users/preston/projects/recycling-atx/client/js/map-view.jsx","./search-bar.jsx":"/Users/preston/projects/recycling-atx/client/js/search-bar.jsx","react":"/Users/preston/projects/recycling-atx/node_modules/react/react.js"}],"/Users/preston/projects/recycling-atx/client/js/config.js":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -278,6 +317,37 @@ exports['default'] = {
   baseUrl: 'https://recycling-bin.herokuapp.com' // API Endpoint
 };
 module.exports = exports['default'];
+
+},{}],"/Users/preston/projects/recycling-atx/client/js/geocoder.js":[function(require,module,exports){
+// google api is global for now
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var geocoder = new google.maps.Geocoder();
+
+exports["default"] = {
+  geocode: function geocode(address, callback) {
+    var opts = { address: address };
+    geocoder.geocode(opts, function (results, status) {
+      if (status === google.maps.GeocoderStatus.OK) {
+        // parse and simplify response
+        var result = results[0];
+        var response = {
+          coordinates: {
+            lat: result.geometry.location.lat(),
+            lng: result.geometry.location.lng()
+          }
+        };
+        return callback(null, response);
+      } else {
+        return callback("Geocode was not successful for the following reason: " + status);
+      }
+    });
+  }
+};
+module.exports = exports["default"];
 
 },{}],"/Users/preston/projects/recycling-atx/client/js/map-view.jsx":[function(require,module,exports){
 'use strict';
@@ -372,8 +442,8 @@ var MapView = (function (_React$Component) {
       this.zoomCurrentLocation();
     }
   }, {
-    key: 'refreshMap',
-    value: function refreshMap() {
+    key: 'drawMarkers',
+    value: function drawMarkers() {
       var map = this.map;
       if (!this.state.loaded) {
         var markers = this.props.locations.map(function (loc) {
@@ -384,9 +454,18 @@ var MapView = (function (_React$Component) {
       }
     }
   }, {
+    key: 'pan',
+    value: function pan() {
+      // Pan map if the coordinates change
+      if (this.props.coordinates.lat && this.props.coordinates.lng) {
+        this.map.panTo(this.props.coordinates, { animate: true });
+      }
+    }
+  }, {
     key: 'componentDidUpdate',
     value: function componentDidUpdate() {
-      this.refreshMap();
+      this.drawMarkers();
+      this.pan();
     }
   }, {
     key: 'render',
