@@ -17,7 +17,125 @@ var _appJsx2 = _interopRequireDefault(_appJsx);
 
 _reactDom2['default'].render(_react2['default'].createElement(_appJsx2['default'], null), document.getElementById('app'));
 
-},{"./app.jsx":"/Users/preston/projects/recycling-atx/client/js/app.jsx","react":"/Users/preston/projects/recycling-atx/node_modules/react/react.js","react-dom":"/Users/preston/projects/recycling-atx/node_modules/react-dom/index.js"}],"/Users/preston/projects/recycling-atx/client/js/api.js":[function(require,module,exports){
+},{"./app.jsx":"/Users/preston/projects/recycling-atx/client/js/app.jsx","react":"/Users/preston/projects/recycling-atx/node_modules/react/react.js","react-dom":"/Users/preston/projects/recycling-atx/node_modules/react-dom/index.js"}],"/Users/preston/projects/recycling-atx/client/js/accurateposition.js":[function(require,module,exports){
+'use strict';
+
+L.Map.include({
+	_defaultAccuratePositionOptions: {
+		maxWait: 10000,
+		desiredAccuracy: 20
+	},
+
+	findAccuratePosition: function findAccuratePosition(options) {
+
+		if (!navigator.geolocation) {
+			this._handleAccuratePositionError({
+				code: 0,
+				message: 'Geolocation not supported.'
+			});
+			return this;
+		}
+
+		this._accuratePositionEventCount = 0;
+		this._accuratePositionOptions = L.extend(this._defaultAccuratePositionOptions, options);
+		this._accuratePositionOptions.enableHighAccuracy = true;
+		this._accuratePositionOptions.maximumAge = 0;
+
+		if (!this._accuratePositionOptions.timeout) this._accuratePositionOptions.timeout = this._accuratePositionOptions.maxWait;
+
+		var onResponse = L.bind(this._checkAccuratePosition, this),
+		    onError = L.bind(this._handleAccuratePositionError, this),
+		    onTimeout = L.bind(this._handleAccuratePositionTimeout, this);
+
+		this._accuratePositionWatchId = navigator.geolocation.watchPosition(onResponse, onError, this._accuratePositionOptions);
+
+		this._accuratePositionTimerId = setTimeout(onTimeout, this._accuratePositionOptions.maxWait);
+	},
+
+	_handleAccuratePositionTimeout: function _handleAccuratePositionTimeout() {
+		navigator.geolocation.clearWatch(this._accuratePositionWatchId);
+
+		if (typeof this._lastCheckedAccuratePosition !== 'undefined') {
+			this._handleAccuratePositionResponse(this._lastCheckedAccuratePosition);
+		} else {
+			this._handleAccuratePositionError({
+				code: 3,
+				message: 'Timeout expired'
+			});
+		}
+
+		return this;
+	},
+
+	_cleanUpAccuratePositioning: function _cleanUpAccuratePositioning() {
+		clearTimeout(this._accuratePositionTimerId);
+		navigator.geolocation.clearWatch(this._accuratePositionWatchId);
+	},
+
+	_checkAccuratePosition: function _checkAccuratePosition(pos) {
+		var accuracyReached = pos.coords.accuracy <= this._accuratePositionOptions.desiredAccuracy;
+
+		this._lastCheckedAccuratePosition = pos;
+		this._accuratePositionEventCount = this._accuratePositionEventCount + 1;
+
+		if (accuracyReached && this._accuratePositionEventCount > 1) {
+			this._cleanUpAccuratePositioning();
+			this._handleAccuratePositionResponse(pos);
+		} else {
+			this._handleAccuratePositionProgress(pos);
+		}
+	},
+
+	_prepareAccuratePositionData: function _prepareAccuratePositionData(pos) {
+		var lat = pos.coords.latitude,
+		    lng = pos.coords.longitude,
+		    latlng = new L.LatLng(lat, lng),
+		    latAccuracy = 180 * pos.coords.accuracy / 40075017,
+		    lngAccuracy = latAccuracy / Math.cos(L.LatLng.DEG_TO_RAD * lat),
+		    bounds = L.latLngBounds([lat - latAccuracy, lng - lngAccuracy], [lat + latAccuracy, lng + lngAccuracy]);
+
+		var data = {
+			latlng: latlng,
+			bounds: bounds,
+			timestamp: pos.timestamp
+		};
+
+		for (var i in pos.coords) {
+			if (typeof pos.coords[i] === 'number') {
+				data[i] = pos.coords[i];
+			}
+		}
+
+		return data;
+	},
+
+	_handleAccuratePositionProgress: function _handleAccuratePositionProgress(pos) {
+		var data = this._prepareAccuratePositionData(pos);
+		this.fire('accuratepositionprogress', data);
+	},
+
+	_handleAccuratePositionResponse: function _handleAccuratePositionResponse(pos) {
+		var data = this._prepareAccuratePositionData(pos);
+		this.fire('accuratepositionfound', data);
+	},
+
+	_handleAccuratePositionError: function _handleAccuratePositionError(error) {
+		var c = error.code,
+		    message = error.message || (c === 1 ? 'permission denied' : c === 2 ? 'position unavailable' : 'timeout');
+
+		this._cleanUpAccuratePositioning();
+
+		this.fire('accuratepositionerror', {
+			code: c,
+			message: 'Geolocation error: ' + message + '.'
+		});
+	}
+});
+
+},{}],"/Users/preston/projects/recycling-atx/client/js/add-new.jsx":[function(require,module,exports){
+"use strict";
+
+},{}],"/Users/preston/projects/recycling-atx/client/js/api.js":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -80,6 +198,10 @@ var _mapViewJsx = require('./map-view.jsx');
 
 var _mapViewJsx2 = _interopRequireDefault(_mapViewJsx);
 
+var _addNewJsx = require('./add-new.jsx');
+
+var _addNewJsx2 = _interopRequireDefault(_addNewJsx);
+
 var _api = require('./api');
 
 var _api2 = _interopRequireDefault(_api);
@@ -111,12 +233,30 @@ var App = (function (_React$Component) {
       });
     }
   }, {
+    key: 'onAddressChange',
+    value: function onAddressChange(event) {
+      this.setState({ address: event.target.value });
+    }
+  }, {
+    key: 'onSearchClick',
+    value: function onSearchClick(event) {
+      // TODO geocode this address to coordinates
+      // TODO zoom into coordinates
+      // TODO look up address via api
+      //    1. location found = show details & leave report
+      //    2. location not found = create location & leave report
+      // console.log(this.state.address);
+    }
+  }, {
     key: 'render',
     value: function render() {
       return _react2['default'].createElement(
         'div',
         { className: 'content' },
-        _react2['default'].createElement(_searchBarJsx2['default'], { address: this.state.address }),
+        _react2['default'].createElement(_searchBarJsx2['default'], {
+          onAddressChange: this.onAddressChange.bind(this),
+          onSearchClick: this.onSearchClick.bind(this),
+          address: this.state.address }),
         _react2['default'].createElement(_mapViewJsx2['default'], { locations: this.state.locations })
       );
     }
@@ -128,7 +268,7 @@ var App = (function (_React$Component) {
 exports['default'] = App;
 module.exports = exports['default'];
 
-},{"./api":"/Users/preston/projects/recycling-atx/client/js/api.js","./map-view.jsx":"/Users/preston/projects/recycling-atx/client/js/map-view.jsx","./search-bar.jsx":"/Users/preston/projects/recycling-atx/client/js/search-bar.jsx","react":"/Users/preston/projects/recycling-atx/node_modules/react/react.js"}],"/Users/preston/projects/recycling-atx/client/js/config.js":[function(require,module,exports){
+},{"./add-new.jsx":"/Users/preston/projects/recycling-atx/client/js/add-new.jsx","./api":"/Users/preston/projects/recycling-atx/client/js/api.js","./map-view.jsx":"/Users/preston/projects/recycling-atx/client/js/map-view.jsx","./search-bar.jsx":"/Users/preston/projects/recycling-atx/client/js/search-bar.jsx","react":"/Users/preston/projects/recycling-atx/node_modules/react/react.js"}],"/Users/preston/projects/recycling-atx/client/js/config.js":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -160,6 +300,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _accurateposition = require('./accurateposition');
+
+var _accurateposition2 = _interopRequireDefault(_accurateposition);
+
 var MapView = (function (_React$Component) {
   _inherits(MapView, _React$Component);
 
@@ -167,31 +311,77 @@ var MapView = (function (_React$Component) {
     _classCallCheck(this, MapView);
 
     _get(Object.getPrototypeOf(MapView.prototype), 'constructor', this).call(this, props);
-    this.state = {};
+    this.state = {
+      loaded: false
+    };
   }
 
   _createClass(MapView, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
+    key: 'initMap',
+    value: function initMap() {
       var map = L.map('map').setView([30.27, -97.746], 15);
-
       L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwaW5lZGEiLCJhIjoiY2loOWgybDhnMHR4eHUwa2xhOHRnYTJ3aiJ9.OLTnRf2Py_IXUBSfG8dbPQ', {
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
         maxZoom: 18,
         id: 'mapineda.o7kgelpe',
         accessToken: 'pk.eyJ1IjoibWFwaW5lZGEiLCJhIjoiY2loOWgybDhnMHR4eHUwa2xhOHRnYTJ3aiJ9.OLTnRf2Py_IXUBSfG8dbPQ'
       }).addTo(map);
-
       this.map = map;
+    }
+  }, {
+    key: 'onAccuratePositionProgress',
+    value: function onAccuratePositionProgress(e) {
+      // TODO show in progress spinner?
+      console.log('Geolocate in progress');
+      // console.log(e.accuracy);
+      // console.log(e.latlng);
+    }
+  }, {
+    key: 'onAccuratePositionFound',
+    value: function onAccuratePositionFound(e) {
+      var _e$latlng = e.latlng;
+      var lat = _e$latlng.lat;
+      var lng = _e$latlng.lng;
+
+      // TODO Style this marker so users know where they are
+      // currently located
+      L.marker([lat, lng]).addTo(this.map);
+    }
+  }, {
+    key: 'onAccuratePositionError',
+    value: function onAccuratePositionError(e) {
+      // TODO show an error notification?
+      console.log('error', e);
+    }
+  }, {
+    key: 'zoomCurrentLocation',
+    value: function zoomCurrentLocation() {
+      var map = this.map;
+      map.on('accuratepositionprogress', this.onAccuratePositionProgress.bind(this));
+      map.on('accuratepositionfound', this.onAccuratePositionFound.bind(this));
+      map.on('accuratepositionerror', this.onAccuratePositionError.bind(this));
+      map.findAccuratePosition({
+        maxWait: 15000, // defaults to 10000
+        desiredAccuracy: 30 // defaults to 20
+      });
+    }
+  }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.initMap();
+      this.zoomCurrentLocation();
     }
   }, {
     key: 'refreshMap',
     value: function refreshMap() {
       var map = this.map;
-      var markers = this.props.locations.map(function (loc) {
-        return L.marker([loc.coordinates.x, loc.coordinates.y]).bindPopup('<h4>' + loc.address + '</h4><a href="#">View</a>');
-      });
-      var group = L.featureGroup(markers).addTo(map);
+      if (!this.state.loaded) {
+        var markers = this.props.locations.map(function (loc) {
+          return L.marker([loc.coordinates.x, loc.coordinates.y]).bindPopup('<h4>' + loc.address + '</h4><a href="#">View</a>');
+        });
+        L.featureGroup(markers).addTo(map);
+        this.setState({ loaded: true });
+      }
     }
   }, {
     key: 'componentDidUpdate',
@@ -211,7 +401,7 @@ var MapView = (function (_React$Component) {
 exports['default'] = MapView;
 module.exports = exports['default'];
 
-},{"react":"/Users/preston/projects/recycling-atx/node_modules/react/react.js"}],"/Users/preston/projects/recycling-atx/client/js/search-bar.jsx":[function(require,module,exports){
+},{"./accurateposition":"/Users/preston/projects/recycling-atx/client/js/accurateposition.js","react":"/Users/preston/projects/recycling-atx/node_modules/react/react.js"}],"/Users/preston/projects/recycling-atx/client/js/search-bar.jsx":[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -250,18 +440,21 @@ var SearchBar = (function (_React$Component) {
         { className: "search-bar-container" },
         _react2["default"].createElement(
           "span",
-          null,
-          _react2["default"].createElement("i", { className: "fa fa-map-marker fa-3x pindrop" })
+          { className: "icon-container" },
+          _react2["default"].createElement("i", { className: "fa fa-map-marker fa-2x search-bar-icon" })
         ),
         _react2["default"].createElement("input", {
           type: "text",
           placeholder: "Enter Address",
           className: "input-address",
-          value: this.props.address }),
+          value: this.props.address,
+          onChange: this.props.onAddressChange }),
         _react2["default"].createElement(
-          "button",
-          { className: "search-button" },
-          "Find"
+          "span",
+          {
+            className: "icon-container",
+            onClick: this.props.onSearchClick },
+          _react2["default"].createElement("i", { className: "fa fa-search fa-2x search-bar-icon" })
         )
       );
     }
