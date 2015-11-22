@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchBar from './search-bar.jsx';
 import MapView from './map-view.jsx';
+import AddNew from './add-new.jsx';
 import api from './api';
 
 export default class App extends React.Component {
@@ -9,10 +10,13 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       locations: [],
-      address: null
+      address: null,
+      lat: null,
+      long: null,
+      
     };
   }
-
+    
   componentDidMount() {
     api.getAllLocations((err, locations) => {
       if (err) {
@@ -22,10 +26,14 @@ export default class App extends React.Component {
       this.setState({ locations: locations });
     });
   }
+    
+  onAddressChange(event) {
+    console.log(event.target.value);
+  }
 
   render() {
     return <div className="content">
-      <SearchBar address={this.state.address} />
+      <SearchBar onAddressChange={this.addressChange} address={this.state.address} />
       <MapView locations={this.state.locations} />
     </div>;
   }
