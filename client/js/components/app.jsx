@@ -30,7 +30,8 @@ export default class App extends React.Component {
     this.setState({ address: event.target.value });
   }
 
-  onSearchClick(event) {
+  onSearchSubmit(event) {
+    event.preventDefault();
     if (!this.state.address) return;
     api.getLocation(this.state.address, (err, location) => {
       if (err) {
@@ -64,7 +65,7 @@ export default class App extends React.Component {
     return <div className="content">
       <SearchBar
         onAddressChange={this.onAddressChange.bind(this)}
-        onSearchClick={this.onSearchClick.bind(this)}
+        onSearchSubmit={this.onSearchSubmit.bind(this)}
         address={this.state.address} />
       <MapView
         locations={this.state.locations}

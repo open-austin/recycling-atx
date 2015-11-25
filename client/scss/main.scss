@@ -1,4 +1,7 @@
+@import "buttons";
+
 * { box-sizing: border-box; }
+
 html, body {
     height: 100%
 }
@@ -41,7 +44,7 @@ input[placeholder] { padding-left: 0.5em; }
     flex: 0 0 auto;
 }
 
-#map { 
+#map {
 	flex: 1 1 0;
     height: 100%;
 	width: 100%;

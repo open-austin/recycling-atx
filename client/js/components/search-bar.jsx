@@ -9,20 +9,22 @@ export default class SearchBar extends React.Component {
   }
 
   render() {
-    return <div className="search-bar-container">
-      <span className="icon-container"><i className="fa fa-map-marker fa-2x search-bar-icon"></i></span>
-      <input
-        type="text"
-        placeholder="Enter Address"
-        className="input-address"
-        value={this.props.address}
-        onChange={this.props.onAddressChange}>
-      </input>
-      <span
-        className="icon-container"
-        onClick={this.props.onSearchClick}>
-        <i className="fa fa-search fa-2x search-bar-icon"></i>
-      </span>
-    </div>;
+    return (
+      <form className="search-bar-container" onSubmit={this.props.onSearchSubmit}>
+        <span className="icon-container"><i className="fa fa-map-marker fa-2x search-bar-icon"></i></span>
+        <input
+          type="text"
+          placeholder="Enter Address"
+          className="input-address"
+          value={this.props.address}
+          onChange={this.props.onAddressChange}>
+        </input>
+        <button
+          type="submit"
+          className="icon-container btn-link">
+          <i className="fa fa-search fa-2x search-bar-icon"></i>
+        </button>
+      </form>
+    );
   }
 }
