@@ -2,8 +2,8 @@ import React from 'react';
 import SearchBar from './search-bar.jsx';
 import MapView from './map-view.jsx';
 import AddNew from './add-new.jsx';
-import api from './api';
-import GeoCoder from './geocoder';
+import api from '../api';
+import GeoCoder from '../geocoder';
 
 export default class App extends React.Component {
 
