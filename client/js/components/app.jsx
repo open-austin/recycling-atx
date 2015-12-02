@@ -2,6 +2,7 @@ import React from 'react';
 import SearchBar from './search-bar.jsx';
 import MapView from './map-view.jsx';
 import AddNew from './add-new.jsx';
+import Details from './details.jsx';
 import api from '../api';
 import GeoCoder from '../geocoder';
 
@@ -9,10 +10,12 @@ export default class App extends React.Component {
 
   constructor(props) {
     super(props);
+    window.changeView = this.changeView.bind(this);
     this.state = {
       locations: [],
       address: null,
-      coordinates: { lat: null, lng: null }
+      coordinates: { lat: null, lng: null },
+      view: 'map'
     };
   }
 
@@ -28,6 +31,10 @@ export default class App extends React.Component {
 
   onAddressChange(event) {
     this.setState({ address: event.target.value });
+  }
+  
+  changeView(view) {
+    this.setState({view}); 
   }
 
   onSearchSubmit(event) {
@@ -62,14 +69,21 @@ export default class App extends React.Component {
   }
 
   render() {
+    const View = {
+      map: MapView,
+      details: Details
+    }[this.state.view];
+
+//    console.log('curr view', view, this.state.view);
     return <div className="content">
       <SearchBar
         onAddressChange={this.onAddressChange.bind(this)}
         onSearchSubmit={this.onSearchSubmit.bind(this)}
         address={this.state.address} />
-      <MapView
+      <View
         locations={this.state.locations}
-        coordinates={this.state.coordinates} />
+        coordinates={this.state.coordinates}
+        changeView={this.changeView.bind(this)} />
     </div>;
   }
 }
