@@ -10,6 +10,6 @@ export default class Details extends React.Component {
    
     
   render() {
-    <div> Hello world </div>
+    return <h1> Hello world </h1>
   }
 }

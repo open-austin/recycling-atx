@@ -10,7 +10,6 @@ export default class App extends React.Component {
 
   constructor(props) {
     super(props);
-    window.changeView = this.changeView.bind(this);
     this.state = {
       locations: [],
       address: null,
@@ -74,7 +73,6 @@ export default class App extends React.Component {
       details: Details
     }[this.state.view];
 
-//    console.log('curr view', view, this.state.view);
     return <div className="content">
       <SearchBar
         onAddressChange={this.onAddressChange.bind(this)}
