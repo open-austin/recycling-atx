@@ -1,0 +1,23 @@
+$spinner-background: rgba(0, 0, 0, 0.8);
+
+.spinner {
+  z-index: $zIndex-9--spinner;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.spinner .spinner-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  background: $spinner-background;
+  color: #fff;
+  text-transform: uppercase;
+}

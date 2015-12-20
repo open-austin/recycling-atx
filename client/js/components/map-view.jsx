@@ -1,7 +1,9 @@
 import React from 'react';
+// import findAccuratePosition from '../accurateposition';
+import config from '../../../config';
+import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 
-import findAccuratePosition from '../accurateposition';
-
+const defaultPosition = config.defaultPosition; // todo: read from configuration?
 export default class MapView extends React.Component {
 
   constructor(props) {
@@ -11,77 +13,51 @@ export default class MapView extends React.Component {
     };
   }
 
-  initMap() {
-    const map = L.map('map').setView([30.27, -97.746], 15);
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwaW5lZGEiLCJhIjoiY2loOWgybDhnMHR4eHUwa2xhOHRnYTJ3aiJ9.OLTnRf2Py_IXUBSfG8dbPQ', {
-      attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-      maxZoom: 18,
-      id: 'mapineda.o7kgelpe',
-      accessToken: 'pk.eyJ1IjoibWFwaW5lZGEiLCJhIjoiY2loOWgybDhnMHR4eHUwa2xhOHRnYTJ3aiJ9.OLTnRf2Py_IXUBSfG8dbPQ'
-    }).addTo(map);
-    this.map = map;
+  componentDidMount() {
+    if ('geolocation' in navigator) {
+      this.props.setSpinner(true);
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.props.setCoordinates({
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        });
+        this.props.setSpinner(false);
+      });
+    } else {
+      /* geolocation IS NOT available */
+    }
   }
 
-  onAccuratePositionProgress (e) {
-    // TODO show in progress spinner?
-    console.log('Geolocate in progress');
-    // console.log(e.accuracy);
-    // console.log(e.latlng);
-  }
-
-  onAccuratePositionFound (e) {
-    const {lat, lng} = e.latlng;
-    // TODO Style this marker so users know where they are
-    // currently located
-    L.marker([lat, lng]).addTo(this.map);
-  }
-
-  onAccuratePositionError (e) {
-    // TODO show an error notification?
-    console.log('error', e);
-  }
-
-  zoomCurrentLocation() {
-    const map = this.map;
-    map.on('accuratepositionprogress', this.onAccuratePositionProgress.bind(this));
-    map.on('accuratepositionfound', this.onAccuratePositionFound.bind(this));
-    map.on('accuratepositionerror', this.onAccuratePositionError.bind(this));
-    map.findAccuratePosition({
-        maxWait: 15000, // defaults to 10000
-        desiredAccuracy: 30 // defaults to 20
+  renderMarkers() {
+    return this.props.locations.map(({id, coordinates, address}) => {
+      const { x, y } = coordinates;
+      return (
+        <Marker key={id} position={ [x, y] }>
+          <Popup>
+            <span>{address}</span>
+          </Popup>
+        </Marker>
+      );
     });
   }
 
-  componentDidMount() {
-    this.initMap();
-    this.zoomCurrentLocation();
-  }
-
-  drawMarkers() {
-    const map = this.map;
-    if (!this.state.loaded) {
-      const markers = this.props.locations.map((loc) => {
-        return L.marker([loc.coordinates.x, loc.coordinates.y])
-          .bindPopup(`<h4>${loc.address}</h4><a href="#">View</a>`);
-      });
-      L.featureGroup(markers).addTo(map);
-      this.setState({ loaded: true });
-    }
-  }
-
-  pan() {
-    // Pan map if the coordinates change
-    if (this.props.coordinates.lat && this.props.coordinates.lng) {
-      this.map.panTo(this.props.coordinates, { animate: true });
-    }
-  }
-
-  componentDidUpdate() {
-    this.drawMarkers();
-    this.pan();
-  }
-
   render() {
-    return <div id="map"></div>;
+    const markers = this.renderMarkers();
+    const coordinates = this.props.coordinates;
+    const center = coordinates.lat && coordinates.lng ?
+      [coordinates.lat, coordinates.lng] :
+      defaultPosition;
+
+    return (
+      <Map id="map" center={center} zoom={13}>
+        <TileLayer
+          url='https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwaW5lZGEiLCJhIjoiY2loOWgybDhnMHR4eHUwa2xhOHRnYTJ3aiJ9.OLTnRf2Py_IXUBSfG8dbPQ'
+          attribution='Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>'
+          id='mapineda.o7kgelpe'
+          accessToken='pk.eyJ1IjoibWFwaW5lZGEiLCJhIjoiY2loOWgybDhnMHR4eHUwa2xhOHRnYTJ3aiJ9.OLTnRf2Py_IXUBSfG8dbPQ'
+        />
+      {markers}
+      </Map>
+    );
   }
 }
