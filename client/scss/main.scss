@@ -1,61 +1,8 @@
+@import "base";
+@import "variables";
+@import "z-index";
 @import "buttons";
-
-* { box-sizing: border-box; }
-
-html, body {
-    height: 100%
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-flow: column nowrap;
-}
-
-.search-bar-container {
-    display: flex;
-    width: 100%;
-    flex-grow: 0;
-    margin: 0 auto;
-    justify-content: space-between;
-    background: white;
-    height: 3em;
-}
-
-.input-address {
-    flex: 1 1 auto;
-    margin: 0.5em;
-    background: #eee;
-    font-size: 1em;
-    border-radius: 25px;
-    border: 0;
-}
-
-input[placeholder] { padding-left: 0.5em; }
-
-.icon-container {
-    display: flex;
-    margin: 0.5em;
-    justify-content: center;
-}
-
-.search-bar-icon {
-    flex: 0 0 auto;
-}
-
-#map {
-	flex: 1 1 0;
-    height: 100%;
-	width: 100%;
-}
-
-.content {
-    display: flex;
-    flex: 1 1;
-    order: 2;
-    height: 100%;
-    flex-flow: column nowrap;
-}
-
-#app { height: 100% }
+@import "search";
+@import "util";
+@import "spinner";
+@import "map";

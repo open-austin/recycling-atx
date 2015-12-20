@@ -3,18 +3,19 @@ import SearchBar from './search-bar.jsx';
 import MapView from './map-view.jsx';
 import AddNew from './add-new.jsx';
 import Details from './details.jsx';
+import Spinner from './spinner.jsx';
 import api from '../api';
 import GeoCoder from '../geocoder';
 
 export default class App extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
       locations: [],
       address: null,
       coordinates: { lat: null, lng: null },
-      view: 'map'
+      view: 'map',
+      spin: false
     };
   }
 
@@ -31,9 +32,9 @@ export default class App extends React.Component {
   onAddressChange(event) {
     this.setState({ address: event.target.value });
   }
-  
+
   changeView(view) {
-    this.setState({view}); 
+    this.setState({view});
   }
 
   onSearchSubmit(event) {
@@ -67,6 +68,14 @@ export default class App extends React.Component {
     });
   }
 
+  setCoordinates(coordinates) {
+    this.setState({ coordinates });
+  }
+
+  setSpinner(spin) {
+    this.setState({ spin });
+  }
+
   render() {
     const View = {
       map: MapView,
@@ -74,6 +83,7 @@ export default class App extends React.Component {
     }[this.state.view];
 
     return <div className="content">
+      <Spinner spin={this.state.spin} />
       <SearchBar
         onAddressChange={this.onAddressChange.bind(this)}
         onSearchSubmit={this.onSearchSubmit.bind(this)}
@@ -81,7 +91,9 @@ export default class App extends React.Component {
       <View
         locations={this.state.locations}
         coordinates={this.state.coordinates}
-        changeView={this.changeView.bind(this)} />
+        changeView={this.changeView.bind(this)}
+        setCoordinates={this.setCoordinates.bind(this)}
+        setSpinner={this.setSpinner.bind(this)} />
     </div>;
   }
 }
