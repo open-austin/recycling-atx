@@ -15,6 +15,7 @@ export default class App extends React.Component {
       address: null,
       coordinates: { lat: null, lng: null },
       view: 'map',
+      currentLocation: null,
       spin: false
     };
   }
@@ -76,6 +77,10 @@ export default class App extends React.Component {
     this.setState({ spin });
   }
 
+  setCurrentLocation(id) {
+    this.setState({ currentLocation: id });
+  }
+
   render() {
     const View = {
       map: MapView,
@@ -90,10 +95,12 @@ export default class App extends React.Component {
         address={this.state.address} />
       <View
         locations={this.state.locations}
+        currentLocation={this.state.currentLocation}
         coordinates={this.state.coordinates}
         changeView={this.changeView.bind(this)}
         setCoordinates={this.setCoordinates.bind(this)}
-        setSpinner={this.setSpinner.bind(this)} />
+        setSpinner={this.setSpinner.bind(this)}
+        setCurrentLocation={this.setCurrentLocation.bind(this)} />
     </div>;
   }
 }
