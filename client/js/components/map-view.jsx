@@ -28,13 +28,28 @@ export default class MapView extends React.Component {
     }
   }
 
+  viewDetailsOnClick(id) {
+    return (e) => {
+      e.preventDefault();
+      this.props.setCurrentLocation(id);
+      this.props.changeView('details');
+    };
+  }
+
   renderMarkers() {
-    return this.props.locations.map(({id, coordinates, address}) => {
+    return this.props.locations.map(({id, coordinates, address, reports}) => {
       const { x, y } = coordinates;
       return (
         <Marker key={id} position={ [x, y] }>
           <Popup>
-            <span>{address}</span>
+            <div>
+              <p>{address}</p>
+              <p>{reports ? `${reports} reports` : 'No Reports' }</p>
+              <a href="#" onClick={this.viewDetailsOnClick(id)}>
+                View more details or report this location
+              </a>
+            </div>
+
           </Popup>
         </Marker>
       );
