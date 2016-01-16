@@ -27,8 +27,8 @@ const api = {
 
   },
 
-  addReport: function(id, callback) {
-
+  addReport: function(locationId, report, callback) {
+    // TODO
   }
 };
 

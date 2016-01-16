@@ -22,8 +22,8 @@ export default class Details extends React.Component {
     if (!location.reports)
       return <p>No reports</p>;
 
-    const reports = location.reports.map((report) =>
-      <li>{report}</li>);
+    const reports = location.reports.map((entry) =>
+      <li key={entry.id}>{entry.report}</li>);
     return <ul>{reports}</ul>;
   }
 
@@ -42,6 +42,7 @@ export default class Details extends React.Component {
       </div>
     );
   }
+
   render() {
     const content = this.renderContent();
     return (
