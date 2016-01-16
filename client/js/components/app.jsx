@@ -41,7 +41,7 @@ export default class App extends React.Component {
   onSearchSubmit(event) {
     event.preventDefault();
     if (!this.state.address) return;
-    api.getLocation(this.state.address, (err, location) => {
+    api.getLocationByAddress(this.state.address, (err, location) => {
       if (err) {
         console.log('unable to get location', err);
         return;
