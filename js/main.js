@@ -41,11 +41,19 @@ var api = {
     });
   },
 
-  getLocation: function getLocation(address, callback) {
+  getLocationByAddress: function getLocationByAddress(address, callback) {
     _jquery2['default'].ajax({
       url: _config.baseUrl + '/locations',
       data: { address: address }
     }).done(function (data) {
+      callback(null, data);
+    }).fail(function (response, status, err) {
+      callback(err);
+    });
+  },
+
+  getLocation: function getLocation(id, callback) {
+    _jquery2['default'].ajax(_config.baseUrl + '/locations/' + id).done(function (data) {
       callback(null, data);
     }).fail(function (response, status, err) {
       callback(err);
@@ -159,7 +167,7 @@ var App = (function (_React$Component) {
 
       event.preventDefault();
       if (!this.state.address) return;
-      _api2['default'].getLocation(this.state.address, function (err, location) {
+      _api2['default'].getLocationByAddress(this.state.address, function (err, location) {
         if (err) {
           console.log('unable to get location', err);
           return;
@@ -256,6 +264,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _api = require('../api');
+
+var _api2 = _interopRequireDefault(_api);
+
 var Details = (function (_React$Component) {
   _inherits(Details, _React$Component);
 
@@ -263,61 +275,106 @@ var Details = (function (_React$Component) {
     _classCallCheck(this, Details);
 
     _get(Object.getPrototypeOf(Details.prototype), 'constructor', this).call(this, props);
-    this.state = {};
+    this.state = { location: null };
   }
 
   _createClass(Details, [{
-    key: 'render',
-    value: function render() {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
       var _this = this;
 
-      var location = this.props.locations.find(function (loc) {
-        return _this.props.currentLocation === loc.id;
+      _api2['default'].getLocation(this.props.currentLocation, function (err, location) {
+        if (err) {
+          console.error(err);
+        } else {
+          _this.setState({ location: location });
+        }
       });
+    }
+  }, {
+    key: 'renderReports',
+    value: function renderReports() {
+      var location = this.state.location;
+      if (!location.reports) return _react2['default'].createElement(
+        'p',
+        null,
+        'No reports'
+      );
+
+      var reports = location.reports.map(function (report) {
+        return _react2['default'].createElement(
+          'li',
+          null,
+          report
+        );
+      });
+      return _react2['default'].createElement(
+        'ul',
+        null,
+        reports
+      );
+    }
+  }, {
+    key: 'renderContent',
+    value: function renderContent() {
+      var location = this.state.location;
+      if (!location) return _react2['default'].createElement(
+        'h1',
+        null,
+        'Fetching location'
+      );
+
+      var reports = this.renderReports();
 
       return _react2['default'].createElement(
         'div',
         null,
         _react2['default'].createElement(
-          'a',
-          { href: '#', onClick: function (e) {
-              return _this.props.changeView('map');
-            } },
-          'Return to map'
-        ),
-        _react2['default'].createElement(
           'h1',
           null,
-          'Reports for ' + location.address
+          location.address
         ),
         _react2['default'].createElement(
-          'ul',
+          'h2',
           null,
+          'Reports'
+        ),
+        reports
+      );
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var content = this.renderContent();
+      return _react2['default'].createElement(
+        'div',
+        { className: 'details-view' },
+        _react2['default'].createElement(
+          'a',
+          { href: '#', onClick: function (e) {
+              return _this2.props.changeView('map');
+            } },
           _react2['default'].createElement(
-            'li',
-            null,
-            'Lorem ipsum'
+            'svg',
+            { height: '10px', width: '10px' },
+            _react2['default'].createElement('line', { x1: '0', y1: '5', x2: '8', y2: '0' }),
+            _react2['default'].createElement('line', { x1: '0', y1: '5', x2: '8', y2: '10' })
           ),
-          _react2['default'].createElement(
-            'li',
-            null,
-            'Lorem ipsum'
-          ),
-          _react2['default'].createElement(
-            'li',
-            null,
-            'Lorem ipsum'
-          )
+          'Return to map'
+        ),
+        content,
+        _react2['default'].createElement(
+          'h2',
+          null,
+          'Submit New Report'
         ),
         _react2['default'].createElement(
           'form',
-          null,
-          _react2['default'].createElement('input', { type: 'text' }),
-          _react2['default'].createElement(
-            'button',
-            null,
-            'Leave report'
-          )
+          { method: 'post' },
+          _react2['default'].createElement('textarea', { rows: '8', cols: '50', placeholder: 'Enter text here' }),
+          _react2['default'].createElement('input', { type: 'submit', value: 'Submit' })
         )
       );
     }
@@ -329,7 +386,7 @@ var Details = (function (_React$Component) {
 exports['default'] = Details;
 module.exports = exports['default'];
 
-},{"react":"/Users/preston/projects/recycling-atx/node_modules/react/react.js"}],"/Users/preston/projects/recycling-atx/client/js/components/map-view.jsx":[function(require,module,exports){
+},{"../api":"/Users/preston/projects/recycling-atx/client/js/api.js","react":"/Users/preston/projects/recycling-atx/node_modules/react/react.js"}],"/Users/preston/projects/recycling-atx/client/js/components/map-view.jsx":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {

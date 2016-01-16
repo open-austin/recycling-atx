@@ -32,6 +32,39 @@ body {
 #app {
   height: 100%; }
 
+.details-view {
+  font-family: 'Open Sans', sans-serif;
+  padding: 1em 2em; }
+  .details-view a {
+    color: black;
+    font-weight: 700;
+    line-height: 20px;
+    text-decoration: none;
+    text-transform: uppercase; }
+  .details-view form > input {
+    display: block; }
+  .details-view form > input[type=submit] {
+    background: black;
+    border: 0;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    margin-top: 4px;
+    padding: 6px 10px; }
+  .details-view form > textarea {
+    font-family: 'Open Sans', sans-serif;
+    padding: 6px; }
+  .details-view svg {
+    margin-right: 4px;
+    stroke: black;
+    stroke-width: 2px;
+    vertical-align: 1px; }
+  .details-view h2 {
+    border-bottom: 1px solid black;
+    font-weight: 400;
+    padding-bottom: 4px;
+    width: 50%; }
+
 .btn-link {
   border: none;
   background: none;
