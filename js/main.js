@@ -62,7 +62,7 @@ var api = {
 
   createLocation: function createLocation(location, callback) {},
 
-  addReport: function addReport(id, callback) {}
+  addReport: function addReport(locationId, callback) {}
 };
 
 exports['default'] = api;
@@ -275,7 +275,7 @@ var Details = (function (_React$Component) {
     _classCallCheck(this, Details);
 
     _get(Object.getPrototypeOf(Details.prototype), 'constructor', this).call(this, props);
-    this.state = { location: null };
+    this.state = { location: null, reportText: '' };
   }
 
   _createClass(Details, [{
@@ -301,11 +301,11 @@ var Details = (function (_React$Component) {
         'No reports'
       );
 
-      var reports = location.reports.map(function (report) {
+      var reports = location.reports.map(function (entry) {
         return _react2['default'].createElement(
           'li',
-          null,
-          report
+          { key: entry.id },
+          entry.report
         );
       });
       return _react2['default'].createElement(
