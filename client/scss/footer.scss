@@ -1,0 +1,28 @@
+footer {
+  height: 35px;
+  margin-top: 3px;
+  text-size: 8px;
+  background-color: #43ab9b
+}
+
+footer .container {
+  margin: 1px;
+}
+
+.footer-text {
+  color: #a9d3cf;
+  padding-left: 50px;
+}
+
+.footer-link {
+  text-decoration: none;
+}
+
+a:link {color:  #a9d3cf;}      /* unvisited link */
+       a:visited {color:  #a9d3cf;}   /* visited link */
+       a:hover {color: #a9d3cf;}     /* mouse over link */
+       a:active {color:  #a9d3cf;}
+
+.city-rep {
+  text-align: center;
+}

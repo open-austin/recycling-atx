@@ -11,15 +11,16 @@ export default class Footer extends React.Component {
 render() {
   return (
     <footer className='footer-container'>
-      //todo: link to open austin written by: people that have contributed hyperlink
-      <h3><a href='http://open-austin.org'>Open-Austin.org</a></h3>
-      <p>Contributors to the project include:
-      <a href='http://github.com/gusIreland'>Gus Ireland</a>,
-      <a href='http://github.com/'>Preston Pham</a>,
-      <a href='http://github.com/'>Derek Gullege</a>,
-      <a href='http://github.com/mapineda'>Marco Pineda</a>
-      </p>
-      //Todo: made with love in Austin, TX
+      <div className='container'>
+          <small>
+            <p className='footer-text'> An
+              <a className='footer-link' href='http://open-austin.org' target='_blank'> Open-Austin</a> project |
+              <a className='footer-link' href='http://github.com/open-austin/recycling-atx' target='_blank'> Github</a> |
+              <a className='footer-link' href='#' target='_blank'>About</a>
+            </p>
+
+          </small>
+      </div>
 
     </footer>
     );
