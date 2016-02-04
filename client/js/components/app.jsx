@@ -6,6 +6,7 @@ import Details from './details.jsx';
 import Spinner from './spinner.jsx';
 import api from '../api';
 import GeoCoder from '../geocoder';
+import Footer from './footer.jsx';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -101,6 +102,8 @@ export default class App extends React.Component {
         setCoordinates={this.setCoordinates.bind(this)}
         setSpinner={this.setSpinner.bind(this)}
         setCurrentLocation={this.setCurrentLocation.bind(this)} />
+      <Footer/>
+
     </div>;
   }
 }

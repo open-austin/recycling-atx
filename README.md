@@ -1,6 +1,6 @@
 ## Recycling-atx :recycle:
 
-Shows you which buildings in Austin recyle and which ones do not.
+Shows you which buildings in Austin recycle and which ones do not.
 
 This is an open-source project through [Open-Austin](http://www.open-austin.org/).
 
@@ -31,6 +31,11 @@ Check out more awesome Open-Austin Projects [Here](https://github.com/open-austi
 
 Interested in a particular project? Come to the next Open-Austin [Meetup](http://www.meetup.com/Open-Government-Civic-Technology-Meetup-by-Open-Austin/)
 
+### Contributing
+[Gus Ireland]('http://github.com/gusIreland')
+[Preston Pham]('http://github.com/prestonp')
+[Derek Gulledge]('http://github.com/')
+[Marco Pineda]('http://github.com/mapineda')
 
 
 
