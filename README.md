@@ -32,10 +32,10 @@ Check out more awesome Open-Austin Projects [Here](https://github.com/open-austi
 Interested in a particular project? Come to the next Open-Austin [Meetup](http://www.meetup.com/Open-Government-Civic-Technology-Meetup-by-Open-Austin/)
 
 ### Contributing
--[Gus Ireland](http://github.com/gusIreland)
--[Preston Pham](http://github.com/prestonp)
--[Derek Gulledge](http://github.com/)
--[Marco Pineda](http://github.com/mapineda)
+* [Gus Ireland](http://github.com/gusIreland)
+* [Preston Pham](http://github.com/prestonp)
+* [Derek Gulledge](http://github.com/)
+* [Marco Pineda](http://github.com/mapineda)
 
 
 
