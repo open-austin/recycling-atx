@@ -4,27 +4,29 @@
   flex-grow: 0;
   margin: 0 auto;
   justify-content: space-between;
-  background: white;
+  background: #009788;
   height: 3em;
 }
 
 .input-address {
   flex: 1 1 auto;
   margin: 0.5em;
-  background: #eee;
+  background: #ffffff;
   font-size: 1em;
   border-radius: 25px;
   border: 0;
 }
 
-input[placeholder] { padding-left: 0.5em; }
+input[placeholder] { padding-left: 0.5em; color:#43ab9b;}
 
 .icon-container {
+  color: white;
   display: flex;
   margin: 0.5em;
   justify-content: center;
 }
 
 .search-bar-icon {
+  color: white;
   flex: 0 0 auto;
 }
