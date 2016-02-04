@@ -57,7 +57,7 @@ export default class Details extends React.Component {
         {content}
         <h2>Submit New Report</h2>
         <form method="post">
-          <textarea rows='8' cols='50' placeholder='Enter text here'></textarea>
+          <textarea className='details-text' rows='8' cols='50' placeholder='Enter text here'></textarea>
           <input type="submit" value="Submit"></input>
         </form>
       </div>
