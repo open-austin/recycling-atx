@@ -12,6 +12,7 @@ export default class Spinner extends React.Component {
     return (
       <div className={className}>
         <div className="spinner-content">
+          <p>Recycle Please!</p>
           <p>Loading...</p>
         </div>
       </div>
