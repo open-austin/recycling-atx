@@ -17,7 +17,7 @@ var _componentsAppJsx2 = _interopRequireDefault(_componentsAppJsx);
 
 _reactDom2['default'].render(_react2['default'].createElement(_componentsAppJsx2['default'], null), document.getElementById('app'));
 
-},{"./components/app.jsx":"/Users/preston/projects/recycling-atx/client/js/components/app.jsx","react":"/Users/preston/projects/recycling-atx/node_modules/react/react.js","react-dom":"/Users/preston/projects/recycling-atx/node_modules/react-dom/index.js"}],"/Users/preston/projects/recycling-atx/client/js/api.js":[function(require,module,exports){
+},{"./components/app.jsx":"/Users/gus1775/hacking/recycling-atx/client/js/components/app.jsx","react":"/Users/gus1775/hacking/recycling-atx/node_modules/react/react.js","react-dom":"/Users/gus1775/hacking/recycling-atx/node_modules/react-dom/index.js"}],"/Users/gus1775/hacking/recycling-atx/client/js/api.js":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -62,16 +62,18 @@ var api = {
 
   createLocation: function createLocation(location, callback) {},
 
-  addReport: function addReport(locationId, callback) {}
+  addReport: function addReport(locationId, report, callback) {
+    // TODO
+  }
 };
 
 exports['default'] = api;
 module.exports = exports['default'];
 
-},{"./config":"/Users/preston/projects/recycling-atx/client/js/config.js","jquery":"/Users/preston/projects/recycling-atx/node_modules/jquery/dist/jquery.js"}],"/Users/preston/projects/recycling-atx/client/js/components/add-new.jsx":[function(require,module,exports){
+},{"./config":"/Users/gus1775/hacking/recycling-atx/client/js/config.js","jquery":"/Users/gus1775/hacking/recycling-atx/node_modules/jquery/dist/jquery.js"}],"/Users/gus1775/hacking/recycling-atx/client/js/components/add-new.jsx":[function(require,module,exports){
 "use strict";
 
-},{}],"/Users/preston/projects/recycling-atx/client/js/components/app.jsx":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/client/js/components/app.jsx":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -119,6 +121,10 @@ var _api2 = _interopRequireDefault(_api);
 var _geocoder = require('../geocoder');
 
 var _geocoder2 = _interopRequireDefault(_geocoder);
+
+var _footerJsx = require('./footer.jsx');
+
+var _footerJsx2 = _interopRequireDefault(_footerJsx);
 
 var App = (function (_React$Component) {
   _inherits(App, _React$Component);
@@ -232,7 +238,8 @@ var App = (function (_React$Component) {
           changeView: this.changeView.bind(this),
           setCoordinates: this.setCoordinates.bind(this),
           setSpinner: this.setSpinner.bind(this),
-          setCurrentLocation: this.setCurrentLocation.bind(this) })
+          setCurrentLocation: this.setCurrentLocation.bind(this) }),
+        _react2['default'].createElement(_footerJsx2['default'], null)
       );
     }
   }]);
@@ -243,7 +250,7 @@ var App = (function (_React$Component) {
 exports['default'] = App;
 module.exports = exports['default'];
 
-},{"../api":"/Users/preston/projects/recycling-atx/client/js/api.js","../geocoder":"/Users/preston/projects/recycling-atx/client/js/geocoder.js","./add-new.jsx":"/Users/preston/projects/recycling-atx/client/js/components/add-new.jsx","./details.jsx":"/Users/preston/projects/recycling-atx/client/js/components/details.jsx","./map-view.jsx":"/Users/preston/projects/recycling-atx/client/js/components/map-view.jsx","./search-bar.jsx":"/Users/preston/projects/recycling-atx/client/js/components/search-bar.jsx","./spinner.jsx":"/Users/preston/projects/recycling-atx/client/js/components/spinner.jsx","react":"/Users/preston/projects/recycling-atx/node_modules/react/react.js"}],"/Users/preston/projects/recycling-atx/client/js/components/details.jsx":[function(require,module,exports){
+},{"../api":"/Users/gus1775/hacking/recycling-atx/client/js/api.js","../geocoder":"/Users/gus1775/hacking/recycling-atx/client/js/geocoder.js","./add-new.jsx":"/Users/gus1775/hacking/recycling-atx/client/js/components/add-new.jsx","./details.jsx":"/Users/gus1775/hacking/recycling-atx/client/js/components/details.jsx","./footer.jsx":"/Users/gus1775/hacking/recycling-atx/client/js/components/footer.jsx","./map-view.jsx":"/Users/gus1775/hacking/recycling-atx/client/js/components/map-view.jsx","./search-bar.jsx":"/Users/gus1775/hacking/recycling-atx/client/js/components/search-bar.jsx","./spinner.jsx":"/Users/gus1775/hacking/recycling-atx/client/js/components/spinner.jsx","react":"/Users/gus1775/hacking/recycling-atx/node_modules/react/react.js"}],"/Users/gus1775/hacking/recycling-atx/client/js/components/details.jsx":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -275,7 +282,7 @@ var Details = (function (_React$Component) {
     _classCallCheck(this, Details);
 
     _get(Object.getPrototypeOf(Details.prototype), 'constructor', this).call(this, props);
-    this.state = { location: null, reportText: '' };
+    this.state = { location: null };
   }
 
   _createClass(Details, [{
@@ -373,7 +380,7 @@ var Details = (function (_React$Component) {
         _react2['default'].createElement(
           'form',
           { method: 'post' },
-          _react2['default'].createElement('textarea', { rows: '8', cols: '50', placeholder: 'Enter text here' }),
+          _react2['default'].createElement('textarea', { className: 'details-text', rows: '8', cols: '50', placeholder: 'Enter text here' }),
           _react2['default'].createElement('input', { type: 'submit', value: 'Submit' })
         )
       );
@@ -386,7 +393,84 @@ var Details = (function (_React$Component) {
 exports['default'] = Details;
 module.exports = exports['default'];
 
-},{"../api":"/Users/preston/projects/recycling-atx/client/js/api.js","react":"/Users/preston/projects/recycling-atx/node_modules/react/react.js"}],"/Users/preston/projects/recycling-atx/client/js/components/map-view.jsx":[function(require,module,exports){
+},{"../api":"/Users/gus1775/hacking/recycling-atx/client/js/api.js","react":"/Users/gus1775/hacking/recycling-atx/node_modules/react/react.js"}],"/Users/gus1775/hacking/recycling-atx/client/js/components/footer.jsx":[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var Footer = (function (_React$Component) {
+  _inherits(Footer, _React$Component);
+
+  function Footer(props) {
+    _classCallCheck(this, Footer);
+
+    _get(Object.getPrototypeOf(Footer.prototype), 'constructor', this).call(this, props);
+    this.state = {};
+  }
+
+  _createClass(Footer, [{
+    key: 'render',
+    value: function render() {
+      return _react2['default'].createElement(
+        'footer',
+        { className: 'footer-container' },
+        _react2['default'].createElement(
+          'div',
+          { className: 'container' },
+          _react2['default'].createElement(
+            'small',
+            null,
+            _react2['default'].createElement(
+              'p',
+              { className: 'footer-text' },
+              ' An',
+              _react2['default'].createElement(
+                'a',
+                { className: 'footer-link', href: 'http://open-austin.org', target: '_blank' },
+                ' Open-Austin'
+              ),
+              ' project |',
+              _react2['default'].createElement(
+                'a',
+                { className: 'footer-link', href: 'http://github.com/open-austin/recycling-atx', target: '_blank' },
+                ' Github'
+              ),
+              ' |',
+              _react2['default'].createElement(
+                'a',
+                { className: 'footer-link', href: '#', target: '_blank' },
+                ' About'
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Footer;
+})(_react2['default'].Component);
+
+exports['default'] = Footer;
+module.exports = exports['default'];
+
+},{"react":"/Users/gus1775/hacking/recycling-atx/node_modules/react/react.js"}],"/Users/gus1775/hacking/recycling-atx/client/js/components/map-view.jsx":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -527,7 +611,7 @@ var MapView = (function (_React$Component) {
 exports['default'] = MapView;
 module.exports = exports['default'];
 
-},{"../../../config":"/Users/preston/projects/recycling-atx/config.json","react":"/Users/preston/projects/recycling-atx/node_modules/react/react.js","react-leaflet":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/index.js"}],"/Users/preston/projects/recycling-atx/client/js/components/search-bar.jsx":[function(require,module,exports){
+},{"../../../config":"/Users/gus1775/hacking/recycling-atx/config.json","react":"/Users/gus1775/hacking/recycling-atx/node_modules/react/react.js","react-leaflet":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/index.js"}],"/Users/gus1775/hacking/recycling-atx/client/js/components/search-bar.jsx":[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -592,7 +676,7 @@ var SearchBar = (function (_React$Component) {
 exports["default"] = SearchBar;
 module.exports = exports["default"];
 
-},{"react":"/Users/preston/projects/recycling-atx/node_modules/react/react.js"}],"/Users/preston/projects/recycling-atx/client/js/components/spinner.jsx":[function(require,module,exports){
+},{"react":"/Users/gus1775/hacking/recycling-atx/node_modules/react/react.js"}],"/Users/gus1775/hacking/recycling-atx/client/js/components/spinner.jsx":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -640,7 +724,12 @@ var Spinner = (function (_React$Component) {
           _react2['default'].createElement(
             'p',
             null,
-            'Loading'
+            'Recycle Please!'
+          ),
+          _react2['default'].createElement(
+            'p',
+            null,
+            'Loading...'
           )
         )
       );
@@ -653,7 +742,7 @@ var Spinner = (function (_React$Component) {
 exports['default'] = Spinner;
 module.exports = exports['default'];
 
-},{"classnames":"/Users/preston/projects/recycling-atx/node_modules/classnames/index.js","react":"/Users/preston/projects/recycling-atx/node_modules/react/react.js"}],"/Users/preston/projects/recycling-atx/client/js/config.js":[function(require,module,exports){
+},{"classnames":"/Users/gus1775/hacking/recycling-atx/node_modules/classnames/index.js","react":"/Users/gus1775/hacking/recycling-atx/node_modules/react/react.js"}],"/Users/gus1775/hacking/recycling-atx/client/js/config.js":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -664,7 +753,7 @@ exports['default'] = {
 };
 module.exports = exports['default'];
 
-},{}],"/Users/preston/projects/recycling-atx/client/js/geocoder.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/client/js/geocoder.js":[function(require,module,exports){
 // google api is global for now
 "use strict";
 
@@ -695,12 +784,12 @@ exports["default"] = {
 };
 module.exports = exports["default"];
 
-},{}],"/Users/preston/projects/recycling-atx/config.json":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/config.json":[function(require,module,exports){
 module.exports={
   "defaultPosition": [30.27, -97.746]
 }
 
-},{}],"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js":[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -760,9 +849,9 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],"/Users/preston/projects/recycling-atx/node_modules/classnames/index.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/classnames/index.js":[function(require,module,exports){
 /*!
-  Copyright (c) 2015 Jed Watson.
+  Copyright (c) 2016 Jed Watson.
   Licensed under the MIT License (MIT), see
   http://jedwatson.github.io/classnames
 */
@@ -774,7 +863,7 @@ process.umask = function() { return 0; };
 	var hasOwn = {}.hasOwnProperty;
 
 	function classNames () {
-		var classes = '';
+		var classes = [];
 
 		for (var i = 0; i < arguments.length; i++) {
 			var arg = arguments[i];
@@ -783,19 +872,19 @@ process.umask = function() { return 0; };
 			var argType = typeof arg;
 
 			if (argType === 'string' || argType === 'number') {
-				classes += ' ' + arg;
+				classes.push(arg);
 			} else if (Array.isArray(arg)) {
-				classes += ' ' + classNames.apply(null, arg);
+				classes.push(classNames.apply(null, arg));
 			} else if (argType === 'object') {
 				for (var key in arg) {
 					if (hasOwn.call(arg, key) && arg[key]) {
-						classes += ' ' + key;
+						classes.push(key);
 					}
 				}
 			}
 		}
 
-		return classes.substr(1);
+		return classes.join(' ');
 	}
 
 	if (typeof module !== 'undefined' && module.exports) {
@@ -810,7 +899,7 @@ process.umask = function() { return 0; };
 	}
 }());
 
-},{}],"/Users/preston/projects/recycling-atx/node_modules/jquery/dist/jquery.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/jquery/dist/jquery.js":[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
@@ -10022,7 +10111,7 @@ return jQuery;
 
 }));
 
-},{}],"/Users/preston/projects/recycling-atx/node_modules/leaflet/dist/leaflet-src.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/leaflet/dist/leaflet-src.js":[function(require,module,exports){
 /*
  Leaflet, a JavaScript library for mobile-friendly interactive maps. http://leafletjs.com
  (c) 2010-2013, Vladimir Agafonkin
@@ -19191,12 +19280,12 @@ L.Map.include({
 
 
 }(window, document));
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react-dom/index.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-dom/index.js":[function(require,module,exports){
 'use strict';
 
 module.exports = require('react/lib/ReactDOM');
 
-},{"react/lib/ReactDOM":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactDOM.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/BaseTileLayer.js":[function(require,module,exports){
+},{"react/lib/ReactDOM":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactDOM.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/BaseTileLayer.js":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -19261,7 +19350,7 @@ var BaseTileLayer = (function (_MapLayer) {
 
 exports['default'] = BaseTileLayer;
 module.exports = exports['default'];
-},{"./MapLayer":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/MapLayer.js","react":"/Users/preston/projects/recycling-atx/node_modules/react/react.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/CanvasTileLayer.js":[function(require,module,exports){
+},{"./MapLayer":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/MapLayer.js","react":"/Users/gus1775/hacking/recycling-atx/node_modules/react/react.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/CanvasTileLayer.js":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -19313,7 +19402,7 @@ var CanvasTileLayer = (function (_BaseTileLayer) {
 
 exports['default'] = CanvasTileLayer;
 module.exports = exports['default'];
-},{"./BaseTileLayer":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/BaseTileLayer.js","leaflet":"/Users/preston/projects/recycling-atx/node_modules/leaflet/dist/leaflet-src.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/Circle.js":[function(require,module,exports){
+},{"./BaseTileLayer":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/BaseTileLayer.js","leaflet":"/Users/gus1775/hacking/recycling-atx/node_modules/leaflet/dist/leaflet-src.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/Circle.js":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -19391,7 +19480,7 @@ var Circle = (function (_Path) {
 
 exports['default'] = Circle;
 module.exports = exports['default'];
-},{"./Path":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/Path.js","./types/latlng":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/types/latlng.js","leaflet":"/Users/preston/projects/recycling-atx/node_modules/leaflet/dist/leaflet-src.js","react":"/Users/preston/projects/recycling-atx/node_modules/react/react.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/CircleMarker.js":[function(require,module,exports){
+},{"./Path":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/Path.js","./types/latlng":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/types/latlng.js","leaflet":"/Users/gus1775/hacking/recycling-atx/node_modules/leaflet/dist/leaflet-src.js","react":"/Users/gus1775/hacking/recycling-atx/node_modules/react/react.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/CircleMarker.js":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -19468,7 +19557,7 @@ var CircleMarker = (function (_Path) {
 
 exports['default'] = CircleMarker;
 module.exports = exports['default'];
-},{"./Path":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/Path.js","./types/latlng":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/types/latlng.js","leaflet":"/Users/preston/projects/recycling-atx/node_modules/leaflet/dist/leaflet-src.js","react":"/Users/preston/projects/recycling-atx/node_modules/react/react.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/FeatureGroup.js":[function(require,module,exports){
+},{"./Path":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/Path.js","./types/latlng":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/types/latlng.js","leaflet":"/Users/gus1775/hacking/recycling-atx/node_modules/leaflet/dist/leaflet-src.js","react":"/Users/gus1775/hacking/recycling-atx/node_modules/react/react.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/FeatureGroup.js":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -19538,7 +19627,7 @@ var FeatureGroup = (function (_Path) {
 
 exports['default'] = FeatureGroup;
 module.exports = exports['default'];
-},{"./Path":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/Path.js","leaflet":"/Users/preston/projects/recycling-atx/node_modules/leaflet/dist/leaflet-src.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/GeoJson.js":[function(require,module,exports){
+},{"./Path":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/Path.js","leaflet":"/Users/gus1775/hacking/recycling-atx/node_modules/leaflet/dist/leaflet-src.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/GeoJson.js":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -19604,7 +19693,7 @@ var GeoJson = (function (_Path) {
 
 exports['default'] = GeoJson;
 module.exports = exports['default'];
-},{"./Path":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/Path.js","leaflet":"/Users/preston/projects/recycling-atx/node_modules/leaflet/dist/leaflet-src.js","react":"/Users/preston/projects/recycling-atx/node_modules/react/react.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/ImageOverlay.js":[function(require,module,exports){
+},{"./Path":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/Path.js","leaflet":"/Users/gus1775/hacking/recycling-atx/node_modules/leaflet/dist/leaflet-src.js","react":"/Users/gus1775/hacking/recycling-atx/node_modules/react/react.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/ImageOverlay.js":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -19689,7 +19778,7 @@ var ImageOverlay = (function (_MapLayer) {
 
 exports['default'] = ImageOverlay;
 module.exports = exports['default'];
-},{"./MapLayer":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/MapLayer.js","./types/bounds":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/types/bounds.js","leaflet":"/Users/preston/projects/recycling-atx/node_modules/leaflet/dist/leaflet-src.js","react":"/Users/preston/projects/recycling-atx/node_modules/react/react.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/LayerGroup.js":[function(require,module,exports){
+},{"./MapLayer":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/MapLayer.js","./types/bounds":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/types/bounds.js","leaflet":"/Users/gus1775/hacking/recycling-atx/node_modules/leaflet/dist/leaflet-src.js","react":"/Users/gus1775/hacking/recycling-atx/node_modules/react/react.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/LayerGroup.js":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -19741,7 +19830,7 @@ var LayerGroup = (function (_MapLayer) {
 
 exports['default'] = LayerGroup;
 module.exports = exports['default'];
-},{"./MapLayer":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/MapLayer.js","leaflet":"/Users/preston/projects/recycling-atx/node_modules/leaflet/dist/leaflet-src.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/Map.js":[function(require,module,exports){
+},{"./MapLayer":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/MapLayer.js","leaflet":"/Users/gus1775/hacking/recycling-atx/node_modules/leaflet/dist/leaflet-src.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/Map.js":[function(require,module,exports){
 /* eslint-disable react/no-did-mount-set-state */
 
 'use strict';
@@ -19903,7 +19992,7 @@ var Map = (function (_MapComponent) {
 
 exports['default'] = Map;
 module.exports = exports['default'];
-},{"./MapComponent":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/MapComponent.js","./types/bounds":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/types/bounds.js","./types/latlng":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/types/latlng.js","leaflet":"/Users/preston/projects/recycling-atx/node_modules/leaflet/dist/leaflet-src.js","lodash/lang/isArray":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isArray.js","lodash/lang/isUndefined":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isUndefined.js","lodash/utility/uniqueId":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/utility/uniqueId.js","react":"/Users/preston/projects/recycling-atx/node_modules/react/react.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/MapComponent.js":[function(require,module,exports){
+},{"./MapComponent":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/MapComponent.js","./types/bounds":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/types/bounds.js","./types/latlng":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/types/latlng.js","leaflet":"/Users/gus1775/hacking/recycling-atx/node_modules/leaflet/dist/leaflet-src.js","lodash/lang/isArray":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isArray.js","lodash/lang/isUndefined":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isUndefined.js","lodash/utility/uniqueId":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/utility/uniqueId.js","react":"/Users/gus1775/hacking/recycling-atx/node_modules/react/react.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/MapComponent.js":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -20032,7 +20121,7 @@ var MapComponent = (function (_Component) {
 
 exports['default'] = MapComponent;
 module.exports = exports['default'];
-},{"lodash/collection/forEach":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/collection/forEach.js","lodash/collection/reduce":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/collection/reduce.js","lodash/lang/clone":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/clone.js","lodash/object/keys":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/object/keys.js","react":"/Users/preston/projects/recycling-atx/node_modules/react/react.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/MapControl.js":[function(require,module,exports){
+},{"lodash/collection/forEach":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/collection/forEach.js","lodash/collection/reduce":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/collection/reduce.js","lodash/lang/clone":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/clone.js","lodash/object/keys":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/object/keys.js","react":"/Users/gus1775/hacking/recycling-atx/node_modules/react/react.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/MapControl.js":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -20105,7 +20194,7 @@ var MapControl = (function (_Component) {
 
 exports['default'] = MapControl;
 module.exports = exports['default'];
-},{"./types/controlPosition":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/types/controlPosition.js","react":"/Users/preston/projects/recycling-atx/node_modules/react/react.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/MapLayer.js":[function(require,module,exports){
+},{"./types/controlPosition":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/types/controlPosition.js","react":"/Users/gus1775/hacking/recycling-atx/node_modules/react/react.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/MapLayer.js":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -20194,7 +20283,7 @@ var MapLayer = (function (_MapComponent) {
 
 exports['default'] = MapLayer;
 module.exports = exports['default'];
-},{"./MapComponent":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/MapComponent.js","leaflet":"/Users/preston/projects/recycling-atx/node_modules/leaflet/dist/leaflet-src.js","lodash/object/assign":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/object/assign.js","react":"/Users/preston/projects/recycling-atx/node_modules/react/react.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/Marker.js":[function(require,module,exports){
+},{"./MapComponent":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/MapComponent.js","leaflet":"/Users/gus1775/hacking/recycling-atx/node_modules/leaflet/dist/leaflet-src.js","lodash/object/assign":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/object/assign.js","react":"/Users/gus1775/hacking/recycling-atx/node_modules/react/react.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/Marker.js":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -20285,7 +20374,7 @@ var Marker = (function (_MapLayer) {
 
 exports['default'] = Marker;
 module.exports = exports['default'];
-},{"./MapLayer":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/MapLayer.js","./types/latlng":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/types/latlng.js","leaflet":"/Users/preston/projects/recycling-atx/node_modules/leaflet/dist/leaflet-src.js","react":"/Users/preston/projects/recycling-atx/node_modules/react/react.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/MultiPolygon.js":[function(require,module,exports){
+},{"./MapLayer":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/MapLayer.js","./types/latlng":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/types/latlng.js","leaflet":"/Users/gus1775/hacking/recycling-atx/node_modules/leaflet/dist/leaflet-src.js","react":"/Users/gus1775/hacking/recycling-atx/node_modules/react/react.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/MultiPolygon.js":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -20358,7 +20447,7 @@ var MultiPolygon = (function (_Path) {
 
 exports['default'] = MultiPolygon;
 module.exports = exports['default'];
-},{"./Path":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/Path.js","./types/latlngList":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/types/latlngList.js","leaflet":"/Users/preston/projects/recycling-atx/node_modules/leaflet/dist/leaflet-src.js","react":"/Users/preston/projects/recycling-atx/node_modules/react/react.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/MultiPolyline.js":[function(require,module,exports){
+},{"./Path":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/Path.js","./types/latlngList":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/types/latlngList.js","leaflet":"/Users/gus1775/hacking/recycling-atx/node_modules/leaflet/dist/leaflet-src.js","react":"/Users/gus1775/hacking/recycling-atx/node_modules/react/react.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/MultiPolyline.js":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -20431,7 +20520,7 @@ var MultiPolyline = (function (_Path) {
 
 exports['default'] = MultiPolyline;
 module.exports = exports['default'];
-},{"./Path":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/Path.js","./types/latlngList":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/types/latlngList.js","leaflet":"/Users/preston/projects/recycling-atx/node_modules/leaflet/dist/leaflet-src.js","react":"/Users/preston/projects/recycling-atx/node_modules/react/react.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/Path.js":[function(require,module,exports){
+},{"./Path":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/Path.js","./types/latlngList":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/types/latlngList.js","leaflet":"/Users/gus1775/hacking/recycling-atx/node_modules/leaflet/dist/leaflet-src.js","react":"/Users/gus1775/hacking/recycling-atx/node_modules/react/react.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/Path.js":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -20505,7 +20594,7 @@ var Path = (function (_MapLayer) {
 
 exports['default'] = Path;
 module.exports = exports['default'];
-},{"./MapLayer":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/MapLayer.js","lodash/lang/isEqual":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isEqual.js","lodash/object/pick":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/object/pick.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/Polygon.js":[function(require,module,exports){
+},{"./MapLayer":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/MapLayer.js","lodash/lang/isEqual":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isEqual.js","lodash/object/pick":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/object/pick.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/Polygon.js":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -20578,7 +20667,7 @@ var Polygon = (function (_Path) {
 
 exports['default'] = Polygon;
 module.exports = exports['default'];
-},{"./Path":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/Path.js","./types/latlngList":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/types/latlngList.js","leaflet":"/Users/preston/projects/recycling-atx/node_modules/leaflet/dist/leaflet-src.js","react":"/Users/preston/projects/recycling-atx/node_modules/react/react.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/Polyline.js":[function(require,module,exports){
+},{"./Path":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/Path.js","./types/latlngList":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/types/latlngList.js","leaflet":"/Users/gus1775/hacking/recycling-atx/node_modules/leaflet/dist/leaflet-src.js","react":"/Users/gus1775/hacking/recycling-atx/node_modules/react/react.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/Polyline.js":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -20649,7 +20738,7 @@ var Polyline = (function (_Path) {
 
 exports['default'] = Polyline;
 module.exports = exports['default'];
-},{"./Path":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/Path.js","./types/latlngList":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/types/latlngList.js","leaflet":"/Users/preston/projects/recycling-atx/node_modules/leaflet/dist/leaflet-src.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/Popup.js":[function(require,module,exports){
+},{"./Path":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/Path.js","./types/latlngList":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/types/latlngList.js","leaflet":"/Users/gus1775/hacking/recycling-atx/node_modules/leaflet/dist/leaflet-src.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/Popup.js":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -20787,7 +20876,7 @@ var Popup = (function (_MapComponent) {
 
 exports['default'] = Popup;
 module.exports = exports['default'];
-},{"./MapComponent":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/MapComponent.js","./types/latlng":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/types/latlng.js","leaflet":"/Users/preston/projects/recycling-atx/node_modules/leaflet/dist/leaflet-src.js","react":"/Users/preston/projects/recycling-atx/node_modules/react/react.js","react-dom":"/Users/preston/projects/recycling-atx/node_modules/react-dom/index.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/Rectangle.js":[function(require,module,exports){
+},{"./MapComponent":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/MapComponent.js","./types/latlng":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/types/latlng.js","leaflet":"/Users/gus1775/hacking/recycling-atx/node_modules/leaflet/dist/leaflet-src.js","react":"/Users/gus1775/hacking/recycling-atx/node_modules/react/react.js","react-dom":"/Users/gus1775/hacking/recycling-atx/node_modules/react-dom/index.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/Rectangle.js":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -20858,7 +20947,7 @@ var Rectangle = (function (_Path) {
 
 exports['default'] = Rectangle;
 module.exports = exports['default'];
-},{"./Path":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/Path.js","./types/bounds":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/types/bounds.js","leaflet":"/Users/preston/projects/recycling-atx/node_modules/leaflet/dist/leaflet-src.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/TileLayer.js":[function(require,module,exports){
+},{"./Path":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/Path.js","./types/bounds":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/types/bounds.js","leaflet":"/Users/gus1775/hacking/recycling-atx/node_modules/leaflet/dist/leaflet-src.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/TileLayer.js":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -20928,7 +21017,7 @@ var TileLayer = (function (_BaseTileLayer) {
 
 exports['default'] = TileLayer;
 module.exports = exports['default'];
-},{"./BaseTileLayer":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/BaseTileLayer.js","leaflet":"/Users/preston/projects/recycling-atx/node_modules/leaflet/dist/leaflet-src.js","react":"/Users/preston/projects/recycling-atx/node_modules/react/react.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/WMSTileLayer.js":[function(require,module,exports){
+},{"./BaseTileLayer":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/BaseTileLayer.js","leaflet":"/Users/gus1775/hacking/recycling-atx/node_modules/leaflet/dist/leaflet-src.js","react":"/Users/gus1775/hacking/recycling-atx/node_modules/react/react.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/WMSTileLayer.js":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -20989,7 +21078,7 @@ var WMSTileLayer = (function (_BaseTileLayer) {
 
 exports['default'] = WMSTileLayer;
 module.exports = exports['default'];
-},{"./BaseTileLayer":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/BaseTileLayer.js","leaflet":"/Users/preston/projects/recycling-atx/node_modules/leaflet/dist/leaflet-src.js","react":"/Users/preston/projects/recycling-atx/node_modules/react/react.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/ZoomControl.js":[function(require,module,exports){
+},{"./BaseTileLayer":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/BaseTileLayer.js","leaflet":"/Users/gus1775/hacking/recycling-atx/node_modules/leaflet/dist/leaflet-src.js","react":"/Users/gus1775/hacking/recycling-atx/node_modules/react/react.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/ZoomControl.js":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -21044,7 +21133,7 @@ var ZoomControl = (function (_MapControl) {
 
 exports['default'] = ZoomControl;
 module.exports = exports['default'];
-},{"./MapControl":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/MapControl.js","leaflet":"/Users/preston/projects/recycling-atx/node_modules/leaflet/dist/leaflet-src.js","react":"/Users/preston/projects/recycling-atx/node_modules/react/react.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/index.js":[function(require,module,exports){
+},{"./MapControl":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/MapControl.js","leaflet":"/Users/gus1775/hacking/recycling-atx/node_modules/leaflet/dist/leaflet-src.js","react":"/Users/gus1775/hacking/recycling-atx/node_modules/react/react.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/index.js":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -21208,7 +21297,7 @@ var setIconDefaultImagePath = function setIconDefaultImagePath(path) {
 
 exports.setIconDefaultImagePath = setIconDefaultImagePath;
 setIconDefaultImagePath('//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images');
-},{"./BaseTileLayer":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/BaseTileLayer.js","./CanvasTileLayer":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/CanvasTileLayer.js","./Circle":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/Circle.js","./CircleMarker":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/CircleMarker.js","./FeatureGroup":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/FeatureGroup.js","./GeoJson":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/GeoJson.js","./ImageOverlay":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/ImageOverlay.js","./LayerGroup":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/LayerGroup.js","./Map":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/Map.js","./MapComponent":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/MapComponent.js","./MapControl":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/MapControl.js","./MapLayer":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/MapLayer.js","./Marker":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/Marker.js","./MultiPolygon":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/MultiPolygon.js","./MultiPolyline":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/MultiPolyline.js","./Path":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/Path.js","./Polygon":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/Polygon.js","./Polyline":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/Polyline.js","./Popup":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/Popup.js","./Rectangle":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/Rectangle.js","./TileLayer":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/TileLayer.js","./WMSTileLayer":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/WMSTileLayer.js","./ZoomControl":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/ZoomControl.js","./types":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/types/index.js","leaflet":"/Users/preston/projects/recycling-atx/node_modules/leaflet/dist/leaflet-src.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/types/bounds.js":[function(require,module,exports){
+},{"./BaseTileLayer":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/BaseTileLayer.js","./CanvasTileLayer":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/CanvasTileLayer.js","./Circle":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/Circle.js","./CircleMarker":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/CircleMarker.js","./FeatureGroup":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/FeatureGroup.js","./GeoJson":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/GeoJson.js","./ImageOverlay":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/ImageOverlay.js","./LayerGroup":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/LayerGroup.js","./Map":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/Map.js","./MapComponent":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/MapComponent.js","./MapControl":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/MapControl.js","./MapLayer":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/MapLayer.js","./Marker":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/Marker.js","./MultiPolygon":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/MultiPolygon.js","./MultiPolyline":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/MultiPolyline.js","./Path":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/Path.js","./Polygon":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/Polygon.js","./Polyline":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/Polyline.js","./Popup":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/Popup.js","./Rectangle":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/Rectangle.js","./TileLayer":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/TileLayer.js","./WMSTileLayer":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/WMSTileLayer.js","./ZoomControl":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/ZoomControl.js","./types":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/types/index.js","leaflet":"/Users/gus1775/hacking/recycling-atx/node_modules/leaflet/dist/leaflet-src.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/types/bounds.js":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -21227,7 +21316,7 @@ var _latlngList2 = _interopRequireDefault(_latlngList);
 
 exports['default'] = _react.PropTypes.oneOfType([_react.PropTypes.instanceOf(_leaflet.LatLngBounds), _latlngList2['default']]);
 module.exports = exports['default'];
-},{"./latlngList":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/types/latlngList.js","leaflet":"/Users/preston/projects/recycling-atx/node_modules/leaflet/dist/leaflet-src.js","react":"/Users/preston/projects/recycling-atx/node_modules/react/react.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/types/controlPosition.js":[function(require,module,exports){
+},{"./latlngList":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/types/latlngList.js","leaflet":"/Users/gus1775/hacking/recycling-atx/node_modules/leaflet/dist/leaflet-src.js","react":"/Users/gus1775/hacking/recycling-atx/node_modules/react/react.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/types/controlPosition.js":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -21238,7 +21327,7 @@ var _react = require('react');
 
 exports['default'] = _react.PropTypes.oneOf(['topleft', 'topright', 'bottomleft', 'bottomright']);
 module.exports = exports['default'];
-},{"react":"/Users/preston/projects/recycling-atx/node_modules/react/react.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/types/index.js":[function(require,module,exports){
+},{"react":"/Users/gus1775/hacking/recycling-atx/node_modules/react/react.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/types/index.js":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -21270,7 +21359,7 @@ var _latlngList2 = require('./latlngList');
 var _latlngList3 = _interopRequireDefault(_latlngList2);
 
 exports.latlngList = _latlngList3['default'];
-},{"./bounds":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/types/bounds.js","./controlPosition":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/types/controlPosition.js","./latlng":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/types/latlng.js","./latlngList":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/types/latlngList.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/types/latlng.js":[function(require,module,exports){
+},{"./bounds":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/types/bounds.js","./controlPosition":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/types/controlPosition.js","./latlng":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/types/latlng.js","./latlngList":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/types/latlngList.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/types/latlng.js":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -21293,7 +21382,7 @@ _react.PropTypes.shape({
   lon: _react.PropTypes.number
 })]);
 module.exports = exports['default'];
-},{"react":"/Users/preston/projects/recycling-atx/node_modules/react/react.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/types/latlngList.js":[function(require,module,exports){
+},{"react":"/Users/gus1775/hacking/recycling-atx/node_modules/react/react.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/types/latlngList.js":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -21310,7 +21399,7 @@ var _latlng2 = _interopRequireDefault(_latlng);
 
 exports['default'] = _react.PropTypes.arrayOf(_latlng2['default']);
 module.exports = exports['default'];
-},{"./latlng":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/lib/types/latlng.js","react":"/Users/preston/projects/recycling-atx/node_modules/react/react.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/array/last.js":[function(require,module,exports){
+},{"./latlng":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/lib/types/latlng.js","react":"/Users/gus1775/hacking/recycling-atx/node_modules/react/react.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/array/last.js":[function(require,module,exports){
 /**
  * Gets the last element of `array`.
  *
@@ -21331,7 +21420,7 @@ function last(array) {
 
 module.exports = last;
 
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/collection/forEach.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/collection/forEach.js":[function(require,module,exports){
 var arrayEach = require('../internal/arrayEach'),
     baseEach = require('../internal/baseEach'),
     createForEach = require('../internal/createForEach');
@@ -21370,7 +21459,7 @@ var forEach = createForEach(arrayEach, baseEach);
 
 module.exports = forEach;
 
-},{"../internal/arrayEach":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/arrayEach.js","../internal/baseEach":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseEach.js","../internal/createForEach":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/createForEach.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/collection/reduce.js":[function(require,module,exports){
+},{"../internal/arrayEach":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/arrayEach.js","../internal/baseEach":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseEach.js","../internal/createForEach":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/createForEach.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/collection/reduce.js":[function(require,module,exports){
 var arrayReduce = require('../internal/arrayReduce'),
     baseEach = require('../internal/baseEach'),
     createReduce = require('../internal/createReduce');
@@ -21416,7 +21505,7 @@ var reduce = createReduce(arrayReduce, baseEach);
 
 module.exports = reduce;
 
-},{"../internal/arrayReduce":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/arrayReduce.js","../internal/baseEach":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseEach.js","../internal/createReduce":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/createReduce.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/function/restParam.js":[function(require,module,exports){
+},{"../internal/arrayReduce":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/arrayReduce.js","../internal/baseEach":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseEach.js","../internal/createReduce":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/createReduce.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/function/restParam.js":[function(require,module,exports){
 /** Used as the `TypeError` message for "Functions" methods. */
 var FUNC_ERROR_TEXT = 'Expected a function';
 
@@ -21476,7 +21565,7 @@ function restParam(func, start) {
 
 module.exports = restParam;
 
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/arrayCopy.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/arrayCopy.js":[function(require,module,exports){
 /**
  * Copies the values of `source` to `array`.
  *
@@ -21498,7 +21587,7 @@ function arrayCopy(source, array) {
 
 module.exports = arrayCopy;
 
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/arrayEach.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/arrayEach.js":[function(require,module,exports){
 /**
  * A specialized version of `_.forEach` for arrays without support for callback
  * shorthands and `this` binding.
@@ -21522,7 +21611,7 @@ function arrayEach(array, iteratee) {
 
 module.exports = arrayEach;
 
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/arrayPush.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/arrayPush.js":[function(require,module,exports){
 /**
  * Appends the elements of `values` to `array`.
  *
@@ -21544,7 +21633,7 @@ function arrayPush(array, values) {
 
 module.exports = arrayPush;
 
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/arrayReduce.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/arrayReduce.js":[function(require,module,exports){
 /**
  * A specialized version of `_.reduce` for arrays without support for callback
  * shorthands and `this` binding.
@@ -21572,7 +21661,7 @@ function arrayReduce(array, iteratee, accumulator, initFromArray) {
 
 module.exports = arrayReduce;
 
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/arraySome.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/arraySome.js":[function(require,module,exports){
 /**
  * A specialized version of `_.some` for arrays without support for callback
  * shorthands and `this` binding.
@@ -21597,7 +21686,7 @@ function arraySome(array, predicate) {
 
 module.exports = arraySome;
 
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/assignWith.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/assignWith.js":[function(require,module,exports){
 var keys = require('../object/keys');
 
 /**
@@ -21631,7 +21720,7 @@ function assignWith(object, source, customizer) {
 
 module.exports = assignWith;
 
-},{"../object/keys":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/object/keys.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseAssign.js":[function(require,module,exports){
+},{"../object/keys":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/object/keys.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseAssign.js":[function(require,module,exports){
 var baseCopy = require('./baseCopy'),
     keys = require('../object/keys');
 
@@ -21652,7 +21741,7 @@ function baseAssign(object, source) {
 
 module.exports = baseAssign;
 
-},{"../object/keys":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/object/keys.js","./baseCopy":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseCopy.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseCallback.js":[function(require,module,exports){
+},{"../object/keys":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/object/keys.js","./baseCopy":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseCopy.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseCallback.js":[function(require,module,exports){
 var baseMatches = require('./baseMatches'),
     baseMatchesProperty = require('./baseMatchesProperty'),
     bindCallback = require('./bindCallback'),
@@ -21689,7 +21778,7 @@ function baseCallback(func, thisArg, argCount) {
 
 module.exports = baseCallback;
 
-},{"../utility/identity":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/utility/identity.js","../utility/property":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/utility/property.js","./baseMatches":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseMatches.js","./baseMatchesProperty":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseMatchesProperty.js","./bindCallback":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/bindCallback.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseClone.js":[function(require,module,exports){
+},{"../utility/identity":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/utility/identity.js","../utility/property":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/utility/property.js","./baseMatches":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseMatches.js","./baseMatchesProperty":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseMatchesProperty.js","./bindCallback":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/bindCallback.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseClone.js":[function(require,module,exports){
 var arrayCopy = require('./arrayCopy'),
     arrayEach = require('./arrayEach'),
     baseAssign = require('./baseAssign'),
@@ -21819,7 +21908,7 @@ function baseClone(value, isDeep, customizer, key, object, stackA, stackB) {
 
 module.exports = baseClone;
 
-},{"../lang/isArray":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isArray.js","../lang/isObject":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isObject.js","./arrayCopy":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/arrayCopy.js","./arrayEach":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/arrayEach.js","./baseAssign":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseAssign.js","./baseForOwn":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseForOwn.js","./initCloneArray":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/initCloneArray.js","./initCloneByTag":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/initCloneByTag.js","./initCloneObject":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/initCloneObject.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseCopy.js":[function(require,module,exports){
+},{"../lang/isArray":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isArray.js","../lang/isObject":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isObject.js","./arrayCopy":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/arrayCopy.js","./arrayEach":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/arrayEach.js","./baseAssign":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseAssign.js","./baseForOwn":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseForOwn.js","./initCloneArray":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/initCloneArray.js","./initCloneByTag":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/initCloneByTag.js","./initCloneObject":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/initCloneObject.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseCopy.js":[function(require,module,exports){
 /**
  * Copies properties of `source` to `object`.
  *
@@ -21844,7 +21933,7 @@ function baseCopy(source, props, object) {
 
 module.exports = baseCopy;
 
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseEach.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseEach.js":[function(require,module,exports){
 var baseForOwn = require('./baseForOwn'),
     createBaseEach = require('./createBaseEach');
 
@@ -21861,7 +21950,7 @@ var baseEach = createBaseEach(baseForOwn);
 
 module.exports = baseEach;
 
-},{"./baseForOwn":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseForOwn.js","./createBaseEach":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/createBaseEach.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseFlatten.js":[function(require,module,exports){
+},{"./baseForOwn":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseForOwn.js","./createBaseEach":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/createBaseEach.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseFlatten.js":[function(require,module,exports){
 var arrayPush = require('./arrayPush'),
     isArguments = require('../lang/isArguments'),
     isArray = require('../lang/isArray'),
@@ -21904,7 +21993,7 @@ function baseFlatten(array, isDeep, isStrict, result) {
 
 module.exports = baseFlatten;
 
-},{"../lang/isArguments":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isArguments.js","../lang/isArray":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isArray.js","./arrayPush":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/arrayPush.js","./isArrayLike":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isArrayLike.js","./isObjectLike":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isObjectLike.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseFor.js":[function(require,module,exports){
+},{"../lang/isArguments":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isArguments.js","../lang/isArray":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isArray.js","./arrayPush":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/arrayPush.js","./isArrayLike":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isArrayLike.js","./isObjectLike":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isObjectLike.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseFor.js":[function(require,module,exports){
 var createBaseFor = require('./createBaseFor');
 
 /**
@@ -21923,7 +22012,7 @@ var baseFor = createBaseFor();
 
 module.exports = baseFor;
 
-},{"./createBaseFor":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/createBaseFor.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseForIn.js":[function(require,module,exports){
+},{"./createBaseFor":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/createBaseFor.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseForIn.js":[function(require,module,exports){
 var baseFor = require('./baseFor'),
     keysIn = require('../object/keysIn');
 
@@ -21942,7 +22031,7 @@ function baseForIn(object, iteratee) {
 
 module.exports = baseForIn;
 
-},{"../object/keysIn":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/object/keysIn.js","./baseFor":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseFor.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseForOwn.js":[function(require,module,exports){
+},{"../object/keysIn":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/object/keysIn.js","./baseFor":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseFor.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseForOwn.js":[function(require,module,exports){
 var baseFor = require('./baseFor'),
     keys = require('../object/keys');
 
@@ -21961,7 +22050,7 @@ function baseForOwn(object, iteratee) {
 
 module.exports = baseForOwn;
 
-},{"../object/keys":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/object/keys.js","./baseFor":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseFor.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseGet.js":[function(require,module,exports){
+},{"../object/keys":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/object/keys.js","./baseFor":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseFor.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseGet.js":[function(require,module,exports){
 var toObject = require('./toObject');
 
 /**
@@ -21992,7 +22081,7 @@ function baseGet(object, path, pathKey) {
 
 module.exports = baseGet;
 
-},{"./toObject":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/toObject.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseIsEqual.js":[function(require,module,exports){
+},{"./toObject":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/toObject.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseIsEqual.js":[function(require,module,exports){
 var baseIsEqualDeep = require('./baseIsEqualDeep'),
     isObject = require('../lang/isObject'),
     isObjectLike = require('./isObjectLike');
@@ -22022,7 +22111,7 @@ function baseIsEqual(value, other, customizer, isLoose, stackA, stackB) {
 
 module.exports = baseIsEqual;
 
-},{"../lang/isObject":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isObject.js","./baseIsEqualDeep":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseIsEqualDeep.js","./isObjectLike":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isObjectLike.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseIsEqualDeep.js":[function(require,module,exports){
+},{"../lang/isObject":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isObject.js","./baseIsEqualDeep":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseIsEqualDeep.js","./isObjectLike":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isObjectLike.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseIsEqualDeep.js":[function(require,module,exports){
 var equalArrays = require('./equalArrays'),
     equalByTag = require('./equalByTag'),
     equalObjects = require('./equalObjects'),
@@ -22126,7 +22215,7 @@ function baseIsEqualDeep(object, other, equalFunc, customizer, isLoose, stackA, 
 
 module.exports = baseIsEqualDeep;
 
-},{"../lang/isArray":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isArray.js","../lang/isTypedArray":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isTypedArray.js","./equalArrays":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/equalArrays.js","./equalByTag":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/equalByTag.js","./equalObjects":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/equalObjects.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseIsMatch.js":[function(require,module,exports){
+},{"../lang/isArray":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isArray.js","../lang/isTypedArray":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isTypedArray.js","./equalArrays":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/equalArrays.js","./equalByTag":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/equalByTag.js","./equalObjects":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/equalObjects.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseIsMatch.js":[function(require,module,exports){
 var baseIsEqual = require('./baseIsEqual'),
     toObject = require('./toObject');
 
@@ -22180,7 +22269,7 @@ function baseIsMatch(object, matchData, customizer) {
 
 module.exports = baseIsMatch;
 
-},{"./baseIsEqual":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseIsEqual.js","./toObject":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/toObject.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseMatches.js":[function(require,module,exports){
+},{"./baseIsEqual":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseIsEqual.js","./toObject":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/toObject.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseMatches.js":[function(require,module,exports){
 var baseIsMatch = require('./baseIsMatch'),
     getMatchData = require('./getMatchData'),
     toObject = require('./toObject');
@@ -22212,7 +22301,7 @@ function baseMatches(source) {
 
 module.exports = baseMatches;
 
-},{"./baseIsMatch":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseIsMatch.js","./getMatchData":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/getMatchData.js","./toObject":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/toObject.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseMatchesProperty.js":[function(require,module,exports){
+},{"./baseIsMatch":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseIsMatch.js","./getMatchData":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/getMatchData.js","./toObject":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/toObject.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseMatchesProperty.js":[function(require,module,exports){
 var baseGet = require('./baseGet'),
     baseIsEqual = require('./baseIsEqual'),
     baseSlice = require('./baseSlice'),
@@ -22259,7 +22348,7 @@ function baseMatchesProperty(path, srcValue) {
 
 module.exports = baseMatchesProperty;
 
-},{"../array/last":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/array/last.js","../lang/isArray":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isArray.js","./baseGet":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseGet.js","./baseIsEqual":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseIsEqual.js","./baseSlice":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseSlice.js","./isKey":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isKey.js","./isStrictComparable":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isStrictComparable.js","./toObject":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/toObject.js","./toPath":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/toPath.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseProperty.js":[function(require,module,exports){
+},{"../array/last":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/array/last.js","../lang/isArray":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isArray.js","./baseGet":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseGet.js","./baseIsEqual":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseIsEqual.js","./baseSlice":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseSlice.js","./isKey":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isKey.js","./isStrictComparable":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isStrictComparable.js","./toObject":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/toObject.js","./toPath":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/toPath.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseProperty.js":[function(require,module,exports){
 /**
  * The base implementation of `_.property` without support for deep paths.
  *
@@ -22275,7 +22364,7 @@ function baseProperty(key) {
 
 module.exports = baseProperty;
 
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/basePropertyDeep.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/basePropertyDeep.js":[function(require,module,exports){
 var baseGet = require('./baseGet'),
     toPath = require('./toPath');
 
@@ -22296,7 +22385,7 @@ function basePropertyDeep(path) {
 
 module.exports = basePropertyDeep;
 
-},{"./baseGet":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseGet.js","./toPath":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/toPath.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseReduce.js":[function(require,module,exports){
+},{"./baseGet":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseGet.js","./toPath":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/toPath.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseReduce.js":[function(require,module,exports){
 /**
  * The base implementation of `_.reduce` and `_.reduceRight` without support
  * for callback shorthands and `this` binding, which iterates over `collection`
@@ -22322,7 +22411,7 @@ function baseReduce(collection, iteratee, accumulator, initFromCollection, eachF
 
 module.exports = baseReduce;
 
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseSlice.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseSlice.js":[function(require,module,exports){
 /**
  * The base implementation of `_.slice` without an iteratee call guard.
  *
@@ -22356,7 +22445,7 @@ function baseSlice(array, start, end) {
 
 module.exports = baseSlice;
 
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseToString.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseToString.js":[function(require,module,exports){
 /**
  * Converts `value` to a string if it's not one. An empty string is returned
  * for `null` or `undefined` values.
@@ -22371,7 +22460,7 @@ function baseToString(value) {
 
 module.exports = baseToString;
 
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/bindCallback.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/bindCallback.js":[function(require,module,exports){
 var identity = require('../utility/identity');
 
 /**
@@ -22412,7 +22501,7 @@ function bindCallback(func, thisArg, argCount) {
 
 module.exports = bindCallback;
 
-},{"../utility/identity":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/utility/identity.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/bufferClone.js":[function(require,module,exports){
+},{"../utility/identity":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/utility/identity.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/bufferClone.js":[function(require,module,exports){
 (function (global){
 /** Native method references. */
 var ArrayBuffer = global.ArrayBuffer,
@@ -22436,7 +22525,7 @@ function bufferClone(buffer) {
 module.exports = bufferClone;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/createAssigner.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/createAssigner.js":[function(require,module,exports){
 var bindCallback = require('./bindCallback'),
     isIterateeCall = require('./isIterateeCall'),
     restParam = require('../function/restParam');
@@ -22479,7 +22568,7 @@ function createAssigner(assigner) {
 
 module.exports = createAssigner;
 
-},{"../function/restParam":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/function/restParam.js","./bindCallback":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/bindCallback.js","./isIterateeCall":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isIterateeCall.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/createBaseEach.js":[function(require,module,exports){
+},{"../function/restParam":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/function/restParam.js","./bindCallback":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/bindCallback.js","./isIterateeCall":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isIterateeCall.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/createBaseEach.js":[function(require,module,exports){
 var getLength = require('./getLength'),
     isLength = require('./isLength'),
     toObject = require('./toObject');
@@ -22512,7 +22601,7 @@ function createBaseEach(eachFunc, fromRight) {
 
 module.exports = createBaseEach;
 
-},{"./getLength":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/getLength.js","./isLength":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isLength.js","./toObject":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/toObject.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/createBaseFor.js":[function(require,module,exports){
+},{"./getLength":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/getLength.js","./isLength":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isLength.js","./toObject":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/toObject.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/createBaseFor.js":[function(require,module,exports){
 var toObject = require('./toObject');
 
 /**
@@ -22541,7 +22630,7 @@ function createBaseFor(fromRight) {
 
 module.exports = createBaseFor;
 
-},{"./toObject":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/toObject.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/createForEach.js":[function(require,module,exports){
+},{"./toObject":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/toObject.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/createForEach.js":[function(require,module,exports){
 var bindCallback = require('./bindCallback'),
     isArray = require('../lang/isArray');
 
@@ -22563,7 +22652,7 @@ function createForEach(arrayFunc, eachFunc) {
 
 module.exports = createForEach;
 
-},{"../lang/isArray":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isArray.js","./bindCallback":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/bindCallback.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/createReduce.js":[function(require,module,exports){
+},{"../lang/isArray":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isArray.js","./bindCallback":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/bindCallback.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/createReduce.js":[function(require,module,exports){
 var baseCallback = require('./baseCallback'),
     baseReduce = require('./baseReduce'),
     isArray = require('../lang/isArray');
@@ -22587,7 +22676,7 @@ function createReduce(arrayFunc, eachFunc) {
 
 module.exports = createReduce;
 
-},{"../lang/isArray":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isArray.js","./baseCallback":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseCallback.js","./baseReduce":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseReduce.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/equalArrays.js":[function(require,module,exports){
+},{"../lang/isArray":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isArray.js","./baseCallback":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseCallback.js","./baseReduce":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseReduce.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/equalArrays.js":[function(require,module,exports){
 var arraySome = require('./arraySome');
 
 /**
@@ -22640,7 +22729,7 @@ function equalArrays(array, other, equalFunc, customizer, isLoose, stackA, stack
 
 module.exports = equalArrays;
 
-},{"./arraySome":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/arraySome.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/equalByTag.js":[function(require,module,exports){
+},{"./arraySome":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/arraySome.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/equalByTag.js":[function(require,module,exports){
 /** `Object#toString` result references. */
 var boolTag = '[object Boolean]',
     dateTag = '[object Date]',
@@ -22690,7 +22779,7 @@ function equalByTag(object, other, tag) {
 
 module.exports = equalByTag;
 
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/equalObjects.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/equalObjects.js":[function(require,module,exports){
 var keys = require('../object/keys');
 
 /** Used for native method references. */
@@ -22759,7 +22848,7 @@ function equalObjects(object, other, equalFunc, customizer, isLoose, stackA, sta
 
 module.exports = equalObjects;
 
-},{"../object/keys":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/object/keys.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/getLength.js":[function(require,module,exports){
+},{"../object/keys":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/object/keys.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/getLength.js":[function(require,module,exports){
 var baseProperty = require('./baseProperty');
 
 /**
@@ -22776,7 +22865,7 @@ var getLength = baseProperty('length');
 
 module.exports = getLength;
 
-},{"./baseProperty":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseProperty.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/getMatchData.js":[function(require,module,exports){
+},{"./baseProperty":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseProperty.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/getMatchData.js":[function(require,module,exports){
 var isStrictComparable = require('./isStrictComparable'),
     pairs = require('../object/pairs');
 
@@ -22799,7 +22888,7 @@ function getMatchData(object) {
 
 module.exports = getMatchData;
 
-},{"../object/pairs":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/object/pairs.js","./isStrictComparable":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isStrictComparable.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/getNative.js":[function(require,module,exports){
+},{"../object/pairs":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/object/pairs.js","./isStrictComparable":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isStrictComparable.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/getNative.js":[function(require,module,exports){
 var isNative = require('../lang/isNative');
 
 /**
@@ -22817,7 +22906,7 @@ function getNative(object, key) {
 
 module.exports = getNative;
 
-},{"../lang/isNative":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isNative.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/initCloneArray.js":[function(require,module,exports){
+},{"../lang/isNative":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isNative.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/initCloneArray.js":[function(require,module,exports){
 /** Used for native method references. */
 var objectProto = Object.prototype;
 
@@ -22845,7 +22934,7 @@ function initCloneArray(array) {
 
 module.exports = initCloneArray;
 
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/initCloneByTag.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/initCloneByTag.js":[function(require,module,exports){
 var bufferClone = require('./bufferClone');
 
 /** `Object#toString` result references. */
@@ -22910,7 +22999,7 @@ function initCloneByTag(object, tag, isDeep) {
 
 module.exports = initCloneByTag;
 
-},{"./bufferClone":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/bufferClone.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/initCloneObject.js":[function(require,module,exports){
+},{"./bufferClone":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/bufferClone.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/initCloneObject.js":[function(require,module,exports){
 /**
  * Initializes an object clone.
  *
@@ -22928,7 +23017,7 @@ function initCloneObject(object) {
 
 module.exports = initCloneObject;
 
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isArrayLike.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isArrayLike.js":[function(require,module,exports){
 var getLength = require('./getLength'),
     isLength = require('./isLength');
 
@@ -22945,7 +23034,7 @@ function isArrayLike(value) {
 
 module.exports = isArrayLike;
 
-},{"./getLength":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/getLength.js","./isLength":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isLength.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isIndex.js":[function(require,module,exports){
+},{"./getLength":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/getLength.js","./isLength":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isLength.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isIndex.js":[function(require,module,exports){
 /** Used to detect unsigned integer values. */
 var reIsUint = /^\d+$/;
 
@@ -22971,7 +23060,7 @@ function isIndex(value, length) {
 
 module.exports = isIndex;
 
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isIterateeCall.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isIterateeCall.js":[function(require,module,exports){
 var isArrayLike = require('./isArrayLike'),
     isIndex = require('./isIndex'),
     isObject = require('../lang/isObject');
@@ -23001,7 +23090,7 @@ function isIterateeCall(value, index, object) {
 
 module.exports = isIterateeCall;
 
-},{"../lang/isObject":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isObject.js","./isArrayLike":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isArrayLike.js","./isIndex":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isIndex.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isKey.js":[function(require,module,exports){
+},{"../lang/isObject":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isObject.js","./isArrayLike":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isArrayLike.js","./isIndex":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isIndex.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isKey.js":[function(require,module,exports){
 var isArray = require('../lang/isArray'),
     toObject = require('./toObject');
 
@@ -23031,7 +23120,7 @@ function isKey(value, object) {
 
 module.exports = isKey;
 
-},{"../lang/isArray":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isArray.js","./toObject":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/toObject.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isLength.js":[function(require,module,exports){
+},{"../lang/isArray":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isArray.js","./toObject":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/toObject.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isLength.js":[function(require,module,exports){
 /**
  * Used as the [maximum length](http://ecma-international.org/ecma-262/6.0/#sec-number.max_safe_integer)
  * of an array-like value.
@@ -23053,7 +23142,7 @@ function isLength(value) {
 
 module.exports = isLength;
 
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isObjectLike.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isObjectLike.js":[function(require,module,exports){
 /**
  * Checks if `value` is object-like.
  *
@@ -23067,7 +23156,7 @@ function isObjectLike(value) {
 
 module.exports = isObjectLike;
 
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isStrictComparable.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isStrictComparable.js":[function(require,module,exports){
 var isObject = require('../lang/isObject');
 
 /**
@@ -23084,7 +23173,7 @@ function isStrictComparable(value) {
 
 module.exports = isStrictComparable;
 
-},{"../lang/isObject":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isObject.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/pickByArray.js":[function(require,module,exports){
+},{"../lang/isObject":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isObject.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/pickByArray.js":[function(require,module,exports){
 var toObject = require('./toObject');
 
 /**
@@ -23114,7 +23203,7 @@ function pickByArray(object, props) {
 
 module.exports = pickByArray;
 
-},{"./toObject":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/toObject.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/pickByCallback.js":[function(require,module,exports){
+},{"./toObject":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/toObject.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/pickByCallback.js":[function(require,module,exports){
 var baseForIn = require('./baseForIn');
 
 /**
@@ -23138,7 +23227,7 @@ function pickByCallback(object, predicate) {
 
 module.exports = pickByCallback;
 
-},{"./baseForIn":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseForIn.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/shimKeys.js":[function(require,module,exports){
+},{"./baseForIn":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseForIn.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/shimKeys.js":[function(require,module,exports){
 var isArguments = require('../lang/isArguments'),
     isArray = require('../lang/isArray'),
     isIndex = require('./isIndex'),
@@ -23181,7 +23270,7 @@ function shimKeys(object) {
 
 module.exports = shimKeys;
 
-},{"../lang/isArguments":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isArguments.js","../lang/isArray":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isArray.js","../object/keysIn":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/object/keysIn.js","./isIndex":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isIndex.js","./isLength":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isLength.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/toObject.js":[function(require,module,exports){
+},{"../lang/isArguments":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isArguments.js","../lang/isArray":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isArray.js","../object/keysIn":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/object/keysIn.js","./isIndex":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isIndex.js","./isLength":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isLength.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/toObject.js":[function(require,module,exports){
 var isObject = require('../lang/isObject');
 
 /**
@@ -23197,7 +23286,7 @@ function toObject(value) {
 
 module.exports = toObject;
 
-},{"../lang/isObject":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isObject.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/toPath.js":[function(require,module,exports){
+},{"../lang/isObject":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isObject.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/toPath.js":[function(require,module,exports){
 var baseToString = require('./baseToString'),
     isArray = require('../lang/isArray');
 
@@ -23227,7 +23316,7 @@ function toPath(value) {
 
 module.exports = toPath;
 
-},{"../lang/isArray":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isArray.js","./baseToString":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseToString.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/clone.js":[function(require,module,exports){
+},{"../lang/isArray":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isArray.js","./baseToString":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseToString.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/clone.js":[function(require,module,exports){
 var baseClone = require('../internal/baseClone'),
     bindCallback = require('../internal/bindCallback'),
     isIterateeCall = require('../internal/isIterateeCall');
@@ -23299,7 +23388,7 @@ function clone(value, isDeep, customizer, thisArg) {
 
 module.exports = clone;
 
-},{"../internal/baseClone":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseClone.js","../internal/bindCallback":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/bindCallback.js","../internal/isIterateeCall":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isIterateeCall.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isArguments.js":[function(require,module,exports){
+},{"../internal/baseClone":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseClone.js","../internal/bindCallback":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/bindCallback.js","../internal/isIterateeCall":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isIterateeCall.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isArguments.js":[function(require,module,exports){
 var isArrayLike = require('../internal/isArrayLike'),
     isObjectLike = require('../internal/isObjectLike');
 
@@ -23335,7 +23424,7 @@ function isArguments(value) {
 
 module.exports = isArguments;
 
-},{"../internal/isArrayLike":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isArrayLike.js","../internal/isObjectLike":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isObjectLike.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isArray.js":[function(require,module,exports){
+},{"../internal/isArrayLike":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isArrayLike.js","../internal/isObjectLike":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isObjectLike.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isArray.js":[function(require,module,exports){
 var getNative = require('../internal/getNative'),
     isLength = require('../internal/isLength'),
     isObjectLike = require('../internal/isObjectLike');
@@ -23377,7 +23466,7 @@ var isArray = nativeIsArray || function(value) {
 
 module.exports = isArray;
 
-},{"../internal/getNative":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/getNative.js","../internal/isLength":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isLength.js","../internal/isObjectLike":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isObjectLike.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isEqual.js":[function(require,module,exports){
+},{"../internal/getNative":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/getNative.js","../internal/isLength":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isLength.js","../internal/isObjectLike":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isObjectLike.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isEqual.js":[function(require,module,exports){
 var baseIsEqual = require('../internal/baseIsEqual'),
     bindCallback = require('../internal/bindCallback');
 
@@ -23433,7 +23522,7 @@ function isEqual(value, other, customizer, thisArg) {
 
 module.exports = isEqual;
 
-},{"../internal/baseIsEqual":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseIsEqual.js","../internal/bindCallback":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/bindCallback.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isFunction.js":[function(require,module,exports){
+},{"../internal/baseIsEqual":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseIsEqual.js","../internal/bindCallback":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/bindCallback.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isFunction.js":[function(require,module,exports){
 var isObject = require('./isObject');
 
 /** `Object#toString` result references. */
@@ -23473,7 +23562,7 @@ function isFunction(value) {
 
 module.exports = isFunction;
 
-},{"./isObject":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isObject.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isNative.js":[function(require,module,exports){
+},{"./isObject":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isObject.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isNative.js":[function(require,module,exports){
 var isFunction = require('./isFunction'),
     isObjectLike = require('../internal/isObjectLike');
 
@@ -23523,7 +23612,7 @@ function isNative(value) {
 
 module.exports = isNative;
 
-},{"../internal/isObjectLike":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isObjectLike.js","./isFunction":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isFunction.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isObject.js":[function(require,module,exports){
+},{"../internal/isObjectLike":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isObjectLike.js","./isFunction":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isFunction.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isObject.js":[function(require,module,exports){
 /**
  * Checks if `value` is the [language type](https://es5.github.io/#x8) of `Object`.
  * (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
@@ -23553,7 +23642,7 @@ function isObject(value) {
 
 module.exports = isObject;
 
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isTypedArray.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isTypedArray.js":[function(require,module,exports){
 var isLength = require('../internal/isLength'),
     isObjectLike = require('../internal/isObjectLike');
 
@@ -23629,7 +23718,7 @@ function isTypedArray(value) {
 
 module.exports = isTypedArray;
 
-},{"../internal/isLength":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isLength.js","../internal/isObjectLike":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isObjectLike.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isUndefined.js":[function(require,module,exports){
+},{"../internal/isLength":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isLength.js","../internal/isObjectLike":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isObjectLike.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isUndefined.js":[function(require,module,exports){
 /**
  * Checks if `value` is `undefined`.
  *
@@ -23652,7 +23741,7 @@ function isUndefined(value) {
 
 module.exports = isUndefined;
 
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/object/assign.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/object/assign.js":[function(require,module,exports){
 var assignWith = require('../internal/assignWith'),
     baseAssign = require('../internal/baseAssign'),
     createAssigner = require('../internal/createAssigner');
@@ -23697,7 +23786,7 @@ var assign = createAssigner(function(object, source, customizer) {
 
 module.exports = assign;
 
-},{"../internal/assignWith":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/assignWith.js","../internal/baseAssign":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseAssign.js","../internal/createAssigner":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/createAssigner.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/object/keys.js":[function(require,module,exports){
+},{"../internal/assignWith":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/assignWith.js","../internal/baseAssign":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseAssign.js","../internal/createAssigner":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/createAssigner.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/object/keys.js":[function(require,module,exports){
 var getNative = require('../internal/getNative'),
     isArrayLike = require('../internal/isArrayLike'),
     isObject = require('../lang/isObject'),
@@ -23744,7 +23833,7 @@ var keys = !nativeKeys ? shimKeys : function(object) {
 
 module.exports = keys;
 
-},{"../internal/getNative":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/getNative.js","../internal/isArrayLike":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isArrayLike.js","../internal/shimKeys":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/shimKeys.js","../lang/isObject":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isObject.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/object/keysIn.js":[function(require,module,exports){
+},{"../internal/getNative":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/getNative.js","../internal/isArrayLike":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isArrayLike.js","../internal/shimKeys":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/shimKeys.js","../lang/isObject":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isObject.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/object/keysIn.js":[function(require,module,exports){
 var isArguments = require('../lang/isArguments'),
     isArray = require('../lang/isArray'),
     isIndex = require('../internal/isIndex'),
@@ -23810,7 +23899,7 @@ function keysIn(object) {
 
 module.exports = keysIn;
 
-},{"../internal/isIndex":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isIndex.js","../internal/isLength":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isLength.js","../lang/isArguments":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isArguments.js","../lang/isArray":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isArray.js","../lang/isObject":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isObject.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/object/pairs.js":[function(require,module,exports){
+},{"../internal/isIndex":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isIndex.js","../internal/isLength":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isLength.js","../lang/isArguments":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isArguments.js","../lang/isArray":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isArray.js","../lang/isObject":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/lang/isObject.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/object/pairs.js":[function(require,module,exports){
 var keys = require('./keys'),
     toObject = require('../internal/toObject');
 
@@ -23845,7 +23934,7 @@ function pairs(object) {
 
 module.exports = pairs;
 
-},{"../internal/toObject":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/toObject.js","./keys":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/object/keys.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/object/pick.js":[function(require,module,exports){
+},{"../internal/toObject":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/toObject.js","./keys":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/object/keys.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/object/pick.js":[function(require,module,exports){
 var baseFlatten = require('../internal/baseFlatten'),
     bindCallback = require('../internal/bindCallback'),
     pickByArray = require('../internal/pickByArray'),
@@ -23889,7 +23978,7 @@ var pick = restParam(function(object, props) {
 
 module.exports = pick;
 
-},{"../function/restParam":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/function/restParam.js","../internal/baseFlatten":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseFlatten.js","../internal/bindCallback":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/bindCallback.js","../internal/pickByArray":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/pickByArray.js","../internal/pickByCallback":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/pickByCallback.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/utility/identity.js":[function(require,module,exports){
+},{"../function/restParam":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/function/restParam.js","../internal/baseFlatten":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseFlatten.js","../internal/bindCallback":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/bindCallback.js","../internal/pickByArray":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/pickByArray.js","../internal/pickByCallback":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/pickByCallback.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/utility/identity.js":[function(require,module,exports){
 /**
  * This method returns the first argument provided to it.
  *
@@ -23911,7 +24000,7 @@ function identity(value) {
 
 module.exports = identity;
 
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/utility/property.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/utility/property.js":[function(require,module,exports){
 var baseProperty = require('../internal/baseProperty'),
     basePropertyDeep = require('../internal/basePropertyDeep'),
     isKey = require('../internal/isKey');
@@ -23944,7 +24033,7 @@ function property(path) {
 
 module.exports = property;
 
-},{"../internal/baseProperty":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseProperty.js","../internal/basePropertyDeep":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/basePropertyDeep.js","../internal/isKey":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isKey.js"}],"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/utility/uniqueId.js":[function(require,module,exports){
+},{"../internal/baseProperty":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseProperty.js","../internal/basePropertyDeep":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/basePropertyDeep.js","../internal/isKey":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/isKey.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/utility/uniqueId.js":[function(require,module,exports){
 var baseToString = require('../internal/baseToString');
 
 /** Used to generate unique IDs. */
@@ -23973,7 +24062,7 @@ function uniqueId(prefix) {
 
 module.exports = uniqueId;
 
-},{"../internal/baseToString":"/Users/preston/projects/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseToString.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/AutoFocusUtils.js":[function(require,module,exports){
+},{"../internal/baseToString":"/Users/gus1775/hacking/recycling-atx/node_modules/react-leaflet/node_modules/lodash/internal/baseToString.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/AutoFocusUtils.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -24010,7 +24099,7 @@ var AutoFocusUtils = {
 };
 
 module.exports = AutoFocusUtils;
-},{"./ReactMount":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactMount.js","./findDOMNode":"/Users/preston/projects/recycling-atx/node_modules/react/lib/findDOMNode.js","fbjs/lib/focusNode":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/focusNode.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/BeforeInputEventPlugin.js":[function(require,module,exports){
+},{"./ReactMount":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactMount.js","./findDOMNode":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/findDOMNode.js","fbjs/lib/focusNode":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/focusNode.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/BeforeInputEventPlugin.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015 Facebook, Inc.
  * All rights reserved.
@@ -24416,7 +24505,7 @@ var BeforeInputEventPlugin = {
 };
 
 module.exports = BeforeInputEventPlugin;
-},{"./EventConstants":"/Users/preston/projects/recycling-atx/node_modules/react/lib/EventConstants.js","./EventPropagators":"/Users/preston/projects/recycling-atx/node_modules/react/lib/EventPropagators.js","./FallbackCompositionState":"/Users/preston/projects/recycling-atx/node_modules/react/lib/FallbackCompositionState.js","./SyntheticCompositionEvent":"/Users/preston/projects/recycling-atx/node_modules/react/lib/SyntheticCompositionEvent.js","./SyntheticInputEvent":"/Users/preston/projects/recycling-atx/node_modules/react/lib/SyntheticInputEvent.js","fbjs/lib/ExecutionEnvironment":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/ExecutionEnvironment.js","fbjs/lib/keyOf":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/keyOf.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/CSSProperty.js":[function(require,module,exports){
+},{"./EventConstants":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/EventConstants.js","./EventPropagators":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/EventPropagators.js","./FallbackCompositionState":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/FallbackCompositionState.js","./SyntheticCompositionEvent":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/SyntheticCompositionEvent.js","./SyntheticInputEvent":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/SyntheticInputEvent.js","fbjs/lib/ExecutionEnvironment":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/ExecutionEnvironment.js","fbjs/lib/keyOf":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/keyOf.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/CSSProperty.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -24556,7 +24645,7 @@ var CSSProperty = {
 };
 
 module.exports = CSSProperty;
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/CSSPropertyOperations.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/CSSPropertyOperations.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -24734,7 +24823,7 @@ ReactPerf.measureMethods(CSSPropertyOperations, 'CSSPropertyOperations', {
 
 module.exports = CSSPropertyOperations;
 }).call(this,require('_process'))
-},{"./CSSProperty":"/Users/preston/projects/recycling-atx/node_modules/react/lib/CSSProperty.js","./ReactPerf":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactPerf.js","./dangerousStyleValue":"/Users/preston/projects/recycling-atx/node_modules/react/lib/dangerousStyleValue.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/ExecutionEnvironment":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/ExecutionEnvironment.js","fbjs/lib/camelizeStyleName":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/camelizeStyleName.js","fbjs/lib/hyphenateStyleName":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/hyphenateStyleName.js","fbjs/lib/memoizeStringOnly":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/memoizeStringOnly.js","fbjs/lib/warning":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/CallbackQueue.js":[function(require,module,exports){
+},{"./CSSProperty":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/CSSProperty.js","./ReactPerf":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactPerf.js","./dangerousStyleValue":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/dangerousStyleValue.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/ExecutionEnvironment":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/ExecutionEnvironment.js","fbjs/lib/camelizeStyleName":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/camelizeStyleName.js","fbjs/lib/hyphenateStyleName":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/hyphenateStyleName.js","fbjs/lib/memoizeStringOnly":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/memoizeStringOnly.js","fbjs/lib/warning":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/CallbackQueue.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -24830,7 +24919,7 @@ PooledClass.addPoolingTo(CallbackQueue);
 
 module.exports = CallbackQueue;
 }).call(this,require('_process'))
-},{"./Object.assign":"/Users/preston/projects/recycling-atx/node_modules/react/lib/Object.assign.js","./PooledClass":"/Users/preston/projects/recycling-atx/node_modules/react/lib/PooledClass.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ChangeEventPlugin.js":[function(require,module,exports){
+},{"./Object.assign":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/Object.assign.js","./PooledClass":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/PooledClass.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ChangeEventPlugin.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -25152,7 +25241,7 @@ var ChangeEventPlugin = {
 };
 
 module.exports = ChangeEventPlugin;
-},{"./EventConstants":"/Users/preston/projects/recycling-atx/node_modules/react/lib/EventConstants.js","./EventPluginHub":"/Users/preston/projects/recycling-atx/node_modules/react/lib/EventPluginHub.js","./EventPropagators":"/Users/preston/projects/recycling-atx/node_modules/react/lib/EventPropagators.js","./ReactUpdates":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactUpdates.js","./SyntheticEvent":"/Users/preston/projects/recycling-atx/node_modules/react/lib/SyntheticEvent.js","./getEventTarget":"/Users/preston/projects/recycling-atx/node_modules/react/lib/getEventTarget.js","./isEventSupported":"/Users/preston/projects/recycling-atx/node_modules/react/lib/isEventSupported.js","./isTextInputElement":"/Users/preston/projects/recycling-atx/node_modules/react/lib/isTextInputElement.js","fbjs/lib/ExecutionEnvironment":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/ExecutionEnvironment.js","fbjs/lib/keyOf":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/keyOf.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ClientReactRootIndex.js":[function(require,module,exports){
+},{"./EventConstants":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/EventConstants.js","./EventPluginHub":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/EventPluginHub.js","./EventPropagators":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/EventPropagators.js","./ReactUpdates":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactUpdates.js","./SyntheticEvent":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/SyntheticEvent.js","./getEventTarget":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/getEventTarget.js","./isEventSupported":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/isEventSupported.js","./isTextInputElement":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/isTextInputElement.js","fbjs/lib/ExecutionEnvironment":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/ExecutionEnvironment.js","fbjs/lib/keyOf":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/keyOf.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ClientReactRootIndex.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -25176,7 +25265,7 @@ var ClientReactRootIndex = {
 };
 
 module.exports = ClientReactRootIndex;
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/DOMChildrenOperations.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/DOMChildrenOperations.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -25308,7 +25397,7 @@ ReactPerf.measureMethods(DOMChildrenOperations, 'DOMChildrenOperations', {
 
 module.exports = DOMChildrenOperations;
 }).call(this,require('_process'))
-},{"./Danger":"/Users/preston/projects/recycling-atx/node_modules/react/lib/Danger.js","./ReactMultiChildUpdateTypes":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactMultiChildUpdateTypes.js","./ReactPerf":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactPerf.js","./setInnerHTML":"/Users/preston/projects/recycling-atx/node_modules/react/lib/setInnerHTML.js","./setTextContent":"/Users/preston/projects/recycling-atx/node_modules/react/lib/setTextContent.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/DOMProperty.js":[function(require,module,exports){
+},{"./Danger":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/Danger.js","./ReactMultiChildUpdateTypes":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactMultiChildUpdateTypes.js","./ReactPerf":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactPerf.js","./setInnerHTML":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/setInnerHTML.js","./setTextContent":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/setTextContent.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/DOMProperty.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -25545,7 +25634,7 @@ var DOMProperty = {
 
 module.exports = DOMProperty;
 }).call(this,require('_process'))
-},{"_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/DOMPropertyOperations.js":[function(require,module,exports){
+},{"_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/DOMPropertyOperations.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -25773,7 +25862,7 @@ ReactPerf.measureMethods(DOMPropertyOperations, 'DOMPropertyOperations', {
 
 module.exports = DOMPropertyOperations;
 }).call(this,require('_process'))
-},{"./DOMProperty":"/Users/preston/projects/recycling-atx/node_modules/react/lib/DOMProperty.js","./ReactPerf":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactPerf.js","./quoteAttributeValueForBrowser":"/Users/preston/projects/recycling-atx/node_modules/react/lib/quoteAttributeValueForBrowser.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/warning":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/Danger.js":[function(require,module,exports){
+},{"./DOMProperty":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/DOMProperty.js","./ReactPerf":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactPerf.js","./quoteAttributeValueForBrowser":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/quoteAttributeValueForBrowser.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/warning":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/Danger.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -25921,7 +26010,7 @@ var Danger = {
 
 module.exports = Danger;
 }).call(this,require('_process'))
-},{"_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/ExecutionEnvironment":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/ExecutionEnvironment.js","fbjs/lib/createNodesFromMarkup":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/createNodesFromMarkup.js","fbjs/lib/emptyFunction":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/emptyFunction.js","fbjs/lib/getMarkupWrap":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/getMarkupWrap.js","fbjs/lib/invariant":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/DefaultEventPluginOrder.js":[function(require,module,exports){
+},{"_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/ExecutionEnvironment":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/ExecutionEnvironment.js","fbjs/lib/createNodesFromMarkup":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/createNodesFromMarkup.js","fbjs/lib/emptyFunction":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/emptyFunction.js","fbjs/lib/getMarkupWrap":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/getMarkupWrap.js","fbjs/lib/invariant":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/DefaultEventPluginOrder.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -25949,7 +26038,7 @@ var keyOf = require('fbjs/lib/keyOf');
 var DefaultEventPluginOrder = [keyOf({ ResponderEventPlugin: null }), keyOf({ SimpleEventPlugin: null }), keyOf({ TapEventPlugin: null }), keyOf({ EnterLeaveEventPlugin: null }), keyOf({ ChangeEventPlugin: null }), keyOf({ SelectEventPlugin: null }), keyOf({ BeforeInputEventPlugin: null })];
 
 module.exports = DefaultEventPluginOrder;
-},{"fbjs/lib/keyOf":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/keyOf.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/EnterLeaveEventPlugin.js":[function(require,module,exports){
+},{"fbjs/lib/keyOf":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/keyOf.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/EnterLeaveEventPlugin.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -26074,7 +26163,7 @@ var EnterLeaveEventPlugin = {
 };
 
 module.exports = EnterLeaveEventPlugin;
-},{"./EventConstants":"/Users/preston/projects/recycling-atx/node_modules/react/lib/EventConstants.js","./EventPropagators":"/Users/preston/projects/recycling-atx/node_modules/react/lib/EventPropagators.js","./ReactMount":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactMount.js","./SyntheticMouseEvent":"/Users/preston/projects/recycling-atx/node_modules/react/lib/SyntheticMouseEvent.js","fbjs/lib/keyOf":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/keyOf.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/EventConstants.js":[function(require,module,exports){
+},{"./EventConstants":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/EventConstants.js","./EventPropagators":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/EventPropagators.js","./ReactMount":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactMount.js","./SyntheticMouseEvent":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/SyntheticMouseEvent.js","fbjs/lib/keyOf":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/keyOf.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/EventConstants.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -26167,7 +26256,7 @@ var EventConstants = {
 };
 
 module.exports = EventConstants;
-},{"fbjs/lib/keyMirror":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/keyMirror.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/EventPluginHub.js":[function(require,module,exports){
+},{"fbjs/lib/keyMirror":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/keyMirror.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/EventPluginHub.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -26449,7 +26538,7 @@ var EventPluginHub = {
 
 module.exports = EventPluginHub;
 }).call(this,require('_process'))
-},{"./EventPluginRegistry":"/Users/preston/projects/recycling-atx/node_modules/react/lib/EventPluginRegistry.js","./EventPluginUtils":"/Users/preston/projects/recycling-atx/node_modules/react/lib/EventPluginUtils.js","./ReactErrorUtils":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactErrorUtils.js","./accumulateInto":"/Users/preston/projects/recycling-atx/node_modules/react/lib/accumulateInto.js","./forEachAccumulated":"/Users/preston/projects/recycling-atx/node_modules/react/lib/forEachAccumulated.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js","fbjs/lib/warning":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/EventPluginRegistry.js":[function(require,module,exports){
+},{"./EventPluginRegistry":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/EventPluginRegistry.js","./EventPluginUtils":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/EventPluginUtils.js","./ReactErrorUtils":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactErrorUtils.js","./accumulateInto":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/accumulateInto.js","./forEachAccumulated":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/forEachAccumulated.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js","fbjs/lib/warning":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/EventPluginRegistry.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -26672,7 +26761,7 @@ var EventPluginRegistry = {
 
 module.exports = EventPluginRegistry;
 }).call(this,require('_process'))
-},{"_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/EventPluginUtils.js":[function(require,module,exports){
+},{"_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/EventPluginUtils.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -26877,7 +26966,7 @@ var EventPluginUtils = {
 
 module.exports = EventPluginUtils;
 }).call(this,require('_process'))
-},{"./EventConstants":"/Users/preston/projects/recycling-atx/node_modules/react/lib/EventConstants.js","./ReactErrorUtils":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactErrorUtils.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js","fbjs/lib/warning":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/EventPropagators.js":[function(require,module,exports){
+},{"./EventConstants":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/EventConstants.js","./ReactErrorUtils":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactErrorUtils.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js","fbjs/lib/warning":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/EventPropagators.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -27015,7 +27104,7 @@ var EventPropagators = {
 
 module.exports = EventPropagators;
 }).call(this,require('_process'))
-},{"./EventConstants":"/Users/preston/projects/recycling-atx/node_modules/react/lib/EventConstants.js","./EventPluginHub":"/Users/preston/projects/recycling-atx/node_modules/react/lib/EventPluginHub.js","./accumulateInto":"/Users/preston/projects/recycling-atx/node_modules/react/lib/accumulateInto.js","./forEachAccumulated":"/Users/preston/projects/recycling-atx/node_modules/react/lib/forEachAccumulated.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/warning":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/FallbackCompositionState.js":[function(require,module,exports){
+},{"./EventConstants":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/EventConstants.js","./EventPluginHub":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/EventPluginHub.js","./accumulateInto":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/accumulateInto.js","./forEachAccumulated":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/forEachAccumulated.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/warning":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/FallbackCompositionState.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -27111,7 +27200,7 @@ assign(FallbackCompositionState.prototype, {
 PooledClass.addPoolingTo(FallbackCompositionState);
 
 module.exports = FallbackCompositionState;
-},{"./Object.assign":"/Users/preston/projects/recycling-atx/node_modules/react/lib/Object.assign.js","./PooledClass":"/Users/preston/projects/recycling-atx/node_modules/react/lib/PooledClass.js","./getTextContentAccessor":"/Users/preston/projects/recycling-atx/node_modules/react/lib/getTextContentAccessor.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/HTMLDOMPropertyConfig.js":[function(require,module,exports){
+},{"./Object.assign":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/Object.assign.js","./PooledClass":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/PooledClass.js","./getTextContentAccessor":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/getTextContentAccessor.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/HTMLDOMPropertyConfig.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -27294,8 +27383,8 @@ var HTMLDOMPropertyConfig = {
      */
     // autoCapitalize and autoCorrect are supported in Mobile Safari for
     // keyboard hints.
-    autoCapitalize: null,
-    autoCorrect: null,
+    autoCapitalize: MUST_USE_ATTRIBUTE,
+    autoCorrect: MUST_USE_ATTRIBUTE,
     // autoSave allows WebKit/Blink to persist values of input fields on page reloads
     autoSave: null,
     // color is for Safari mask-icon link
@@ -27326,9 +27415,7 @@ var HTMLDOMPropertyConfig = {
     httpEquiv: 'http-equiv'
   },
   DOMPropertyNames: {
-    autoCapitalize: 'autocapitalize',
     autoComplete: 'autocomplete',
-    autoCorrect: 'autocorrect',
     autoFocus: 'autofocus',
     autoPlay: 'autoplay',
     autoSave: 'autosave',
@@ -27344,7 +27431,7 @@ var HTMLDOMPropertyConfig = {
 };
 
 module.exports = HTMLDOMPropertyConfig;
-},{"./DOMProperty":"/Users/preston/projects/recycling-atx/node_modules/react/lib/DOMProperty.js","fbjs/lib/ExecutionEnvironment":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/ExecutionEnvironment.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/LinkedValueUtils.js":[function(require,module,exports){
+},{"./DOMProperty":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/DOMProperty.js","fbjs/lib/ExecutionEnvironment":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/ExecutionEnvironment.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/LinkedValueUtils.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -27481,7 +27568,7 @@ var LinkedValueUtils = {
 
 module.exports = LinkedValueUtils;
 }).call(this,require('_process'))
-},{"./ReactPropTypeLocations":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactPropTypeLocations.js","./ReactPropTypes":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactPropTypes.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js","fbjs/lib/warning":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/Object.assign.js":[function(require,module,exports){
+},{"./ReactPropTypeLocations":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactPropTypeLocations.js","./ReactPropTypes":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactPropTypes.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js","fbjs/lib/warning":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/Object.assign.js":[function(require,module,exports){
 /**
  * Copyright 2014-2015, Facebook, Inc.
  * All rights reserved.
@@ -27529,7 +27616,7 @@ function assign(target, sources) {
 }
 
 module.exports = assign;
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/PooledClass.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/PooledClass.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -27651,7 +27738,7 @@ var PooledClass = {
 
 module.exports = PooledClass;
 }).call(this,require('_process'))
-},{"_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/React.js":[function(require,module,exports){
+},{"_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/React.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -27692,7 +27779,7 @@ React.__SECRET_DOM_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = ReactDOM;
 React.__SECRET_DOM_SERVER_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = ReactDOMServer;
 
 module.exports = React;
-},{"./Object.assign":"/Users/preston/projects/recycling-atx/node_modules/react/lib/Object.assign.js","./ReactDOM":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactDOM.js","./ReactDOMServer":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactDOMServer.js","./ReactIsomorphic":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactIsomorphic.js","./deprecated":"/Users/preston/projects/recycling-atx/node_modules/react/lib/deprecated.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactBrowserComponentMixin.js":[function(require,module,exports){
+},{"./Object.assign":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/Object.assign.js","./ReactDOM":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactDOM.js","./ReactDOMServer":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactDOMServer.js","./ReactIsomorphic":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactIsomorphic.js","./deprecated":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/deprecated.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactBrowserComponentMixin.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -27731,7 +27818,7 @@ var ReactBrowserComponentMixin = {
 
 module.exports = ReactBrowserComponentMixin;
 }).call(this,require('_process'))
-},{"./ReactInstanceMap":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactInstanceMap.js","./findDOMNode":"/Users/preston/projects/recycling-atx/node_modules/react/lib/findDOMNode.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/warning":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactBrowserEventEmitter.js":[function(require,module,exports){
+},{"./ReactInstanceMap":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactInstanceMap.js","./findDOMNode":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/findDOMNode.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/warning":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactBrowserEventEmitter.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -28056,7 +28143,7 @@ ReactPerf.measureMethods(ReactBrowserEventEmitter, 'ReactBrowserEventEmitter', {
 });
 
 module.exports = ReactBrowserEventEmitter;
-},{"./EventConstants":"/Users/preston/projects/recycling-atx/node_modules/react/lib/EventConstants.js","./EventPluginHub":"/Users/preston/projects/recycling-atx/node_modules/react/lib/EventPluginHub.js","./EventPluginRegistry":"/Users/preston/projects/recycling-atx/node_modules/react/lib/EventPluginRegistry.js","./Object.assign":"/Users/preston/projects/recycling-atx/node_modules/react/lib/Object.assign.js","./ReactEventEmitterMixin":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactEventEmitterMixin.js","./ReactPerf":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactPerf.js","./ViewportMetrics":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ViewportMetrics.js","./isEventSupported":"/Users/preston/projects/recycling-atx/node_modules/react/lib/isEventSupported.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactChildReconciler.js":[function(require,module,exports){
+},{"./EventConstants":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/EventConstants.js","./EventPluginHub":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/EventPluginHub.js","./EventPluginRegistry":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/EventPluginRegistry.js","./Object.assign":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/Object.assign.js","./ReactEventEmitterMixin":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactEventEmitterMixin.js","./ReactPerf":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactPerf.js","./ViewportMetrics":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ViewportMetrics.js","./isEventSupported":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/isEventSupported.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactChildReconciler.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-2015, Facebook, Inc.
@@ -28181,7 +28268,7 @@ var ReactChildReconciler = {
 
 module.exports = ReactChildReconciler;
 }).call(this,require('_process'))
-},{"./ReactReconciler":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactReconciler.js","./instantiateReactComponent":"/Users/preston/projects/recycling-atx/node_modules/react/lib/instantiateReactComponent.js","./shouldUpdateReactComponent":"/Users/preston/projects/recycling-atx/node_modules/react/lib/shouldUpdateReactComponent.js","./traverseAllChildren":"/Users/preston/projects/recycling-atx/node_modules/react/lib/traverseAllChildren.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/warning":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactChildren.js":[function(require,module,exports){
+},{"./ReactReconciler":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactReconciler.js","./instantiateReactComponent":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/instantiateReactComponent.js","./shouldUpdateReactComponent":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/shouldUpdateReactComponent.js","./traverseAllChildren":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/traverseAllChildren.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/warning":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactChildren.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -28364,7 +28451,7 @@ var ReactChildren = {
 };
 
 module.exports = ReactChildren;
-},{"./PooledClass":"/Users/preston/projects/recycling-atx/node_modules/react/lib/PooledClass.js","./ReactElement":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactElement.js","./traverseAllChildren":"/Users/preston/projects/recycling-atx/node_modules/react/lib/traverseAllChildren.js","fbjs/lib/emptyFunction":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/emptyFunction.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactClass.js":[function(require,module,exports){
+},{"./PooledClass":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/PooledClass.js","./ReactElement":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactElement.js","./traverseAllChildren":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/traverseAllChildren.js","fbjs/lib/emptyFunction":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/emptyFunction.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactClass.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -29138,7 +29225,7 @@ var ReactClass = {
 
 module.exports = ReactClass;
 }).call(this,require('_process'))
-},{"./Object.assign":"/Users/preston/projects/recycling-atx/node_modules/react/lib/Object.assign.js","./ReactComponent":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactComponent.js","./ReactElement":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactElement.js","./ReactNoopUpdateQueue":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactNoopUpdateQueue.js","./ReactPropTypeLocationNames":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactPropTypeLocationNames.js","./ReactPropTypeLocations":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactPropTypeLocations.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/emptyObject":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/emptyObject.js","fbjs/lib/invariant":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js","fbjs/lib/keyMirror":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/keyMirror.js","fbjs/lib/keyOf":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/keyOf.js","fbjs/lib/warning":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactComponent.js":[function(require,module,exports){
+},{"./Object.assign":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/Object.assign.js","./ReactComponent":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactComponent.js","./ReactElement":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactElement.js","./ReactNoopUpdateQueue":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactNoopUpdateQueue.js","./ReactPropTypeLocationNames":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactPropTypeLocationNames.js","./ReactPropTypeLocations":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactPropTypeLocations.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/emptyObject":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/emptyObject.js","fbjs/lib/invariant":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js","fbjs/lib/keyMirror":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/keyMirror.js","fbjs/lib/keyOf":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/keyOf.js","fbjs/lib/warning":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactComponent.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -29263,7 +29350,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = ReactComponent;
 }).call(this,require('_process'))
-},{"./ReactNoopUpdateQueue":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactNoopUpdateQueue.js","./canDefineProperty":"/Users/preston/projects/recycling-atx/node_modules/react/lib/canDefineProperty.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/emptyObject":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/emptyObject.js","fbjs/lib/invariant":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js","fbjs/lib/warning":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactComponentBrowserEnvironment.js":[function(require,module,exports){
+},{"./ReactNoopUpdateQueue":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactNoopUpdateQueue.js","./canDefineProperty":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/canDefineProperty.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/emptyObject":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/emptyObject.js","fbjs/lib/invariant":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js","fbjs/lib/warning":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactComponentBrowserEnvironment.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -29305,7 +29392,7 @@ var ReactComponentBrowserEnvironment = {
 };
 
 module.exports = ReactComponentBrowserEnvironment;
-},{"./ReactDOMIDOperations":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactDOMIDOperations.js","./ReactMount":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactMount.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactComponentEnvironment.js":[function(require,module,exports){
+},{"./ReactDOMIDOperations":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactDOMIDOperations.js","./ReactMount":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactMount.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactComponentEnvironment.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-2015, Facebook, Inc.
@@ -29359,7 +29446,7 @@ var ReactComponentEnvironment = {
 
 module.exports = ReactComponentEnvironment;
 }).call(this,require('_process'))
-},{"_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactCompositeComponent.js":[function(require,module,exports){
+},{"_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactCompositeComponent.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -30056,7 +30143,7 @@ var ReactCompositeComponent = {
 
 module.exports = ReactCompositeComponent;
 }).call(this,require('_process'))
-},{"./Object.assign":"/Users/preston/projects/recycling-atx/node_modules/react/lib/Object.assign.js","./ReactComponentEnvironment":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactComponentEnvironment.js","./ReactCurrentOwner":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactCurrentOwner.js","./ReactElement":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactElement.js","./ReactInstanceMap":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactInstanceMap.js","./ReactPerf":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactPerf.js","./ReactPropTypeLocationNames":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactPropTypeLocationNames.js","./ReactPropTypeLocations":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactPropTypeLocations.js","./ReactReconciler":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactReconciler.js","./ReactUpdateQueue":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactUpdateQueue.js","./shouldUpdateReactComponent":"/Users/preston/projects/recycling-atx/node_modules/react/lib/shouldUpdateReactComponent.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/emptyObject":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/emptyObject.js","fbjs/lib/invariant":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js","fbjs/lib/warning":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactCurrentOwner.js":[function(require,module,exports){
+},{"./Object.assign":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/Object.assign.js","./ReactComponentEnvironment":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactComponentEnvironment.js","./ReactCurrentOwner":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactCurrentOwner.js","./ReactElement":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactElement.js","./ReactInstanceMap":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactInstanceMap.js","./ReactPerf":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactPerf.js","./ReactPropTypeLocationNames":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactPropTypeLocationNames.js","./ReactPropTypeLocations":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactPropTypeLocations.js","./ReactReconciler":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactReconciler.js","./ReactUpdateQueue":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactUpdateQueue.js","./shouldUpdateReactComponent":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/shouldUpdateReactComponent.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/emptyObject":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/emptyObject.js","fbjs/lib/invariant":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js","fbjs/lib/warning":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactCurrentOwner.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -30087,7 +30174,7 @@ var ReactCurrentOwner = {
 };
 
 module.exports = ReactCurrentOwner;
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactDOM.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactDOM.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -30182,7 +30269,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = React;
 }).call(this,require('_process'))
-},{"./ReactCurrentOwner":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactCurrentOwner.js","./ReactDOMTextComponent":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactDOMTextComponent.js","./ReactDefaultInjection":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactDefaultInjection.js","./ReactInstanceHandles":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactInstanceHandles.js","./ReactMount":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactMount.js","./ReactPerf":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactPerf.js","./ReactReconciler":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactReconciler.js","./ReactUpdates":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactUpdates.js","./ReactVersion":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactVersion.js","./findDOMNode":"/Users/preston/projects/recycling-atx/node_modules/react/lib/findDOMNode.js","./renderSubtreeIntoContainer":"/Users/preston/projects/recycling-atx/node_modules/react/lib/renderSubtreeIntoContainer.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/ExecutionEnvironment":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/ExecutionEnvironment.js","fbjs/lib/warning":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactDOMButton.js":[function(require,module,exports){
+},{"./ReactCurrentOwner":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactCurrentOwner.js","./ReactDOMTextComponent":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactDOMTextComponent.js","./ReactDefaultInjection":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactDefaultInjection.js","./ReactInstanceHandles":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactInstanceHandles.js","./ReactMount":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactMount.js","./ReactPerf":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactPerf.js","./ReactReconciler":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactReconciler.js","./ReactUpdates":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactUpdates.js","./ReactVersion":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactVersion.js","./findDOMNode":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/findDOMNode.js","./renderSubtreeIntoContainer":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/renderSubtreeIntoContainer.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/ExecutionEnvironment":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/ExecutionEnvironment.js","fbjs/lib/warning":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactDOMButton.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -30233,7 +30320,7 @@ var ReactDOMButton = {
 };
 
 module.exports = ReactDOMButton;
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactDOMComponent.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactDOMComponent.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -31198,7 +31285,7 @@ assign(ReactDOMComponent.prototype, ReactDOMComponent.Mixin, ReactMultiChild.Mix
 
 module.exports = ReactDOMComponent;
 }).call(this,require('_process'))
-},{"./AutoFocusUtils":"/Users/preston/projects/recycling-atx/node_modules/react/lib/AutoFocusUtils.js","./CSSPropertyOperations":"/Users/preston/projects/recycling-atx/node_modules/react/lib/CSSPropertyOperations.js","./DOMProperty":"/Users/preston/projects/recycling-atx/node_modules/react/lib/DOMProperty.js","./DOMPropertyOperations":"/Users/preston/projects/recycling-atx/node_modules/react/lib/DOMPropertyOperations.js","./EventConstants":"/Users/preston/projects/recycling-atx/node_modules/react/lib/EventConstants.js","./Object.assign":"/Users/preston/projects/recycling-atx/node_modules/react/lib/Object.assign.js","./ReactBrowserEventEmitter":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactBrowserEventEmitter.js","./ReactComponentBrowserEnvironment":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactComponentBrowserEnvironment.js","./ReactDOMButton":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactDOMButton.js","./ReactDOMInput":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactDOMInput.js","./ReactDOMOption":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactDOMOption.js","./ReactDOMSelect":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactDOMSelect.js","./ReactDOMTextarea":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactDOMTextarea.js","./ReactMount":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactMount.js","./ReactMultiChild":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactMultiChild.js","./ReactPerf":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactPerf.js","./ReactUpdateQueue":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactUpdateQueue.js","./canDefineProperty":"/Users/preston/projects/recycling-atx/node_modules/react/lib/canDefineProperty.js","./escapeTextContentForBrowser":"/Users/preston/projects/recycling-atx/node_modules/react/lib/escapeTextContentForBrowser.js","./isEventSupported":"/Users/preston/projects/recycling-atx/node_modules/react/lib/isEventSupported.js","./setInnerHTML":"/Users/preston/projects/recycling-atx/node_modules/react/lib/setInnerHTML.js","./setTextContent":"/Users/preston/projects/recycling-atx/node_modules/react/lib/setTextContent.js","./validateDOMNesting":"/Users/preston/projects/recycling-atx/node_modules/react/lib/validateDOMNesting.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js","fbjs/lib/keyOf":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/keyOf.js","fbjs/lib/shallowEqual":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/shallowEqual.js","fbjs/lib/warning":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactDOMFactories.js":[function(require,module,exports){
+},{"./AutoFocusUtils":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/AutoFocusUtils.js","./CSSPropertyOperations":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/CSSPropertyOperations.js","./DOMProperty":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/DOMProperty.js","./DOMPropertyOperations":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/DOMPropertyOperations.js","./EventConstants":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/EventConstants.js","./Object.assign":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/Object.assign.js","./ReactBrowserEventEmitter":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactBrowserEventEmitter.js","./ReactComponentBrowserEnvironment":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactComponentBrowserEnvironment.js","./ReactDOMButton":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactDOMButton.js","./ReactDOMInput":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactDOMInput.js","./ReactDOMOption":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactDOMOption.js","./ReactDOMSelect":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactDOMSelect.js","./ReactDOMTextarea":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactDOMTextarea.js","./ReactMount":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactMount.js","./ReactMultiChild":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactMultiChild.js","./ReactPerf":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactPerf.js","./ReactUpdateQueue":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactUpdateQueue.js","./canDefineProperty":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/canDefineProperty.js","./escapeTextContentForBrowser":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/escapeTextContentForBrowser.js","./isEventSupported":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/isEventSupported.js","./setInnerHTML":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/setInnerHTML.js","./setTextContent":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/setTextContent.js","./validateDOMNesting":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/validateDOMNesting.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js","fbjs/lib/keyOf":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/keyOf.js","fbjs/lib/shallowEqual":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/shallowEqual.js","fbjs/lib/warning":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactDOMFactories.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -31378,7 +31465,7 @@ var ReactDOMFactories = mapObject({
 
 module.exports = ReactDOMFactories;
 }).call(this,require('_process'))
-},{"./ReactElement":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactElement.js","./ReactElementValidator":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactElementValidator.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/mapObject":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/mapObject.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactDOMFeatureFlags.js":[function(require,module,exports){
+},{"./ReactElement":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactElement.js","./ReactElementValidator":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactElementValidator.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/mapObject":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/mapObject.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactDOMFeatureFlags.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -31397,7 +31484,7 @@ var ReactDOMFeatureFlags = {
 };
 
 module.exports = ReactDOMFeatureFlags;
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactDOMIDOperations.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactDOMIDOperations.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -31494,7 +31581,7 @@ ReactPerf.measureMethods(ReactDOMIDOperations, 'ReactDOMIDOperations', {
 
 module.exports = ReactDOMIDOperations;
 }).call(this,require('_process'))
-},{"./DOMChildrenOperations":"/Users/preston/projects/recycling-atx/node_modules/react/lib/DOMChildrenOperations.js","./DOMPropertyOperations":"/Users/preston/projects/recycling-atx/node_modules/react/lib/DOMPropertyOperations.js","./ReactMount":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactMount.js","./ReactPerf":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactPerf.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactDOMInput.js":[function(require,module,exports){
+},{"./DOMChildrenOperations":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/DOMChildrenOperations.js","./DOMPropertyOperations":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/DOMPropertyOperations.js","./ReactMount":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactMount.js","./ReactPerf":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactPerf.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactDOMInput.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -31650,7 +31737,7 @@ function _handleChange(event) {
 
 module.exports = ReactDOMInput;
 }).call(this,require('_process'))
-},{"./LinkedValueUtils":"/Users/preston/projects/recycling-atx/node_modules/react/lib/LinkedValueUtils.js","./Object.assign":"/Users/preston/projects/recycling-atx/node_modules/react/lib/Object.assign.js","./ReactDOMIDOperations":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactDOMIDOperations.js","./ReactMount":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactMount.js","./ReactUpdates":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactUpdates.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactDOMOption.js":[function(require,module,exports){
+},{"./LinkedValueUtils":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/LinkedValueUtils.js","./Object.assign":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/Object.assign.js","./ReactDOMIDOperations":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactDOMIDOperations.js","./ReactMount":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactMount.js","./ReactUpdates":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactUpdates.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactDOMOption.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -31739,7 +31826,7 @@ var ReactDOMOption = {
 
 module.exports = ReactDOMOption;
 }).call(this,require('_process'))
-},{"./Object.assign":"/Users/preston/projects/recycling-atx/node_modules/react/lib/Object.assign.js","./ReactChildren":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactChildren.js","./ReactDOMSelect":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactDOMSelect.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/warning":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactDOMSelect.js":[function(require,module,exports){
+},{"./Object.assign":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/Object.assign.js","./ReactChildren":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactChildren.js","./ReactDOMSelect":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactDOMSelect.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/warning":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactDOMSelect.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -31771,7 +31858,7 @@ function updateOptionsIfPendingUpdateAndMounted() {
     var value = LinkedValueUtils.getValue(props);
 
     if (value != null) {
-      updateOptions(this, props, value);
+      updateOptions(this, Boolean(props.multiple), value);
     }
   }
 }
@@ -31930,7 +32017,7 @@ function _handleChange(event) {
 
 module.exports = ReactDOMSelect;
 }).call(this,require('_process'))
-},{"./LinkedValueUtils":"/Users/preston/projects/recycling-atx/node_modules/react/lib/LinkedValueUtils.js","./Object.assign":"/Users/preston/projects/recycling-atx/node_modules/react/lib/Object.assign.js","./ReactMount":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactMount.js","./ReactUpdates":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactUpdates.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/warning":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactDOMSelection.js":[function(require,module,exports){
+},{"./LinkedValueUtils":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/LinkedValueUtils.js","./Object.assign":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/Object.assign.js","./ReactMount":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactMount.js","./ReactUpdates":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactUpdates.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/warning":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactDOMSelection.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -32143,7 +32230,7 @@ var ReactDOMSelection = {
 };
 
 module.exports = ReactDOMSelection;
-},{"./getNodeForCharacterOffset":"/Users/preston/projects/recycling-atx/node_modules/react/lib/getNodeForCharacterOffset.js","./getTextContentAccessor":"/Users/preston/projects/recycling-atx/node_modules/react/lib/getTextContentAccessor.js","fbjs/lib/ExecutionEnvironment":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/ExecutionEnvironment.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactDOMServer.js":[function(require,module,exports){
+},{"./getNodeForCharacterOffset":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/getNodeForCharacterOffset.js","./getTextContentAccessor":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/getTextContentAccessor.js","fbjs/lib/ExecutionEnvironment":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/ExecutionEnvironment.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactDOMServer.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -32170,7 +32257,7 @@ var ReactDOMServer = {
 };
 
 module.exports = ReactDOMServer;
-},{"./ReactDefaultInjection":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactDefaultInjection.js","./ReactServerRendering":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactServerRendering.js","./ReactVersion":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactVersion.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactDOMTextComponent.js":[function(require,module,exports){
+},{"./ReactDefaultInjection":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactDefaultInjection.js","./ReactServerRendering":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactServerRendering.js","./ReactVersion":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactVersion.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactDOMTextComponent.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -32300,7 +32387,7 @@ assign(ReactDOMTextComponent.prototype, {
 
 module.exports = ReactDOMTextComponent;
 }).call(this,require('_process'))
-},{"./DOMChildrenOperations":"/Users/preston/projects/recycling-atx/node_modules/react/lib/DOMChildrenOperations.js","./DOMPropertyOperations":"/Users/preston/projects/recycling-atx/node_modules/react/lib/DOMPropertyOperations.js","./Object.assign":"/Users/preston/projects/recycling-atx/node_modules/react/lib/Object.assign.js","./ReactComponentBrowserEnvironment":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactComponentBrowserEnvironment.js","./ReactMount":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactMount.js","./escapeTextContentForBrowser":"/Users/preston/projects/recycling-atx/node_modules/react/lib/escapeTextContentForBrowser.js","./setTextContent":"/Users/preston/projects/recycling-atx/node_modules/react/lib/setTextContent.js","./validateDOMNesting":"/Users/preston/projects/recycling-atx/node_modules/react/lib/validateDOMNesting.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactDOMTextarea.js":[function(require,module,exports){
+},{"./DOMChildrenOperations":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/DOMChildrenOperations.js","./DOMPropertyOperations":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/DOMPropertyOperations.js","./Object.assign":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/Object.assign.js","./ReactComponentBrowserEnvironment":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactComponentBrowserEnvironment.js","./ReactMount":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactMount.js","./escapeTextContentForBrowser":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/escapeTextContentForBrowser.js","./setTextContent":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/setTextContent.js","./validateDOMNesting":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/validateDOMNesting.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactDOMTextarea.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -32416,7 +32503,7 @@ function _handleChange(event) {
 
 module.exports = ReactDOMTextarea;
 }).call(this,require('_process'))
-},{"./LinkedValueUtils":"/Users/preston/projects/recycling-atx/node_modules/react/lib/LinkedValueUtils.js","./Object.assign":"/Users/preston/projects/recycling-atx/node_modules/react/lib/Object.assign.js","./ReactDOMIDOperations":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactDOMIDOperations.js","./ReactUpdates":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactUpdates.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js","fbjs/lib/warning":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactDefaultBatchingStrategy.js":[function(require,module,exports){
+},{"./LinkedValueUtils":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/LinkedValueUtils.js","./Object.assign":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/Object.assign.js","./ReactDOMIDOperations":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactDOMIDOperations.js","./ReactUpdates":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactUpdates.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js","fbjs/lib/warning":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactDefaultBatchingStrategy.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -32484,7 +32571,7 @@ var ReactDefaultBatchingStrategy = {
 };
 
 module.exports = ReactDefaultBatchingStrategy;
-},{"./Object.assign":"/Users/preston/projects/recycling-atx/node_modules/react/lib/Object.assign.js","./ReactUpdates":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactUpdates.js","./Transaction":"/Users/preston/projects/recycling-atx/node_modules/react/lib/Transaction.js","fbjs/lib/emptyFunction":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/emptyFunction.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactDefaultInjection.js":[function(require,module,exports){
+},{"./Object.assign":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/Object.assign.js","./ReactUpdates":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactUpdates.js","./Transaction":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/Transaction.js","fbjs/lib/emptyFunction":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/emptyFunction.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactDefaultInjection.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -32584,7 +32671,7 @@ module.exports = {
   inject: inject
 };
 }).call(this,require('_process'))
-},{"./BeforeInputEventPlugin":"/Users/preston/projects/recycling-atx/node_modules/react/lib/BeforeInputEventPlugin.js","./ChangeEventPlugin":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ChangeEventPlugin.js","./ClientReactRootIndex":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ClientReactRootIndex.js","./DefaultEventPluginOrder":"/Users/preston/projects/recycling-atx/node_modules/react/lib/DefaultEventPluginOrder.js","./EnterLeaveEventPlugin":"/Users/preston/projects/recycling-atx/node_modules/react/lib/EnterLeaveEventPlugin.js","./HTMLDOMPropertyConfig":"/Users/preston/projects/recycling-atx/node_modules/react/lib/HTMLDOMPropertyConfig.js","./ReactBrowserComponentMixin":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactBrowserComponentMixin.js","./ReactComponentBrowserEnvironment":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactComponentBrowserEnvironment.js","./ReactDOMComponent":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactDOMComponent.js","./ReactDOMTextComponent":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactDOMTextComponent.js","./ReactDefaultBatchingStrategy":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactDefaultBatchingStrategy.js","./ReactDefaultPerf":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactDefaultPerf.js","./ReactEventListener":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactEventListener.js","./ReactInjection":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactInjection.js","./ReactInstanceHandles":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactInstanceHandles.js","./ReactMount":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactMount.js","./ReactReconcileTransaction":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactReconcileTransaction.js","./SVGDOMPropertyConfig":"/Users/preston/projects/recycling-atx/node_modules/react/lib/SVGDOMPropertyConfig.js","./SelectEventPlugin":"/Users/preston/projects/recycling-atx/node_modules/react/lib/SelectEventPlugin.js","./ServerReactRootIndex":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ServerReactRootIndex.js","./SimpleEventPlugin":"/Users/preston/projects/recycling-atx/node_modules/react/lib/SimpleEventPlugin.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/ExecutionEnvironment":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/ExecutionEnvironment.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactDefaultPerf.js":[function(require,module,exports){
+},{"./BeforeInputEventPlugin":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/BeforeInputEventPlugin.js","./ChangeEventPlugin":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ChangeEventPlugin.js","./ClientReactRootIndex":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ClientReactRootIndex.js","./DefaultEventPluginOrder":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/DefaultEventPluginOrder.js","./EnterLeaveEventPlugin":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/EnterLeaveEventPlugin.js","./HTMLDOMPropertyConfig":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/HTMLDOMPropertyConfig.js","./ReactBrowserComponentMixin":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactBrowserComponentMixin.js","./ReactComponentBrowserEnvironment":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactComponentBrowserEnvironment.js","./ReactDOMComponent":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactDOMComponent.js","./ReactDOMTextComponent":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactDOMTextComponent.js","./ReactDefaultBatchingStrategy":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactDefaultBatchingStrategy.js","./ReactDefaultPerf":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactDefaultPerf.js","./ReactEventListener":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactEventListener.js","./ReactInjection":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactInjection.js","./ReactInstanceHandles":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactInstanceHandles.js","./ReactMount":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactMount.js","./ReactReconcileTransaction":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactReconcileTransaction.js","./SVGDOMPropertyConfig":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/SVGDOMPropertyConfig.js","./SelectEventPlugin":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/SelectEventPlugin.js","./ServerReactRootIndex":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ServerReactRootIndex.js","./SimpleEventPlugin":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/SimpleEventPlugin.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/ExecutionEnvironment":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/ExecutionEnvironment.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactDefaultPerf.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -32822,7 +32909,7 @@ var ReactDefaultPerf = {
 };
 
 module.exports = ReactDefaultPerf;
-},{"./DOMProperty":"/Users/preston/projects/recycling-atx/node_modules/react/lib/DOMProperty.js","./ReactDefaultPerfAnalysis":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactDefaultPerfAnalysis.js","./ReactMount":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactMount.js","./ReactPerf":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactPerf.js","fbjs/lib/performanceNow":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/performanceNow.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactDefaultPerfAnalysis.js":[function(require,module,exports){
+},{"./DOMProperty":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/DOMProperty.js","./ReactDefaultPerfAnalysis":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactDefaultPerfAnalysis.js","./ReactMount":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactMount.js","./ReactPerf":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactPerf.js","fbjs/lib/performanceNow":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/performanceNow.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactDefaultPerfAnalysis.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -32850,7 +32937,9 @@ var DOM_OPERATION_TYPES = {
   'setValueForProperty': 'update attribute',
   'setValueForAttribute': 'update attribute',
   'deleteValueForProperty': 'remove attribute',
-  'dangerouslyReplaceNodeWithMarkupByID': 'replace'
+  'setValueForStyles': 'update styles',
+  'replaceNodeWithMarkup': 'replace',
+  'updateTextContent': 'set textContent'
 };
 
 function getTotalTime(measurements) {
@@ -33022,7 +33111,7 @@ var ReactDefaultPerfAnalysis = {
 };
 
 module.exports = ReactDefaultPerfAnalysis;
-},{"./Object.assign":"/Users/preston/projects/recycling-atx/node_modules/react/lib/Object.assign.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactElement.js":[function(require,module,exports){
+},{"./Object.assign":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/Object.assign.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactElement.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-2015, Facebook, Inc.
@@ -33272,7 +33361,7 @@ ReactElement.isValidElement = function (object) {
 
 module.exports = ReactElement;
 }).call(this,require('_process'))
-},{"./Object.assign":"/Users/preston/projects/recycling-atx/node_modules/react/lib/Object.assign.js","./ReactCurrentOwner":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactCurrentOwner.js","./canDefineProperty":"/Users/preston/projects/recycling-atx/node_modules/react/lib/canDefineProperty.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactElementValidator.js":[function(require,module,exports){
+},{"./Object.assign":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/Object.assign.js","./ReactCurrentOwner":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactCurrentOwner.js","./canDefineProperty":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/canDefineProperty.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactElementValidator.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-2015, Facebook, Inc.
@@ -33556,7 +33645,7 @@ var ReactElementValidator = {
 
 module.exports = ReactElementValidator;
 }).call(this,require('_process'))
-},{"./ReactCurrentOwner":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactCurrentOwner.js","./ReactElement":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactElement.js","./ReactPropTypeLocationNames":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactPropTypeLocationNames.js","./ReactPropTypeLocations":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactPropTypeLocations.js","./canDefineProperty":"/Users/preston/projects/recycling-atx/node_modules/react/lib/canDefineProperty.js","./getIteratorFn":"/Users/preston/projects/recycling-atx/node_modules/react/lib/getIteratorFn.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js","fbjs/lib/warning":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactEmptyComponent.js":[function(require,module,exports){
+},{"./ReactCurrentOwner":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactCurrentOwner.js","./ReactElement":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactElement.js","./ReactPropTypeLocationNames":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactPropTypeLocationNames.js","./ReactPropTypeLocations":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactPropTypeLocations.js","./canDefineProperty":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/canDefineProperty.js","./getIteratorFn":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/getIteratorFn.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js","fbjs/lib/warning":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactEmptyComponent.js":[function(require,module,exports){
 /**
  * Copyright 2014-2015, Facebook, Inc.
  * All rights reserved.
@@ -33608,7 +33697,7 @@ assign(ReactEmptyComponent.prototype, {
 ReactEmptyComponent.injection = ReactEmptyComponentInjection;
 
 module.exports = ReactEmptyComponent;
-},{"./Object.assign":"/Users/preston/projects/recycling-atx/node_modules/react/lib/Object.assign.js","./ReactElement":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactElement.js","./ReactEmptyComponentRegistry":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactEmptyComponentRegistry.js","./ReactReconciler":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactReconciler.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactEmptyComponentRegistry.js":[function(require,module,exports){
+},{"./Object.assign":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/Object.assign.js","./ReactElement":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactElement.js","./ReactEmptyComponentRegistry":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactEmptyComponentRegistry.js","./ReactReconciler":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactReconciler.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactEmptyComponentRegistry.js":[function(require,module,exports){
 /**
  * Copyright 2014-2015, Facebook, Inc.
  * All rights reserved.
@@ -33657,7 +33746,7 @@ var ReactEmptyComponentRegistry = {
 };
 
 module.exports = ReactEmptyComponentRegistry;
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactErrorUtils.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactErrorUtils.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -33737,7 +33826,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = ReactErrorUtils;
 }).call(this,require('_process'))
-},{"_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactEventEmitterMixin.js":[function(require,module,exports){
+},{"_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactEventEmitterMixin.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -33776,7 +33865,7 @@ var ReactEventEmitterMixin = {
 };
 
 module.exports = ReactEventEmitterMixin;
-},{"./EventPluginHub":"/Users/preston/projects/recycling-atx/node_modules/react/lib/EventPluginHub.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactEventListener.js":[function(require,module,exports){
+},{"./EventPluginHub":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/EventPluginHub.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactEventListener.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -33988,7 +34077,7 @@ var ReactEventListener = {
 };
 
 module.exports = ReactEventListener;
-},{"./Object.assign":"/Users/preston/projects/recycling-atx/node_modules/react/lib/Object.assign.js","./PooledClass":"/Users/preston/projects/recycling-atx/node_modules/react/lib/PooledClass.js","./ReactInstanceHandles":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactInstanceHandles.js","./ReactMount":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactMount.js","./ReactUpdates":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactUpdates.js","./getEventTarget":"/Users/preston/projects/recycling-atx/node_modules/react/lib/getEventTarget.js","fbjs/lib/EventListener":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/EventListener.js","fbjs/lib/ExecutionEnvironment":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/ExecutionEnvironment.js","fbjs/lib/getUnboundedScrollPosition":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/getUnboundedScrollPosition.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactInjection.js":[function(require,module,exports){
+},{"./Object.assign":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/Object.assign.js","./PooledClass":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/PooledClass.js","./ReactInstanceHandles":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactInstanceHandles.js","./ReactMount":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactMount.js","./ReactUpdates":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactUpdates.js","./getEventTarget":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/getEventTarget.js","fbjs/lib/EventListener":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/EventListener.js","fbjs/lib/ExecutionEnvironment":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/ExecutionEnvironment.js","fbjs/lib/getUnboundedScrollPosition":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/getUnboundedScrollPosition.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactInjection.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -34027,7 +34116,7 @@ var ReactInjection = {
 };
 
 module.exports = ReactInjection;
-},{"./DOMProperty":"/Users/preston/projects/recycling-atx/node_modules/react/lib/DOMProperty.js","./EventPluginHub":"/Users/preston/projects/recycling-atx/node_modules/react/lib/EventPluginHub.js","./ReactBrowserEventEmitter":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactBrowserEventEmitter.js","./ReactClass":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactClass.js","./ReactComponentEnvironment":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactComponentEnvironment.js","./ReactEmptyComponent":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactEmptyComponent.js","./ReactNativeComponent":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactNativeComponent.js","./ReactPerf":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactPerf.js","./ReactRootIndex":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactRootIndex.js","./ReactUpdates":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactUpdates.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactInputSelection.js":[function(require,module,exports){
+},{"./DOMProperty":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/DOMProperty.js","./EventPluginHub":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/EventPluginHub.js","./ReactBrowserEventEmitter":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactBrowserEventEmitter.js","./ReactClass":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactClass.js","./ReactComponentEnvironment":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactComponentEnvironment.js","./ReactEmptyComponent":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactEmptyComponent.js","./ReactNativeComponent":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactNativeComponent.js","./ReactPerf":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactPerf.js","./ReactRootIndex":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactRootIndex.js","./ReactUpdates":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactUpdates.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactInputSelection.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -34152,7 +34241,7 @@ var ReactInputSelection = {
 };
 
 module.exports = ReactInputSelection;
-},{"./ReactDOMSelection":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactDOMSelection.js","fbjs/lib/containsNode":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/containsNode.js","fbjs/lib/focusNode":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/focusNode.js","fbjs/lib/getActiveElement":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/getActiveElement.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactInstanceHandles.js":[function(require,module,exports){
+},{"./ReactDOMSelection":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactDOMSelection.js","fbjs/lib/containsNode":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/containsNode.js","fbjs/lib/focusNode":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/focusNode.js","fbjs/lib/getActiveElement":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/getActiveElement.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactInstanceHandles.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -34457,7 +34546,7 @@ var ReactInstanceHandles = {
 
 module.exports = ReactInstanceHandles;
 }).call(this,require('_process'))
-},{"./ReactRootIndex":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactRootIndex.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactInstanceMap.js":[function(require,module,exports){
+},{"./ReactRootIndex":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactRootIndex.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactInstanceMap.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -34505,7 +34594,7 @@ var ReactInstanceMap = {
 };
 
 module.exports = ReactInstanceMap;
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactIsomorphic.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactIsomorphic.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -34582,7 +34671,7 @@ var React = {
 
 module.exports = React;
 }).call(this,require('_process'))
-},{"./Object.assign":"/Users/preston/projects/recycling-atx/node_modules/react/lib/Object.assign.js","./ReactChildren":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactChildren.js","./ReactClass":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactClass.js","./ReactComponent":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactComponent.js","./ReactDOMFactories":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactDOMFactories.js","./ReactElement":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactElement.js","./ReactElementValidator":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactElementValidator.js","./ReactPropTypes":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactPropTypes.js","./ReactVersion":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactVersion.js","./onlyChild":"/Users/preston/projects/recycling-atx/node_modules/react/lib/onlyChild.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactMarkupChecksum.js":[function(require,module,exports){
+},{"./Object.assign":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/Object.assign.js","./ReactChildren":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactChildren.js","./ReactClass":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactClass.js","./ReactComponent":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactComponent.js","./ReactDOMFactories":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactDOMFactories.js","./ReactElement":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactElement.js","./ReactElementValidator":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactElementValidator.js","./ReactPropTypes":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactPropTypes.js","./ReactVersion":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactVersion.js","./onlyChild":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/onlyChild.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactMarkupChecksum.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -34628,7 +34717,7 @@ var ReactMarkupChecksum = {
 };
 
 module.exports = ReactMarkupChecksum;
-},{"./adler32":"/Users/preston/projects/recycling-atx/node_modules/react/lib/adler32.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactMount.js":[function(require,module,exports){
+},{"./adler32":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/adler32.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactMount.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -35481,7 +35570,7 @@ ReactPerf.measureMethods(ReactMount, 'ReactMount', {
 
 module.exports = ReactMount;
 }).call(this,require('_process'))
-},{"./DOMProperty":"/Users/preston/projects/recycling-atx/node_modules/react/lib/DOMProperty.js","./Object.assign":"/Users/preston/projects/recycling-atx/node_modules/react/lib/Object.assign.js","./ReactBrowserEventEmitter":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactBrowserEventEmitter.js","./ReactCurrentOwner":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactCurrentOwner.js","./ReactDOMFeatureFlags":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactDOMFeatureFlags.js","./ReactElement":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactElement.js","./ReactEmptyComponentRegistry":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactEmptyComponentRegistry.js","./ReactInstanceHandles":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactInstanceHandles.js","./ReactInstanceMap":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactInstanceMap.js","./ReactMarkupChecksum":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactMarkupChecksum.js","./ReactPerf":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactPerf.js","./ReactReconciler":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactReconciler.js","./ReactUpdateQueue":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactUpdateQueue.js","./ReactUpdates":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactUpdates.js","./instantiateReactComponent":"/Users/preston/projects/recycling-atx/node_modules/react/lib/instantiateReactComponent.js","./setInnerHTML":"/Users/preston/projects/recycling-atx/node_modules/react/lib/setInnerHTML.js","./shouldUpdateReactComponent":"/Users/preston/projects/recycling-atx/node_modules/react/lib/shouldUpdateReactComponent.js","./validateDOMNesting":"/Users/preston/projects/recycling-atx/node_modules/react/lib/validateDOMNesting.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/containsNode":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/containsNode.js","fbjs/lib/emptyObject":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/emptyObject.js","fbjs/lib/invariant":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js","fbjs/lib/warning":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactMultiChild.js":[function(require,module,exports){
+},{"./DOMProperty":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/DOMProperty.js","./Object.assign":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/Object.assign.js","./ReactBrowserEventEmitter":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactBrowserEventEmitter.js","./ReactCurrentOwner":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactCurrentOwner.js","./ReactDOMFeatureFlags":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactDOMFeatureFlags.js","./ReactElement":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactElement.js","./ReactEmptyComponentRegistry":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactEmptyComponentRegistry.js","./ReactInstanceHandles":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactInstanceHandles.js","./ReactInstanceMap":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactInstanceMap.js","./ReactMarkupChecksum":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactMarkupChecksum.js","./ReactPerf":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactPerf.js","./ReactReconciler":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactReconciler.js","./ReactUpdateQueue":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactUpdateQueue.js","./ReactUpdates":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactUpdates.js","./instantiateReactComponent":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/instantiateReactComponent.js","./setInnerHTML":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/setInnerHTML.js","./shouldUpdateReactComponent":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/shouldUpdateReactComponent.js","./validateDOMNesting":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/validateDOMNesting.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/containsNode":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/containsNode.js","fbjs/lib/emptyObject":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/emptyObject.js","fbjs/lib/invariant":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js","fbjs/lib/warning":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactMultiChild.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -35980,7 +36069,7 @@ var ReactMultiChild = {
 
 module.exports = ReactMultiChild;
 }).call(this,require('_process'))
-},{"./ReactChildReconciler":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactChildReconciler.js","./ReactComponentEnvironment":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactComponentEnvironment.js","./ReactCurrentOwner":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactCurrentOwner.js","./ReactMultiChildUpdateTypes":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactMultiChildUpdateTypes.js","./ReactReconciler":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactReconciler.js","./flattenChildren":"/Users/preston/projects/recycling-atx/node_modules/react/lib/flattenChildren.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactMultiChildUpdateTypes.js":[function(require,module,exports){
+},{"./ReactChildReconciler":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactChildReconciler.js","./ReactComponentEnvironment":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactComponentEnvironment.js","./ReactCurrentOwner":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactCurrentOwner.js","./ReactMultiChildUpdateTypes":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactMultiChildUpdateTypes.js","./ReactReconciler":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactReconciler.js","./flattenChildren":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/flattenChildren.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactMultiChildUpdateTypes.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -36013,7 +36102,7 @@ var ReactMultiChildUpdateTypes = keyMirror({
 });
 
 module.exports = ReactMultiChildUpdateTypes;
-},{"fbjs/lib/keyMirror":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/keyMirror.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactNativeComponent.js":[function(require,module,exports){
+},{"fbjs/lib/keyMirror":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/keyMirror.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactNativeComponent.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-2015, Facebook, Inc.
@@ -36110,7 +36199,7 @@ var ReactNativeComponent = {
 
 module.exports = ReactNativeComponent;
 }).call(this,require('_process'))
-},{"./Object.assign":"/Users/preston/projects/recycling-atx/node_modules/react/lib/Object.assign.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactNoopUpdateQueue.js":[function(require,module,exports){
+},{"./Object.assign":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/Object.assign.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactNoopUpdateQueue.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2015, Facebook, Inc.
@@ -36231,7 +36320,7 @@ var ReactNoopUpdateQueue = {
 
 module.exports = ReactNoopUpdateQueue;
 }).call(this,require('_process'))
-},{"_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/warning":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactOwner.js":[function(require,module,exports){
+},{"_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/warning":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactOwner.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -36325,7 +36414,7 @@ var ReactOwner = {
 
 module.exports = ReactOwner;
 }).call(this,require('_process'))
-},{"_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactPerf.js":[function(require,module,exports){
+},{"_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactPerf.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -36424,7 +36513,7 @@ function _noMeasure(objName, fnName, func) {
 
 module.exports = ReactPerf;
 }).call(this,require('_process'))
-},{"_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactPropTypeLocationNames.js":[function(require,module,exports){
+},{"_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactPropTypeLocationNames.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -36451,7 +36540,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = ReactPropTypeLocationNames;
 }).call(this,require('_process'))
-},{"_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactPropTypeLocations.js":[function(require,module,exports){
+},{"_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactPropTypeLocations.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -36474,7 +36563,7 @@ var ReactPropTypeLocations = keyMirror({
 });
 
 module.exports = ReactPropTypeLocations;
-},{"fbjs/lib/keyMirror":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/keyMirror.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactPropTypes.js":[function(require,module,exports){
+},{"fbjs/lib/keyMirror":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/keyMirror.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactPropTypes.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -36831,7 +36920,7 @@ function getClassName(propValue) {
 }
 
 module.exports = ReactPropTypes;
-},{"./ReactElement":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactElement.js","./ReactPropTypeLocationNames":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactPropTypeLocationNames.js","./getIteratorFn":"/Users/preston/projects/recycling-atx/node_modules/react/lib/getIteratorFn.js","fbjs/lib/emptyFunction":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/emptyFunction.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactReconcileTransaction.js":[function(require,module,exports){
+},{"./ReactElement":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactElement.js","./ReactPropTypeLocationNames":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactPropTypeLocationNames.js","./getIteratorFn":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/getIteratorFn.js","fbjs/lib/emptyFunction":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/emptyFunction.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactReconcileTransaction.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -36983,7 +37072,7 @@ assign(ReactReconcileTransaction.prototype, Transaction.Mixin, Mixin);
 PooledClass.addPoolingTo(ReactReconcileTransaction);
 
 module.exports = ReactReconcileTransaction;
-},{"./CallbackQueue":"/Users/preston/projects/recycling-atx/node_modules/react/lib/CallbackQueue.js","./Object.assign":"/Users/preston/projects/recycling-atx/node_modules/react/lib/Object.assign.js","./PooledClass":"/Users/preston/projects/recycling-atx/node_modules/react/lib/PooledClass.js","./ReactBrowserEventEmitter":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactBrowserEventEmitter.js","./ReactDOMFeatureFlags":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactDOMFeatureFlags.js","./ReactInputSelection":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactInputSelection.js","./Transaction":"/Users/preston/projects/recycling-atx/node_modules/react/lib/Transaction.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactReconciler.js":[function(require,module,exports){
+},{"./CallbackQueue":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/CallbackQueue.js","./Object.assign":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/Object.assign.js","./PooledClass":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/PooledClass.js","./ReactBrowserEventEmitter":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactBrowserEventEmitter.js","./ReactDOMFeatureFlags":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactDOMFeatureFlags.js","./ReactInputSelection":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactInputSelection.js","./Transaction":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/Transaction.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactReconciler.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -37091,7 +37180,7 @@ var ReactReconciler = {
 };
 
 module.exports = ReactReconciler;
-},{"./ReactRef":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactRef.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactRef.js":[function(require,module,exports){
+},{"./ReactRef":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactRef.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactRef.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -37170,7 +37259,7 @@ ReactRef.detachRefs = function (instance, element) {
 };
 
 module.exports = ReactRef;
-},{"./ReactOwner":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactOwner.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactRootIndex.js":[function(require,module,exports){
+},{"./ReactOwner":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactOwner.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactRootIndex.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -37200,7 +37289,7 @@ var ReactRootIndex = {
 };
 
 module.exports = ReactRootIndex;
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactServerBatchingStrategy.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactServerBatchingStrategy.js":[function(require,module,exports){
 /**
  * Copyright 2014-2015, Facebook, Inc.
  * All rights reserved.
@@ -37224,7 +37313,7 @@ var ReactServerBatchingStrategy = {
 };
 
 module.exports = ReactServerBatchingStrategy;
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactServerRendering.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactServerRendering.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -37310,7 +37399,7 @@ module.exports = {
   renderToStaticMarkup: renderToStaticMarkup
 };
 }).call(this,require('_process'))
-},{"./ReactDefaultBatchingStrategy":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactDefaultBatchingStrategy.js","./ReactElement":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactElement.js","./ReactInstanceHandles":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactInstanceHandles.js","./ReactMarkupChecksum":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactMarkupChecksum.js","./ReactServerBatchingStrategy":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactServerBatchingStrategy.js","./ReactServerRenderingTransaction":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactServerRenderingTransaction.js","./ReactUpdates":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactUpdates.js","./instantiateReactComponent":"/Users/preston/projects/recycling-atx/node_modules/react/lib/instantiateReactComponent.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/emptyObject":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/emptyObject.js","fbjs/lib/invariant":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactServerRenderingTransaction.js":[function(require,module,exports){
+},{"./ReactDefaultBatchingStrategy":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactDefaultBatchingStrategy.js","./ReactElement":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactElement.js","./ReactInstanceHandles":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactInstanceHandles.js","./ReactMarkupChecksum":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactMarkupChecksum.js","./ReactServerBatchingStrategy":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactServerBatchingStrategy.js","./ReactServerRenderingTransaction":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactServerRenderingTransaction.js","./ReactUpdates":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactUpdates.js","./instantiateReactComponent":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/instantiateReactComponent.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/emptyObject":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/emptyObject.js","fbjs/lib/invariant":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactServerRenderingTransaction.js":[function(require,module,exports){
 /**
  * Copyright 2014-2015, Facebook, Inc.
  * All rights reserved.
@@ -37398,7 +37487,7 @@ assign(ReactServerRenderingTransaction.prototype, Transaction.Mixin, Mixin);
 PooledClass.addPoolingTo(ReactServerRenderingTransaction);
 
 module.exports = ReactServerRenderingTransaction;
-},{"./CallbackQueue":"/Users/preston/projects/recycling-atx/node_modules/react/lib/CallbackQueue.js","./Object.assign":"/Users/preston/projects/recycling-atx/node_modules/react/lib/Object.assign.js","./PooledClass":"/Users/preston/projects/recycling-atx/node_modules/react/lib/PooledClass.js","./Transaction":"/Users/preston/projects/recycling-atx/node_modules/react/lib/Transaction.js","fbjs/lib/emptyFunction":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/emptyFunction.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactUpdateQueue.js":[function(require,module,exports){
+},{"./CallbackQueue":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/CallbackQueue.js","./Object.assign":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/Object.assign.js","./PooledClass":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/PooledClass.js","./Transaction":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/Transaction.js","fbjs/lib/emptyFunction":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/emptyFunction.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactUpdateQueue.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2015, Facebook, Inc.
@@ -37658,7 +37747,7 @@ var ReactUpdateQueue = {
 
 module.exports = ReactUpdateQueue;
 }).call(this,require('_process'))
-},{"./Object.assign":"/Users/preston/projects/recycling-atx/node_modules/react/lib/Object.assign.js","./ReactCurrentOwner":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactCurrentOwner.js","./ReactElement":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactElement.js","./ReactInstanceMap":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactInstanceMap.js","./ReactUpdates":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactUpdates.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js","fbjs/lib/warning":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactUpdates.js":[function(require,module,exports){
+},{"./Object.assign":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/Object.assign.js","./ReactCurrentOwner":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactCurrentOwner.js","./ReactElement":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactElement.js","./ReactInstanceMap":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactInstanceMap.js","./ReactUpdates":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactUpdates.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js","fbjs/lib/warning":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactUpdates.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -37884,7 +37973,7 @@ var ReactUpdates = {
 
 module.exports = ReactUpdates;
 }).call(this,require('_process'))
-},{"./CallbackQueue":"/Users/preston/projects/recycling-atx/node_modules/react/lib/CallbackQueue.js","./Object.assign":"/Users/preston/projects/recycling-atx/node_modules/react/lib/Object.assign.js","./PooledClass":"/Users/preston/projects/recycling-atx/node_modules/react/lib/PooledClass.js","./ReactPerf":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactPerf.js","./ReactReconciler":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactReconciler.js","./Transaction":"/Users/preston/projects/recycling-atx/node_modules/react/lib/Transaction.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactVersion.js":[function(require,module,exports){
+},{"./CallbackQueue":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/CallbackQueue.js","./Object.assign":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/Object.assign.js","./PooledClass":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/PooledClass.js","./ReactPerf":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactPerf.js","./ReactReconciler":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactReconciler.js","./Transaction":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/Transaction.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactVersion.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -37898,8 +37987,8 @@ module.exports = ReactUpdates;
 
 'use strict';
 
-module.exports = '0.14.3';
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/SVGDOMPropertyConfig.js":[function(require,module,exports){
+module.exports = '0.14.5';
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/SVGDOMPropertyConfig.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -38027,7 +38116,7 @@ var SVGDOMPropertyConfig = {
 };
 
 module.exports = SVGDOMPropertyConfig;
-},{"./DOMProperty":"/Users/preston/projects/recycling-atx/node_modules/react/lib/DOMProperty.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/SelectEventPlugin.js":[function(require,module,exports){
+},{"./DOMProperty":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/DOMProperty.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/SelectEventPlugin.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -38229,7 +38318,7 @@ var SelectEventPlugin = {
 };
 
 module.exports = SelectEventPlugin;
-},{"./EventConstants":"/Users/preston/projects/recycling-atx/node_modules/react/lib/EventConstants.js","./EventPropagators":"/Users/preston/projects/recycling-atx/node_modules/react/lib/EventPropagators.js","./ReactInputSelection":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactInputSelection.js","./SyntheticEvent":"/Users/preston/projects/recycling-atx/node_modules/react/lib/SyntheticEvent.js","./isTextInputElement":"/Users/preston/projects/recycling-atx/node_modules/react/lib/isTextInputElement.js","fbjs/lib/ExecutionEnvironment":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/ExecutionEnvironment.js","fbjs/lib/getActiveElement":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/getActiveElement.js","fbjs/lib/keyOf":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/keyOf.js","fbjs/lib/shallowEqual":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/shallowEqual.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ServerReactRootIndex.js":[function(require,module,exports){
+},{"./EventConstants":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/EventConstants.js","./EventPropagators":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/EventPropagators.js","./ReactInputSelection":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactInputSelection.js","./SyntheticEvent":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/SyntheticEvent.js","./isTextInputElement":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/isTextInputElement.js","fbjs/lib/ExecutionEnvironment":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/ExecutionEnvironment.js","fbjs/lib/getActiveElement":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/getActiveElement.js","fbjs/lib/keyOf":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/keyOf.js","fbjs/lib/shallowEqual":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/shallowEqual.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ServerReactRootIndex.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -38259,7 +38348,7 @@ var ServerReactRootIndex = {
 };
 
 module.exports = ServerReactRootIndex;
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/SimpleEventPlugin.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/SimpleEventPlugin.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -38849,7 +38938,7 @@ var SimpleEventPlugin = {
 
 module.exports = SimpleEventPlugin;
 }).call(this,require('_process'))
-},{"./EventConstants":"/Users/preston/projects/recycling-atx/node_modules/react/lib/EventConstants.js","./EventPropagators":"/Users/preston/projects/recycling-atx/node_modules/react/lib/EventPropagators.js","./ReactMount":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactMount.js","./SyntheticClipboardEvent":"/Users/preston/projects/recycling-atx/node_modules/react/lib/SyntheticClipboardEvent.js","./SyntheticDragEvent":"/Users/preston/projects/recycling-atx/node_modules/react/lib/SyntheticDragEvent.js","./SyntheticEvent":"/Users/preston/projects/recycling-atx/node_modules/react/lib/SyntheticEvent.js","./SyntheticFocusEvent":"/Users/preston/projects/recycling-atx/node_modules/react/lib/SyntheticFocusEvent.js","./SyntheticKeyboardEvent":"/Users/preston/projects/recycling-atx/node_modules/react/lib/SyntheticKeyboardEvent.js","./SyntheticMouseEvent":"/Users/preston/projects/recycling-atx/node_modules/react/lib/SyntheticMouseEvent.js","./SyntheticTouchEvent":"/Users/preston/projects/recycling-atx/node_modules/react/lib/SyntheticTouchEvent.js","./SyntheticUIEvent":"/Users/preston/projects/recycling-atx/node_modules/react/lib/SyntheticUIEvent.js","./SyntheticWheelEvent":"/Users/preston/projects/recycling-atx/node_modules/react/lib/SyntheticWheelEvent.js","./getEventCharCode":"/Users/preston/projects/recycling-atx/node_modules/react/lib/getEventCharCode.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/EventListener":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/EventListener.js","fbjs/lib/emptyFunction":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/emptyFunction.js","fbjs/lib/invariant":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js","fbjs/lib/keyOf":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/keyOf.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/SyntheticClipboardEvent.js":[function(require,module,exports){
+},{"./EventConstants":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/EventConstants.js","./EventPropagators":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/EventPropagators.js","./ReactMount":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactMount.js","./SyntheticClipboardEvent":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/SyntheticClipboardEvent.js","./SyntheticDragEvent":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/SyntheticDragEvent.js","./SyntheticEvent":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/SyntheticEvent.js","./SyntheticFocusEvent":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/SyntheticFocusEvent.js","./SyntheticKeyboardEvent":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/SyntheticKeyboardEvent.js","./SyntheticMouseEvent":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/SyntheticMouseEvent.js","./SyntheticTouchEvent":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/SyntheticTouchEvent.js","./SyntheticUIEvent":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/SyntheticUIEvent.js","./SyntheticWheelEvent":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/SyntheticWheelEvent.js","./getEventCharCode":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/getEventCharCode.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/EventListener":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/EventListener.js","fbjs/lib/emptyFunction":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/emptyFunction.js","fbjs/lib/invariant":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js","fbjs/lib/keyOf":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/keyOf.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/SyntheticClipboardEvent.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -38889,7 +38978,7 @@ function SyntheticClipboardEvent(dispatchConfig, dispatchMarker, nativeEvent, na
 SyntheticEvent.augmentClass(SyntheticClipboardEvent, ClipboardEventInterface);
 
 module.exports = SyntheticClipboardEvent;
-},{"./SyntheticEvent":"/Users/preston/projects/recycling-atx/node_modules/react/lib/SyntheticEvent.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/SyntheticCompositionEvent.js":[function(require,module,exports){
+},{"./SyntheticEvent":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/SyntheticEvent.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/SyntheticCompositionEvent.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -38927,7 +39016,7 @@ function SyntheticCompositionEvent(dispatchConfig, dispatchMarker, nativeEvent, 
 SyntheticEvent.augmentClass(SyntheticCompositionEvent, CompositionEventInterface);
 
 module.exports = SyntheticCompositionEvent;
-},{"./SyntheticEvent":"/Users/preston/projects/recycling-atx/node_modules/react/lib/SyntheticEvent.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/SyntheticDragEvent.js":[function(require,module,exports){
+},{"./SyntheticEvent":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/SyntheticEvent.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/SyntheticDragEvent.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -38965,7 +39054,7 @@ function SyntheticDragEvent(dispatchConfig, dispatchMarker, nativeEvent, nativeE
 SyntheticMouseEvent.augmentClass(SyntheticDragEvent, DragEventInterface);
 
 module.exports = SyntheticDragEvent;
-},{"./SyntheticMouseEvent":"/Users/preston/projects/recycling-atx/node_modules/react/lib/SyntheticMouseEvent.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/SyntheticEvent.js":[function(require,module,exports){
+},{"./SyntheticMouseEvent":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/SyntheticMouseEvent.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/SyntheticEvent.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -39145,7 +39234,7 @@ PooledClass.addPoolingTo(SyntheticEvent, PooledClass.fourArgumentPooler);
 
 module.exports = SyntheticEvent;
 }).call(this,require('_process'))
-},{"./Object.assign":"/Users/preston/projects/recycling-atx/node_modules/react/lib/Object.assign.js","./PooledClass":"/Users/preston/projects/recycling-atx/node_modules/react/lib/PooledClass.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/emptyFunction":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/emptyFunction.js","fbjs/lib/warning":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/SyntheticFocusEvent.js":[function(require,module,exports){
+},{"./Object.assign":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/Object.assign.js","./PooledClass":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/PooledClass.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/emptyFunction":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/emptyFunction.js","fbjs/lib/warning":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/SyntheticFocusEvent.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -39183,7 +39272,7 @@ function SyntheticFocusEvent(dispatchConfig, dispatchMarker, nativeEvent, native
 SyntheticUIEvent.augmentClass(SyntheticFocusEvent, FocusEventInterface);
 
 module.exports = SyntheticFocusEvent;
-},{"./SyntheticUIEvent":"/Users/preston/projects/recycling-atx/node_modules/react/lib/SyntheticUIEvent.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/SyntheticInputEvent.js":[function(require,module,exports){
+},{"./SyntheticUIEvent":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/SyntheticUIEvent.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/SyntheticInputEvent.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -39222,7 +39311,7 @@ function SyntheticInputEvent(dispatchConfig, dispatchMarker, nativeEvent, native
 SyntheticEvent.augmentClass(SyntheticInputEvent, InputEventInterface);
 
 module.exports = SyntheticInputEvent;
-},{"./SyntheticEvent":"/Users/preston/projects/recycling-atx/node_modules/react/lib/SyntheticEvent.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/SyntheticKeyboardEvent.js":[function(require,module,exports){
+},{"./SyntheticEvent":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/SyntheticEvent.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/SyntheticKeyboardEvent.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -39308,7 +39397,7 @@ function SyntheticKeyboardEvent(dispatchConfig, dispatchMarker, nativeEvent, nat
 SyntheticUIEvent.augmentClass(SyntheticKeyboardEvent, KeyboardEventInterface);
 
 module.exports = SyntheticKeyboardEvent;
-},{"./SyntheticUIEvent":"/Users/preston/projects/recycling-atx/node_modules/react/lib/SyntheticUIEvent.js","./getEventCharCode":"/Users/preston/projects/recycling-atx/node_modules/react/lib/getEventCharCode.js","./getEventKey":"/Users/preston/projects/recycling-atx/node_modules/react/lib/getEventKey.js","./getEventModifierState":"/Users/preston/projects/recycling-atx/node_modules/react/lib/getEventModifierState.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/SyntheticMouseEvent.js":[function(require,module,exports){
+},{"./SyntheticUIEvent":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/SyntheticUIEvent.js","./getEventCharCode":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/getEventCharCode.js","./getEventKey":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/getEventKey.js","./getEventModifierState":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/getEventModifierState.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/SyntheticMouseEvent.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -39382,7 +39471,7 @@ function SyntheticMouseEvent(dispatchConfig, dispatchMarker, nativeEvent, native
 SyntheticUIEvent.augmentClass(SyntheticMouseEvent, MouseEventInterface);
 
 module.exports = SyntheticMouseEvent;
-},{"./SyntheticUIEvent":"/Users/preston/projects/recycling-atx/node_modules/react/lib/SyntheticUIEvent.js","./ViewportMetrics":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ViewportMetrics.js","./getEventModifierState":"/Users/preston/projects/recycling-atx/node_modules/react/lib/getEventModifierState.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/SyntheticTouchEvent.js":[function(require,module,exports){
+},{"./SyntheticUIEvent":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/SyntheticUIEvent.js","./ViewportMetrics":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ViewportMetrics.js","./getEventModifierState":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/getEventModifierState.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/SyntheticTouchEvent.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -39429,7 +39518,7 @@ function SyntheticTouchEvent(dispatchConfig, dispatchMarker, nativeEvent, native
 SyntheticUIEvent.augmentClass(SyntheticTouchEvent, TouchEventInterface);
 
 module.exports = SyntheticTouchEvent;
-},{"./SyntheticUIEvent":"/Users/preston/projects/recycling-atx/node_modules/react/lib/SyntheticUIEvent.js","./getEventModifierState":"/Users/preston/projects/recycling-atx/node_modules/react/lib/getEventModifierState.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/SyntheticUIEvent.js":[function(require,module,exports){
+},{"./SyntheticUIEvent":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/SyntheticUIEvent.js","./getEventModifierState":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/getEventModifierState.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/SyntheticUIEvent.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -39490,7 +39579,7 @@ function SyntheticUIEvent(dispatchConfig, dispatchMarker, nativeEvent, nativeEve
 SyntheticEvent.augmentClass(SyntheticUIEvent, UIEventInterface);
 
 module.exports = SyntheticUIEvent;
-},{"./SyntheticEvent":"/Users/preston/projects/recycling-atx/node_modules/react/lib/SyntheticEvent.js","./getEventTarget":"/Users/preston/projects/recycling-atx/node_modules/react/lib/getEventTarget.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/SyntheticWheelEvent.js":[function(require,module,exports){
+},{"./SyntheticEvent":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/SyntheticEvent.js","./getEventTarget":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/getEventTarget.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/SyntheticWheelEvent.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -39546,7 +39635,7 @@ function SyntheticWheelEvent(dispatchConfig, dispatchMarker, nativeEvent, native
 SyntheticMouseEvent.augmentClass(SyntheticWheelEvent, WheelEventInterface);
 
 module.exports = SyntheticWheelEvent;
-},{"./SyntheticMouseEvent":"/Users/preston/projects/recycling-atx/node_modules/react/lib/SyntheticMouseEvent.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/Transaction.js":[function(require,module,exports){
+},{"./SyntheticMouseEvent":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/SyntheticMouseEvent.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/Transaction.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -39780,7 +39869,7 @@ var Transaction = {
 
 module.exports = Transaction;
 }).call(this,require('_process'))
-},{"_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/ViewportMetrics.js":[function(require,module,exports){
+},{"_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ViewportMetrics.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -39808,7 +39897,7 @@ var ViewportMetrics = {
 };
 
 module.exports = ViewportMetrics;
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/accumulateInto.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/accumulateInto.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-2015, Facebook, Inc.
@@ -39870,7 +39959,7 @@ function accumulateInto(current, next) {
 
 module.exports = accumulateInto;
 }).call(this,require('_process'))
-},{"_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/adler32.js":[function(require,module,exports){
+},{"_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/adler32.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -39913,7 +40002,7 @@ function adler32(data) {
 }
 
 module.exports = adler32;
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/canDefineProperty.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/canDefineProperty.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -39940,7 +40029,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = canDefineProperty;
 }).call(this,require('_process'))
-},{"_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/dangerousStyleValue.js":[function(require,module,exports){
+},{"_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/dangerousStyleValue.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -39996,7 +40085,7 @@ function dangerousStyleValue(name, value) {
 }
 
 module.exports = dangerousStyleValue;
-},{"./CSSProperty":"/Users/preston/projects/recycling-atx/node_modules/react/lib/CSSProperty.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/deprecated.js":[function(require,module,exports){
+},{"./CSSProperty":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/CSSProperty.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/deprecated.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -40047,7 +40136,7 @@ function deprecated(fnName, newModule, newPackage, ctx, fn) {
 
 module.exports = deprecated;
 }).call(this,require('_process'))
-},{"./Object.assign":"/Users/preston/projects/recycling-atx/node_modules/react/lib/Object.assign.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/warning":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/escapeTextContentForBrowser.js":[function(require,module,exports){
+},{"./Object.assign":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/Object.assign.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/warning":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/escapeTextContentForBrowser.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -40086,7 +40175,7 @@ function escapeTextContentForBrowser(text) {
 }
 
 module.exports = escapeTextContentForBrowser;
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/findDOMNode.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/findDOMNode.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -40138,7 +40227,7 @@ function findDOMNode(componentOrElement) {
 
 module.exports = findDOMNode;
 }).call(this,require('_process'))
-},{"./ReactCurrentOwner":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactCurrentOwner.js","./ReactInstanceMap":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactInstanceMap.js","./ReactMount":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactMount.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js","fbjs/lib/warning":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/flattenChildren.js":[function(require,module,exports){
+},{"./ReactCurrentOwner":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactCurrentOwner.js","./ReactInstanceMap":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactInstanceMap.js","./ReactMount":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactMount.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js","fbjs/lib/warning":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/flattenChildren.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -40189,7 +40278,7 @@ function flattenChildren(children) {
 
 module.exports = flattenChildren;
 }).call(this,require('_process'))
-},{"./traverseAllChildren":"/Users/preston/projects/recycling-atx/node_modules/react/lib/traverseAllChildren.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/warning":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/forEachAccumulated.js":[function(require,module,exports){
+},{"./traverseAllChildren":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/traverseAllChildren.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/warning":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/forEachAccumulated.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -40219,7 +40308,7 @@ var forEachAccumulated = function (arr, cb, scope) {
 };
 
 module.exports = forEachAccumulated;
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/getEventCharCode.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/getEventCharCode.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -40270,7 +40359,7 @@ function getEventCharCode(nativeEvent) {
 }
 
 module.exports = getEventCharCode;
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/getEventKey.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/getEventKey.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -40374,7 +40463,7 @@ function getEventKey(nativeEvent) {
 }
 
 module.exports = getEventKey;
-},{"./getEventCharCode":"/Users/preston/projects/recycling-atx/node_modules/react/lib/getEventCharCode.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/getEventModifierState.js":[function(require,module,exports){
+},{"./getEventCharCode":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/getEventCharCode.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/getEventModifierState.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -40419,7 +40508,7 @@ function getEventModifierState(nativeEvent) {
 }
 
 module.exports = getEventModifierState;
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/getEventTarget.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/getEventTarget.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -40449,7 +40538,7 @@ function getEventTarget(nativeEvent) {
 }
 
 module.exports = getEventTarget;
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/getIteratorFn.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/getIteratorFn.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -40490,7 +40579,7 @@ function getIteratorFn(maybeIterable) {
 }
 
 module.exports = getIteratorFn;
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/getNodeForCharacterOffset.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/getNodeForCharacterOffset.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -40564,7 +40653,7 @@ function getNodeForCharacterOffset(root, offset) {
 }
 
 module.exports = getNodeForCharacterOffset;
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/getTextContentAccessor.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/getTextContentAccessor.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -40598,7 +40687,7 @@ function getTextContentAccessor() {
 }
 
 module.exports = getTextContentAccessor;
-},{"fbjs/lib/ExecutionEnvironment":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/ExecutionEnvironment.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/instantiateReactComponent.js":[function(require,module,exports){
+},{"fbjs/lib/ExecutionEnvironment":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/ExecutionEnvironment.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/instantiateReactComponent.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -40713,7 +40802,7 @@ function instantiateReactComponent(node) {
 
 module.exports = instantiateReactComponent;
 }).call(this,require('_process'))
-},{"./Object.assign":"/Users/preston/projects/recycling-atx/node_modules/react/lib/Object.assign.js","./ReactCompositeComponent":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactCompositeComponent.js","./ReactEmptyComponent":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactEmptyComponent.js","./ReactNativeComponent":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactNativeComponent.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js","fbjs/lib/warning":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/isEventSupported.js":[function(require,module,exports){
+},{"./Object.assign":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/Object.assign.js","./ReactCompositeComponent":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactCompositeComponent.js","./ReactEmptyComponent":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactEmptyComponent.js","./ReactNativeComponent":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactNativeComponent.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js","fbjs/lib/warning":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/isEventSupported.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -40774,7 +40863,7 @@ function isEventSupported(eventNameSuffix, capture) {
 }
 
 module.exports = isEventSupported;
-},{"fbjs/lib/ExecutionEnvironment":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/ExecutionEnvironment.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/isTextInputElement.js":[function(require,module,exports){
+},{"fbjs/lib/ExecutionEnvironment":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/ExecutionEnvironment.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/isTextInputElement.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -40815,7 +40904,7 @@ function isTextInputElement(elem) {
 }
 
 module.exports = isTextInputElement;
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/onlyChild.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/onlyChild.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -40851,7 +40940,7 @@ function onlyChild(children) {
 
 module.exports = onlyChild;
 }).call(this,require('_process'))
-},{"./ReactElement":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactElement.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/quoteAttributeValueForBrowser.js":[function(require,module,exports){
+},{"./ReactElement":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactElement.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/quoteAttributeValueForBrowser.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -40878,7 +40967,7 @@ function quoteAttributeValueForBrowser(value) {
 }
 
 module.exports = quoteAttributeValueForBrowser;
-},{"./escapeTextContentForBrowser":"/Users/preston/projects/recycling-atx/node_modules/react/lib/escapeTextContentForBrowser.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/renderSubtreeIntoContainer.js":[function(require,module,exports){
+},{"./escapeTextContentForBrowser":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/escapeTextContentForBrowser.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/renderSubtreeIntoContainer.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -40895,7 +40984,7 @@ module.exports = quoteAttributeValueForBrowser;
 var ReactMount = require('./ReactMount');
 
 module.exports = ReactMount.renderSubtreeIntoContainer;
-},{"./ReactMount":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactMount.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/setInnerHTML.js":[function(require,module,exports){
+},{"./ReactMount":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactMount.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/setInnerHTML.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -40986,7 +41075,7 @@ if (ExecutionEnvironment.canUseDOM) {
 }
 
 module.exports = setInnerHTML;
-},{"fbjs/lib/ExecutionEnvironment":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/ExecutionEnvironment.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/setTextContent.js":[function(require,module,exports){
+},{"fbjs/lib/ExecutionEnvironment":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/ExecutionEnvironment.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/setTextContent.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -41027,7 +41116,7 @@ if (ExecutionEnvironment.canUseDOM) {
 }
 
 module.exports = setTextContent;
-},{"./escapeTextContentForBrowser":"/Users/preston/projects/recycling-atx/node_modules/react/lib/escapeTextContentForBrowser.js","./setInnerHTML":"/Users/preston/projects/recycling-atx/node_modules/react/lib/setInnerHTML.js","fbjs/lib/ExecutionEnvironment":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/ExecutionEnvironment.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/shouldUpdateReactComponent.js":[function(require,module,exports){
+},{"./escapeTextContentForBrowser":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/escapeTextContentForBrowser.js","./setInnerHTML":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/setInnerHTML.js","fbjs/lib/ExecutionEnvironment":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/ExecutionEnvironment.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/shouldUpdateReactComponent.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -41071,7 +41160,7 @@ function shouldUpdateReactComponent(prevElement, nextElement) {
 }
 
 module.exports = shouldUpdateReactComponent;
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/traverseAllChildren.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/traverseAllChildren.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -41263,7 +41352,7 @@ function traverseAllChildren(children, callback, traverseContext) {
 
 module.exports = traverseAllChildren;
 }).call(this,require('_process'))
-},{"./ReactCurrentOwner":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactCurrentOwner.js","./ReactElement":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactElement.js","./ReactInstanceHandles":"/Users/preston/projects/recycling-atx/node_modules/react/lib/ReactInstanceHandles.js","./getIteratorFn":"/Users/preston/projects/recycling-atx/node_modules/react/lib/getIteratorFn.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js","fbjs/lib/warning":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/lib/validateDOMNesting.js":[function(require,module,exports){
+},{"./ReactCurrentOwner":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactCurrentOwner.js","./ReactElement":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactElement.js","./ReactInstanceHandles":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/ReactInstanceHandles.js","./getIteratorFn":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/getIteratorFn.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/invariant":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js","fbjs/lib/warning":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/validateDOMNesting.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2015, Facebook, Inc.
@@ -41629,7 +41718,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = validateDOMNesting;
 }).call(this,require('_process'))
-},{"./Object.assign":"/Users/preston/projects/recycling-atx/node_modules/react/lib/Object.assign.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/emptyFunction":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/emptyFunction.js","fbjs/lib/warning":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/EventListener.js":[function(require,module,exports){
+},{"./Object.assign":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/Object.assign.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js","fbjs/lib/emptyFunction":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/emptyFunction.js","fbjs/lib/warning":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/EventListener.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -41716,7 +41805,7 @@ var EventListener = {
 
 module.exports = EventListener;
 }).call(this,require('_process'))
-},{"./emptyFunction":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/emptyFunction.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/ExecutionEnvironment.js":[function(require,module,exports){
+},{"./emptyFunction":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/emptyFunction.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/ExecutionEnvironment.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -41753,7 +41842,7 @@ var ExecutionEnvironment = {
 };
 
 module.exports = ExecutionEnvironment;
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/camelize.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/camelize.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -41786,7 +41875,7 @@ function camelize(string) {
 }
 
 module.exports = camelize;
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/camelizeStyleName.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/camelizeStyleName.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -41827,7 +41916,7 @@ function camelizeStyleName(string) {
 }
 
 module.exports = camelizeStyleName;
-},{"./camelize":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/camelize.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/containsNode.js":[function(require,module,exports){
+},{"./camelize":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/camelize.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/containsNode.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -41883,7 +41972,7 @@ function containsNode(_x, _x2) {
 }
 
 module.exports = containsNode;
-},{"./isTextNode":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/isTextNode.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/createArrayFromMixed.js":[function(require,module,exports){
+},{"./isTextNode":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/isTextNode.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/createArrayFromMixed.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -41969,7 +42058,7 @@ function createArrayFromMixed(obj) {
 }
 
 module.exports = createArrayFromMixed;
-},{"./toArray":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/toArray.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/createNodesFromMarkup.js":[function(require,module,exports){
+},{"./toArray":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/toArray.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/createNodesFromMarkup.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -42056,7 +42145,7 @@ function createNodesFromMarkup(markup, handleScript) {
 
 module.exports = createNodesFromMarkup;
 }).call(this,require('_process'))
-},{"./ExecutionEnvironment":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/ExecutionEnvironment.js","./createArrayFromMixed":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/createArrayFromMixed.js","./getMarkupWrap":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/getMarkupWrap.js","./invariant":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/emptyFunction.js":[function(require,module,exports){
+},{"./ExecutionEnvironment":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/ExecutionEnvironment.js","./createArrayFromMixed":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/createArrayFromMixed.js","./getMarkupWrap":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/getMarkupWrap.js","./invariant":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/emptyFunction.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -42095,7 +42184,7 @@ emptyFunction.thatReturnsArgument = function (arg) {
 };
 
 module.exports = emptyFunction;
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/emptyObject.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/emptyObject.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -42118,7 +42207,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = emptyObject;
 }).call(this,require('_process'))
-},{"_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/focusNode.js":[function(require,module,exports){
+},{"_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/focusNode.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -42145,7 +42234,7 @@ function focusNode(node) {
 }
 
 module.exports = focusNode;
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/getActiveElement.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/getActiveElement.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -42162,15 +42251,11 @@ module.exports = focusNode;
  * Same as document.activeElement but wraps in a try-catch block. In IE it is
  * not safe to call document.activeElement if there is nothing focused.
  *
- * The activeElement will be null only if the document or document body is not yet defined.
+ * The activeElement will be null only if the document body is not yet defined.
  */
-'use strict';
+"use strict";
 
 function getActiveElement() /*?DOMElement*/{
-  if (typeof document === 'undefined') {
-    return null;
-  }
-
   try {
     return document.activeElement || document.body;
   } catch (e) {
@@ -42179,7 +42264,7 @@ function getActiveElement() /*?DOMElement*/{
 }
 
 module.exports = getActiveElement;
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/getMarkupWrap.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/getMarkupWrap.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -42277,7 +42362,7 @@ function getMarkupWrap(nodeName) {
 
 module.exports = getMarkupWrap;
 }).call(this,require('_process'))
-},{"./ExecutionEnvironment":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/ExecutionEnvironment.js","./invariant":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/getUnboundedScrollPosition.js":[function(require,module,exports){
+},{"./ExecutionEnvironment":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/ExecutionEnvironment.js","./invariant":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/getUnboundedScrollPosition.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -42316,7 +42401,7 @@ function getUnboundedScrollPosition(scrollable) {
 }
 
 module.exports = getUnboundedScrollPosition;
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/hyphenate.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/hyphenate.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -42350,7 +42435,7 @@ function hyphenate(string) {
 }
 
 module.exports = hyphenate;
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/hyphenateStyleName.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/hyphenateStyleName.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -42390,7 +42475,7 @@ function hyphenateStyleName(string) {
 }
 
 module.exports = hyphenateStyleName;
-},{"./hyphenate":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/hyphenate.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js":[function(require,module,exports){
+},{"./hyphenate":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/hyphenate.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -42416,7 +42501,7 @@ module.exports = hyphenateStyleName;
  * will remain to ensure logic does not differ in production.
  */
 
-var invariant = function (condition, format, a, b, c, d, e, f) {
+function invariant(condition, format, a, b, c, d, e, f) {
   if (process.env.NODE_ENV !== 'production') {
     if (format === undefined) {
       throw new Error('invariant requires an error message argument');
@@ -42430,19 +42515,20 @@ var invariant = function (condition, format, a, b, c, d, e, f) {
     } else {
       var args = [a, b, c, d, e, f];
       var argIndex = 0;
-      error = new Error('Invariant Violation: ' + format.replace(/%s/g, function () {
+      error = new Error(format.replace(/%s/g, function () {
         return args[argIndex++];
       }));
+      error.name = 'Invariant Violation';
     }
 
     error.framesToPop = 1; // we don't care about invariant's own frame
     throw error;
   }
-};
+}
 
 module.exports = invariant;
 }).call(this,require('_process'))
-},{"_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/isNode.js":[function(require,module,exports){
+},{"_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/isNode.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -42466,7 +42552,7 @@ function isNode(object) {
 }
 
 module.exports = isNode;
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/isTextNode.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/isTextNode.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -42492,7 +42578,7 @@ function isTextNode(object) {
 }
 
 module.exports = isTextNode;
-},{"./isNode":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/isNode.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/keyMirror.js":[function(require,module,exports){
+},{"./isNode":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/isNode.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/keyMirror.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -42543,7 +42629,7 @@ var keyMirror = function (obj) {
 
 module.exports = keyMirror;
 }).call(this,require('_process'))
-},{"./invariant":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/keyOf.js":[function(require,module,exports){
+},{"./invariant":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/keyOf.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -42579,7 +42665,7 @@ var keyOf = function (oneKeyObj) {
 };
 
 module.exports = keyOf;
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/mapObject.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/mapObject.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -42631,7 +42717,7 @@ function mapObject(object, callback, context) {
 }
 
 module.exports = mapObject;
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/memoizeStringOnly.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/memoizeStringOnly.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -42663,7 +42749,7 @@ function memoizeStringOnly(callback) {
 }
 
 module.exports = memoizeStringOnly;
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/performance.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/performance.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -42687,7 +42773,7 @@ if (ExecutionEnvironment.canUseDOM) {
 }
 
 module.exports = performance || {};
-},{"./ExecutionEnvironment":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/ExecutionEnvironment.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/performanceNow.js":[function(require,module,exports){
+},{"./ExecutionEnvironment":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/ExecutionEnvironment.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/performanceNow.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -42703,21 +42789,26 @@ module.exports = performance || {};
 'use strict';
 
 var performance = require('./performance');
-var curPerformance = performance;
+
+var performanceNow;
 
 /**
  * Detect if we can use `window.performance.now()` and gracefully fallback to
  * `Date.now()` if it doesn't exist. We need to support Firefox < 15 for now
  * because of Facebook's testing infrastructure.
  */
-if (!curPerformance || !curPerformance.now) {
-  curPerformance = Date;
+if (performance.now) {
+  performanceNow = function () {
+    return performance.now();
+  };
+} else {
+  performanceNow = function () {
+    return Date.now();
+  };
 }
 
-var performanceNow = curPerformance.now.bind(curPerformance);
-
 module.exports = performanceNow;
-},{"./performance":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/performance.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/shallowEqual.js":[function(require,module,exports){
+},{"./performance":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/performance.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/shallowEqual.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -42768,7 +42859,7 @@ function shallowEqual(objA, objB) {
 }
 
 module.exports = shallowEqual;
-},{}],"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/toArray.js":[function(require,module,exports){
+},{}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/toArray.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -42828,7 +42919,7 @@ function toArray(obj) {
 
 module.exports = toArray;
 }).call(this,require('_process'))
-},{"./invariant":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js":[function(require,module,exports){
+},{"./invariant":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/invariant.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/warning.js":[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-2015, Facebook, Inc.
@@ -42888,9 +42979,9 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = warning;
 }).call(this,require('_process'))
-},{"./emptyFunction":"/Users/preston/projects/recycling-atx/node_modules/react/node_modules/fbjs/lib/emptyFunction.js","_process":"/Users/preston/projects/recycling-atx/node_modules/browserify/node_modules/process/browser.js"}],"/Users/preston/projects/recycling-atx/node_modules/react/react.js":[function(require,module,exports){
+},{"./emptyFunction":"/Users/gus1775/hacking/recycling-atx/node_modules/react/node_modules/fbjs/lib/emptyFunction.js","_process":"/Users/gus1775/hacking/recycling-atx/node_modules/browserify/node_modules/process/browser.js"}],"/Users/gus1775/hacking/recycling-atx/node_modules/react/react.js":[function(require,module,exports){
 'use strict';
 
 module.exports = require('./lib/React');
 
-},{"./lib/React":"/Users/preston/projects/recycling-atx/node_modules/react/lib/React.js"}]},{},["./client/js/main.js"]);
+},{"./lib/React":"/Users/gus1775/hacking/recycling-atx/node_modules/react/lib/React.js"}]},{},["./client/js/main.js"]);
