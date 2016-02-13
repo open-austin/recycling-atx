@@ -36,6 +36,13 @@ export default class MapView extends React.Component {
     };
   }
 
+  viewAboutOnClick(id) {
+    return (e) => {
+      e.preventDefault();
+      this.props.changeView('about');
+    };
+  }
+
   renderMarkers() {
     return this.props.locations.map(({id, coordinates, address, reports}) => {
       const { x, y } = coordinates;
