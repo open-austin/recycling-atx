@@ -7,6 +7,7 @@ import Spinner from './spinner.jsx';
 import api from '../api';
 import GeoCoder from '../geocoder';
 import Footer from './footer.jsx';
+import About from './about.jsx';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -85,7 +86,8 @@ export default class App extends React.Component {
   render() {
     const View = {
       map: MapView,
-      details: Details
+      details: Details,
+      about: About
     }[this.state.view];
 
     return <div className="content">
@@ -102,7 +104,8 @@ export default class App extends React.Component {
         setCoordinates={this.setCoordinates.bind(this)}
         setSpinner={this.setSpinner.bind(this)}
         setCurrentLocation={this.setCurrentLocation.bind(this)} />
-      <Footer/>
+      <Footer
+        changeView={this.changeView.bind(this)} />
 
     </div>;
   }
