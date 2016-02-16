@@ -9,7 +9,9 @@ export default class About extends React.Component {
   render() {
     return (
       <div className="about-view">
+
         <div className='wrapper'>
+          <a href='http://github.com/open-austin/recycling-atx' target='_blank' className='ribbon bg-green'>Fork Me On Github</a>
           <div className='return'>
             <a href="#" onClick={(e) => this.props.changeView('map')}>
               <svg height="10px" width="10px">
@@ -22,7 +24,7 @@ export default class About extends React.Component {
 
           <div className='row issues'>
             <h2>Notice Any Issues?</h2>
-            <button>
+            <button className='contact-button'>
               <a href='mailto:projects@marcopineda.com?subject=Recycle%20Please%20Issue&body=issues:%0Adescription:%0ASteps%20To%20Reproduce:'>Contact Us</a>
             </button>
           </div>
@@ -33,8 +35,9 @@ export default class About extends React.Component {
             <h3>What is the Universal Recyling Ordinance?</h3>
             <p>The Universal Recycling Ordinance supports Austin’s Zero Waste goal by requiring affected property owners to ensure that tenants and employees have access to convenient recycling. </p>
             <p>By Oct. 1, 2017, all properties will be required to provide recycling services to their tenants and employees. </p>
+            <p>Find out more about the Universal Recycling Ordinance <a href='http://austintexas.gov/uro' target='_blank'>Here</a>.</p>
             <h3>Is Recycle Please open-sourced?</h3>
-            <p>Yes.</p>
+            <p>Yes. Fork us on Github and help your community recycle too!</p>
 
           </div>
 
