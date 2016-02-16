@@ -70,7 +70,155 @@ var api = {
 exports['default'] = api;
 module.exports = exports['default'];
 
-},{"./config":"/Users/gus1775/hacking/recycling-atx/client/js/config.js","jquery":"/Users/gus1775/hacking/recycling-atx/node_modules/jquery/dist/jquery.js"}],"/Users/gus1775/hacking/recycling-atx/client/js/components/add-new.jsx":[function(require,module,exports){
+},{"./config":"/Users/gus1775/hacking/recycling-atx/client/js/config.js","jquery":"/Users/gus1775/hacking/recycling-atx/node_modules/jquery/dist/jquery.js"}],"/Users/gus1775/hacking/recycling-atx/client/js/components/about.jsx":[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var About = (function (_React$Component) {
+  _inherits(About, _React$Component);
+
+  function About(props) {
+    _classCallCheck(this, About);
+
+    _get(Object.getPrototypeOf(About.prototype), 'constructor', this).call(this, props);
+    this.state = { location: null };
+  }
+
+  _createClass(About, [{
+    key: 'render',
+    value: function render() {
+      var _this = this;
+
+      return _react2['default'].createElement(
+        'div',
+        { className: 'about-view' },
+        _react2['default'].createElement(
+          'div',
+          { className: 'wrapper' },
+          _react2['default'].createElement(
+            'a',
+            { href: 'http://github.com/open-austin/recycling-atx', target: '_blank', className: 'ribbon bg-green' },
+            'Fork Me On Github'
+          ),
+          _react2['default'].createElement(
+            'div',
+            { className: 'return' },
+            _react2['default'].createElement(
+              'a',
+              { href: '#', onClick: function (e) {
+                  return _this.props.changeView('map');
+                } },
+              _react2['default'].createElement(
+                'svg',
+                { height: '10px', width: '10px' },
+                _react2['default'].createElement('line', { x1: '0', y1: '5', x2: '8', y2: '0' }),
+                _react2['default'].createElement('line', { x1: '0', y1: '5', x2: '8', y2: '10' })
+              ),
+              'Return to map'
+            )
+          ),
+          _react2['default'].createElement(
+            'div',
+            { className: 'row issues' },
+            _react2['default'].createElement(
+              'h2',
+              null,
+              'Notice Any Issues?'
+            ),
+            _react2['default'].createElement(
+              'button',
+              { className: 'contact-button' },
+              _react2['default'].createElement(
+                'a',
+                { href: 'mailto:projects@marcopineda.com?subject=Recycle%20Please%20Issue&body=issues:%0Adescription:%0ASteps%20To%20Reproduce:' },
+                'Contact Us'
+              )
+            )
+          ),
+          _react2['default'].createElement(
+            'div',
+            { className: 'row faqs' },
+            _react2['default'].createElement(
+              'h2',
+              null,
+              'Frequently Asked Questions'
+            ),
+            _react2['default'].createElement(
+              'h3',
+              null,
+              'What is Recycle Please?'
+            ),
+            _react2['default'].createElement(
+              'p',
+              null,
+              'Recycle Please is the coordinated effort of a group of volunteers passionate about improving Austin\'s recycling process.'
+            ),
+            _react2['default'].createElement(
+              'h3',
+              null,
+              'What is the Universal Recyling Ordinance?'
+            ),
+            _react2['default'].createElement(
+              'p',
+              null,
+              'The Universal Recycling Ordinance supports Austin’s Zero Waste goal by requiring affected property owners to ensure that tenants and employees have access to convenient recycling. '
+            ),
+            _react2['default'].createElement(
+              'p',
+              null,
+              'By Oct. 1, 2017, all properties will be required to provide recycling services to their tenants and employees. '
+            ),
+            _react2['default'].createElement(
+              'p',
+              null,
+              'Find out more about the Universal Recycling Ordinance ',
+              _react2['default'].createElement(
+                'a',
+                { href: 'http://austintexas.gov/uro', target: '_blank' },
+                'Here'
+              ),
+              '.'
+            ),
+            _react2['default'].createElement(
+              'h3',
+              null,
+              'Is Recycle Please open-sourced?'
+            ),
+            _react2['default'].createElement(
+              'p',
+              null,
+              'Yes. Fork us on Github and help your community recycle too!'
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return About;
+})(_react2['default'].Component);
+
+exports['default'] = About;
+module.exports = exports['default'];
+
+},{"react":"/Users/gus1775/hacking/recycling-atx/node_modules/react/react.js"}],"/Users/gus1775/hacking/recycling-atx/client/js/components/add-new.jsx":[function(require,module,exports){
 "use strict";
 
 },{}],"/Users/gus1775/hacking/recycling-atx/client/js/components/app.jsx":[function(require,module,exports){
@@ -125,6 +273,10 @@ var _geocoder2 = _interopRequireDefault(_geocoder);
 var _footerJsx = require('./footer.jsx');
 
 var _footerJsx2 = _interopRequireDefault(_footerJsx);
+
+var _aboutJsx = require('./about.jsx');
+
+var _aboutJsx2 = _interopRequireDefault(_aboutJsx);
 
 var App = (function (_React$Component) {
   _inherits(App, _React$Component);
@@ -220,7 +372,8 @@ var App = (function (_React$Component) {
     value: function render() {
       var View = ({
         map: _mapViewJsx2['default'],
-        details: _detailsJsx2['default']
+        details: _detailsJsx2['default'],
+        about: _aboutJsx2['default']
       })[this.state.view];
 
       return _react2['default'].createElement(
@@ -239,7 +392,8 @@ var App = (function (_React$Component) {
           setCoordinates: this.setCoordinates.bind(this),
           setSpinner: this.setSpinner.bind(this),
           setCurrentLocation: this.setCurrentLocation.bind(this) }),
-        _react2['default'].createElement(_footerJsx2['default'], null)
+        _react2['default'].createElement(_footerJsx2['default'], {
+          changeView: this.changeView.bind(this) })
       );
     }
   }]);
@@ -250,7 +404,7 @@ var App = (function (_React$Component) {
 exports['default'] = App;
 module.exports = exports['default'];
 
-},{"../api":"/Users/gus1775/hacking/recycling-atx/client/js/api.js","../geocoder":"/Users/gus1775/hacking/recycling-atx/client/js/geocoder.js","./add-new.jsx":"/Users/gus1775/hacking/recycling-atx/client/js/components/add-new.jsx","./details.jsx":"/Users/gus1775/hacking/recycling-atx/client/js/components/details.jsx","./footer.jsx":"/Users/gus1775/hacking/recycling-atx/client/js/components/footer.jsx","./map-view.jsx":"/Users/gus1775/hacking/recycling-atx/client/js/components/map-view.jsx","./search-bar.jsx":"/Users/gus1775/hacking/recycling-atx/client/js/components/search-bar.jsx","./spinner.jsx":"/Users/gus1775/hacking/recycling-atx/client/js/components/spinner.jsx","react":"/Users/gus1775/hacking/recycling-atx/node_modules/react/react.js"}],"/Users/gus1775/hacking/recycling-atx/client/js/components/details.jsx":[function(require,module,exports){
+},{"../api":"/Users/gus1775/hacking/recycling-atx/client/js/api.js","../geocoder":"/Users/gus1775/hacking/recycling-atx/client/js/geocoder.js","./about.jsx":"/Users/gus1775/hacking/recycling-atx/client/js/components/about.jsx","./add-new.jsx":"/Users/gus1775/hacking/recycling-atx/client/js/components/add-new.jsx","./details.jsx":"/Users/gus1775/hacking/recycling-atx/client/js/components/details.jsx","./footer.jsx":"/Users/gus1775/hacking/recycling-atx/client/js/components/footer.jsx","./map-view.jsx":"/Users/gus1775/hacking/recycling-atx/client/js/components/map-view.jsx","./search-bar.jsx":"/Users/gus1775/hacking/recycling-atx/client/js/components/search-bar.jsx","./spinner.jsx":"/Users/gus1775/hacking/recycling-atx/client/js/components/spinner.jsx","react":"/Users/gus1775/hacking/recycling-atx/node_modules/react/react.js"}],"/Users/gus1775/hacking/recycling-atx/client/js/components/details.jsx":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -425,6 +579,16 @@ var Footer = (function (_React$Component) {
   }
 
   _createClass(Footer, [{
+    key: 'viewAboutOnClick',
+    value: function viewAboutOnClick(id) {
+      var _this = this;
+
+      return function (e) {
+        e.preventDefault();
+        _this.props.changeView('about');
+      };
+    }
+  }, {
     key: 'render',
     value: function render() {
       return _react2['default'].createElement(
@@ -454,7 +618,7 @@ var Footer = (function (_React$Component) {
               ' |',
               _react2['default'].createElement(
                 'a',
-                { className: 'footer-link', href: '#', target: '_blank' },
+                { className: 'footer-link', onClick: this.viewAboutOnClick() },
                 ' About'
               )
             )
@@ -543,9 +707,19 @@ var MapView = (function (_React$Component) {
       };
     }
   }, {
+    key: 'viewAboutOnClick',
+    value: function viewAboutOnClick(id) {
+      var _this3 = this;
+
+      return function (e) {
+        e.preventDefault();
+        _this3.props.changeView('about');
+      };
+    }
+  }, {
     key: 'renderMarkers',
     value: function renderMarkers() {
-      var _this3 = this;
+      var _this4 = this;
 
       return this.props.locations.map(function (_ref) {
         var id = _ref.id;
@@ -576,7 +750,7 @@ var MapView = (function (_React$Component) {
               ),
               _react2['default'].createElement(
                 'a',
-                { href: '#', onClick: _this3.viewDetailsOnClick(id) },
+                { href: '#', onClick: _this4.viewDetailsOnClick(id) },
                 'View more details or report this location'
               )
             )
@@ -721,11 +895,6 @@ var Spinner = (function (_React$Component) {
         _react2['default'].createElement(
           'div',
           { className: 'spinner-content' },
-          _react2['default'].createElement(
-            'p',
-            null,
-            'Recycle Please!'
-          ),
           _react2['default'].createElement(
             'p',
             null,
