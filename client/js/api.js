@@ -27,8 +27,10 @@ const api = {
 
   },
 
-  addReport: function(locationId, report, callback) {
-    // TODO
+  addReport: function(locationId, data, callback) {
+    $.post(`${baseUrl}/locations/${locationId}/reports`, data)
+      .done((data) => { callback(null, data); })
+      .fail((response, status, err) => { callback(err); });
   }
 };
 
