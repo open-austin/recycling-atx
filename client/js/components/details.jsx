@@ -4,15 +4,36 @@ import api from '../api';
 export default class Details extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { location: null };
+    this.state = { location: null, formText: '' };
   }
 
   componentDidMount() {
+    this.fetchLocation();
+  }
+
+  fetchLocation() {
     api.getLocation(this.props.currentLocation, (err, location) => {
       if (err) {
         console.error(err);
       } else {
         this.setState({ location });
+      }
+    });
+  }
+
+  reportOnChange(e) {
+    this.setState({ formText: e.target.value });
+  }
+
+  onSubmit(e) {
+    e.preventDefault();
+    const { location, formText } = this.state;
+    api.addReport(location.id, { report: formText }, (err, response) => {
+      if (err) {
+        console.error(err);
+      } else {
+        this.setState({ formText: '' });
+        this.fetchLocation();
       }
     });
   }
@@ -56,8 +77,15 @@ export default class Details extends React.Component {
         </a>
         {content}
         <h2>Submit New Report</h2>
-        <form method="post">
-          <textarea className='details-text' rows='8' cols='50' placeholder='Enter text here'></textarea>
+        <form onSubmit={this.onSubmit.bind(this)}>
+          <textarea
+            className='details-text'
+            rows='8'
+            cols='50'
+            placeholder='Enter text here'
+            onChange={this.reportOnChange.bind(this)}
+            value={this.state.formText} >
+          </textarea>
           <input type="submit" value="Submit"></input>
         </form>
       </div>
