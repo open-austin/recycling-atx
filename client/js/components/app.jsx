@@ -8,6 +8,7 @@ import api from '../api';
 import GeoCoder from '../geocoder';
 import Footer from './footer.jsx';
 import About from './about.jsx';
+import CreateView from './create-view.jsx';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -87,7 +88,8 @@ export default class App extends React.Component {
     const View = {
       map: MapView,
       details: Details,
-      about: About
+      about: About,
+      create: CreateView
     }[this.state.view];
 
     return <div className="content">
@@ -97,6 +99,7 @@ export default class App extends React.Component {
         onSearchSubmit={this.onSearchSubmit.bind(this)}
         address={this.state.address} />
       <View
+        className="main-view"
         locations={this.state.locations}
         currentLocation={this.state.currentLocation}
         coordinates={this.state.coordinates}
@@ -106,7 +109,6 @@ export default class App extends React.Component {
         setCurrentLocation={this.setCurrentLocation.bind(this)} />
       <Footer
         changeView={this.changeView.bind(this)} />
-
     </div>;
   }
 }
