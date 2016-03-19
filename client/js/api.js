@@ -24,7 +24,9 @@ const api = {
   },
 
   createLocation: function(location, callback) {
-
+    $.post(`${baseUrl}/locations`, location)
+      .done((data) => { callback(null, data); })
+      .fail((response, status, err) => { callback(err); });
   },
 
   addReport: function(locationId, data, callback) {

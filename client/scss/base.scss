@@ -21,10 +21,10 @@ body {
 
 #app { height: 100% }
 
-.details-view {
+.main-view {
   font-family: 'Open Sans', sans-serif;
   padding: 1em 2em;
-  a { 
+  a {
     color: black;
     font-weight: 700;
     line-height: 20px;
@@ -42,23 +42,23 @@ body {
     font-size: 14px;
     margin-top: 4px;
     padding: 6px 10px;
-  
+
   }
   form > textarea {
     font-family: 'Open Sans', sans-serif;
     padding: 6px;
   }
-  svg { 
+  svg {
     margin-right: 4px;
     stroke: black;
     stroke-width: 2px;
     vertical-align: 1px;
   }
-  h2 { 
+  h2 {
     border-bottom: 1px solid black;
     font-weight: 400;
     padding-bottom: 4px;
     width: 50%;
   }
-  
+
 }

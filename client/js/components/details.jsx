@@ -1,5 +1,6 @@
 import React from 'react';
 import api from '../api';
+import ReturnBtn from './return-btn.jsx';
 
 export default class Details extends React.Component {
   constructor(props) {
@@ -67,14 +68,8 @@ export default class Details extends React.Component {
   render() {
     const content = this.renderContent();
     return (
-      <div className="details-view">
-        <a href="#" onClick={(e) => this.props.changeView('map')}>
-          <svg height="10px" width="10px">
-            <line x1="0" y1="5" x2="8" y2="0"/>
-            <line x1="0" y1="5" x2="8" y2="10"/>
-          </svg>
-            Return to map
-        </a>
+      <div className={this.props.className}>
+        <ReturnBtn changeView={this.props.changeView} />
         {content}
         <h2>Submit New Report</h2>
         <form onSubmit={this.onSubmit.bind(this)}>
