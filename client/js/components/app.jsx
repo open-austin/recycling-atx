@@ -9,6 +9,7 @@ import GeoCoder from '../geocoder';
 import Footer from './footer.jsx';
 import About from './about.jsx';
 import CreateView from './create-view.jsx';
+import Info from './info.jsx';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -94,10 +95,12 @@ export default class App extends React.Component {
 
     return <div className="content">
       <Spinner spin={this.state.spin} />
+      <Info />
       <SearchBar
         onAddressChange={this.onAddressChange.bind(this)}
         onSearchSubmit={this.onSearchSubmit.bind(this)}
         address={this.state.address} />
+
       <View
         className="main-view"
         locations={this.state.locations}

@@ -1,0 +1,31 @@
+.section {
+  height: 500px;
+}
+
+.recycle-header {
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url('/images/atx.jpg');
+  background-size: cover;
+  height: 500px;
+  color: #fff;
+}
+
+.recycle-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.affected {
+    background-color: rgb(255, 245, 219);
+}
+
+.timeline {
+    background-color: rgb(52, 52, 52);
+    h2 { color: #fff; }
+}
+
+.report {
+
+}
