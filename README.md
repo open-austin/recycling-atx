@@ -40,7 +40,7 @@ Interested in a particular project? Come to the next Open-Austin [Meetup](http:/
 ### Contributing
 * [Gus Ireland](http://github.com/gusIreland)
 * [Preston Pham](http://github.com/prestonp)
-* [Derek Gulledge](http://github.com/)
+* [Derek Gulledge](http://github.com/srickshaw)
 * [Marco Pineda](http://github.com/mapineda)
 
 
