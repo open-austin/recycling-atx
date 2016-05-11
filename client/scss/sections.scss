@@ -15,15 +15,38 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
 }
 
-.affected {
-    background-color: rgb(255, 245, 219);
+
+.btn-report {
+  margin-top: 50px;
+  margin-right: 4.5px;
+
+}
+
+.btn-learn {
+  margin-top: 50px;
+  margin-left: 4.5px;
+}
+
+.why {
+  background-color: rgb(0,114,81);
+  h2 { color: #fce220; }
+  p { color: #fff; }
+}
+.benefits {
+  background-color: rgb(124,191,183);
+  h2 { color: #fff; }
+  p { color: #fff; }
+
+
 }
 
 .timeline {
-    background-color: rgb(52, 52, 52);
-    h2 { color: #fff; }
+  background-color: rgb(78,163,42);
+  h2 { color: #d03772;}
+  p { color: #fff; }
 }
 
 .report {
