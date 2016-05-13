@@ -47,10 +47,23 @@ render() {
         </section>
 
         <section className="section benefits">
-          <div>
+          <div className='benefit-container'>
             <h2>Benefits</h2>
-
+            <p className='text-center'>Did you know?</p>
+            <h4 className='text-center'>Select the benefits that are not a result of recycling.</h4>
           </div>
+
+              <div className="card">
+                <div className="content">
+                  <div className="front">
+                  Benefit 1
+                  </div>
+                  <div className="back">
+                  True!
+                  </div>
+                </div>
+              </div>
+
         </section>
 
         <section className="section timeline">
