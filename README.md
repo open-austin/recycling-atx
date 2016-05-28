@@ -29,13 +29,16 @@ This repo is a front end component that consumes the API provided by https://git
 
 Check out Austin's Universal Recycling Ordinance & Timeline [Here] (http://austintexas.gov/uro)
 
-
 The Universal Recycling Ordinance (URO) supports Austin’s Zero Waste goal by requiring affected property owners to ensure that tenants and employees have access to convenient recycling. These properties include multi-family residential properties (e.g. apartments and condos), commercial non-residential properties and food enterprises:
 
 
 Check out more awesome Open-Austin Projects [Here](https://github.com/open-austin)
 
 Interested in a particular project? Come to the next Open-Austin [Meetup](http://www.meetup.com/Open-Government-Civic-Technology-Meetup-by-Open-Austin/)
+
+### How to Contribute?
+
+View then Join the [Hackpad](https://hackpad.com/ATX-Recycles-NbZNj5me3xt)!
 
 ### Contributing
 * [Gus Ireland](http://github.com/gusIreland)
@@ -44,11 +47,10 @@ Interested in a particular project? Come to the next Open-Austin [Meetup](http:/
 * [Marco Pineda](http://github.com/mapineda)
 
 
-
-      #### License
+#### License
 
       Released to the public domain under [the Unlicense](http://unlicense.org/) by Open Austin, 2015.
 
-      #### Contributing
+#### Contributing
 
       Please see [CONTRIBUTING.md](CONTRIBUTING.md).

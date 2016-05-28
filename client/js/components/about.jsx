@@ -22,12 +22,7 @@ export default class About extends React.Component {
             </a>
           </div>
 
-          <div className='row issues'>
-            <h2>Notice Any Issues?</h2>
-            <button className='contact-button'>
-              <a href='mailto:projects@marcopineda.com?subject=Recycle%20Please%20Issue&body=issues:%0Adescription:%0ASteps%20To%20Reproduce:'>Contact Us</a>
-            </button>
-          </div>
+
           <div className='row faqs'>
             <h2>Frequently Asked Questions</h2>
             <h3>What is Recycle Please?</h3>
@@ -39,6 +34,13 @@ export default class About extends React.Component {
             <h3>Is Recycle Please open-sourced?</h3>
             <p>Yes. Fork us on Github and help your community recycle too!</p>
 
+          </div>
+
+          <div className='row issues'>
+            <h2>Notice Any Issues?</h2>
+            <button className='contact-button'>
+              <a href='mailto:projects@marcopineda.com?subject=Recycle%20Please%20Issue&body=issues:%0Adescription:%0ASteps%20To%20Reproduce:'>Contact Us</a>
+            </button>
           </div>
 
 

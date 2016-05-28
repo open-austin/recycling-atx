@@ -1,0 +1,54 @@
+.section {
+  height: 500px;
+}
+
+.recycle-header {
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url('/images/atx.jpg');
+  background-size: cover;
+  height: 500px;
+  color: #fff;
+}
+
+.recycle-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+
+.btn-report {
+  margin-top: 50px;
+  margin-right: 4.5px;
+
+}
+
+.btn-learn {
+  margin-top: 50px;
+  margin-left: 4.5px;
+}
+
+.why {
+  background-color: rgb(0,114,81);
+  h2 { color: #fce220; }
+  p { color: #fff; }
+}
+.benefits {
+  background-color: rgb(124,191,183);
+  h2 { color: #fff; }
+  p { color: #fff; }
+
+
+}
+
+.timeline {
+  background-color: rgb(78,163,42);
+  h2 { color: #d03772;}
+  p { color: #fff; }
+}
+
+.report {
+
+}

@@ -134,6 +134,13 @@ gulp.task('copy-images', function() {
         .pipe(symlink('build/images'));
 });
 
+gulp.task('copy-fonts', function() {
+    var symlink = require('gulp-symlink');
+
+    return gulp.src('client/fonts')
+        .pipe(symlink('build/fonts'));
+});
+
 gulp.task('watch', function() {
     gulp.watch('client/scss/**/*.scss', [ 'styles' ]);
     gulp.watch('client/*.html', [ 'copy-html' ]);
@@ -186,6 +193,6 @@ gulp.task('suppress-errors', function(){
 });
 
 
-gulp.task('build', ['styles', 'build-js', 'copy-html', 'copy-data', 'copy-images']);
+gulp.task('build', ['styles', 'build-js', 'copy-html', 'copy-data', 'copy-images', 'copy-fonts']);
 gulp.task('default', ['suppress-errors', 'clean', 'styles', 'copy-html', 'copy-data', 'copy-images', 'webserver', 'watch', 'watch-js']);
 gulp.task('frontend', ['clean', 'copy-html', 'styles', 'webserver', 'watch']);
