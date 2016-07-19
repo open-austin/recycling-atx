@@ -268,9 +268,7 @@ var _detailsJsx = require('./details.jsx');
 
 var _detailsJsx2 = _interopRequireDefault(_detailsJsx);
 
-var _spinnerJsx = require('./spinner.jsx');
-
-var _spinnerJsx2 = _interopRequireDefault(_spinnerJsx);
+// import Spinner from './spinner.jsx';
 
 var _api = require('../api');
 
@@ -308,8 +306,8 @@ var App = (function (_React$Component) {
       address: null,
       coordinates: { lat: null, lng: null },
       view: 'map',
-      currentLocation: null,
-      spin: false
+      currentLocation: null
+      // spin: false
     };
   }
 
@@ -375,11 +373,11 @@ var App = (function (_React$Component) {
     value: function setCoordinates(coordinates) {
       this.setState({ coordinates: coordinates });
     }
-  }, {
-    key: 'setSpinner',
-    value: function setSpinner(spin) {
-      this.setState({ spin: spin });
-    }
+
+    // setSpinner(spin) {
+    //   this.setState({ spin });
+    // }
+
   }, {
     key: 'setCurrentLocation',
     value: function setCurrentLocation(id) {
@@ -398,7 +396,6 @@ var App = (function (_React$Component) {
       return _react2['default'].createElement(
         'div',
         { className: 'content' },
-        _react2['default'].createElement(_spinnerJsx2['default'], { spin: this.state.spin }),
         _react2['default'].createElement(_infoJsx2['default'], null),
         _react2['default'].createElement(_searchBarJsx2['default'], {
           onAddressChange: this.onAddressChange.bind(this),
@@ -411,7 +408,6 @@ var App = (function (_React$Component) {
           coordinates: this.state.coordinates,
           changeView: this.changeView.bind(this),
           setCoordinates: this.setCoordinates.bind(this),
-          setSpinner: this.setSpinner.bind(this),
           setCurrentLocation: this.setCurrentLocation.bind(this) }),
         _react2['default'].createElement(_footerJsx2['default'], {
           changeView: this.changeView.bind(this) })
@@ -425,7 +421,7 @@ var App = (function (_React$Component) {
 exports['default'] = App;
 module.exports = exports['default'];
 
-},{"../api":"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/api.js","../geocoder":"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/geocoder.js","./about.jsx":"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/components/about.jsx","./add-new.jsx":"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/components/add-new.jsx","./create-view.jsx":"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/components/create-view.jsx","./details.jsx":"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/components/details.jsx","./footer.jsx":"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/components/footer.jsx","./info.jsx":"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/components/info.jsx","./map-view.jsx":"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/components/map-view.jsx","./search-bar.jsx":"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/components/search-bar.jsx","./spinner.jsx":"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/components/spinner.jsx","react":"/Users/mapineda/Desktop/Coding/recycling-atx/node_modules/react/react.js"}],"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/components/create-view.jsx":[function(require,module,exports){
+},{"../api":"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/api.js","../geocoder":"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/geocoder.js","./about.jsx":"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/components/about.jsx","./add-new.jsx":"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/components/add-new.jsx","./create-view.jsx":"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/components/create-view.jsx","./details.jsx":"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/components/details.jsx","./footer.jsx":"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/components/footer.jsx","./info.jsx":"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/components/info.jsx","./map-view.jsx":"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/components/map-view.jsx","./search-bar.jsx":"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/components/search-bar.jsx","react":"/Users/mapineda/Desktop/Coding/recycling-atx/node_modules/react/react.js"}],"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/components/create-view.jsx":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -1056,7 +1052,7 @@ var Info = (function (_React$Component) {
                     _react2['default'].createElement(
                       'div',
                       { className: 'front' },
-                      'Reduces the amount of waste sent to landfills'
+                      'Reduces waste sent to landfills'
                     ),
                     _react2['default'].createElement(
                       'div',
@@ -1270,13 +1266,11 @@ var MapView = (function (_React$Component) {
       var _this = this;
 
       if ('geolocation' in navigator) {
-        this.props.setSpinner(true);
         navigator.geolocation.getCurrentPosition(function (position) {
           _this.props.setCoordinates({
             lat: position.coords.latitude,
             lng: position.coords.longitude
           });
-          _this.props.setSpinner(false);
         });
       } else {
         /* geolocation IS NOT available */
@@ -1500,68 +1494,7 @@ var SearchBar = (function (_React$Component) {
 exports["default"] = SearchBar;
 module.exports = exports["default"];
 
-},{"react":"/Users/mapineda/Desktop/Coding/recycling-atx/node_modules/react/react.js"}],"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/components/spinner.jsx":[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true
-});
-
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _classnames = require('classnames');
-
-var _classnames2 = _interopRequireDefault(_classnames);
-
-var Spinner = (function (_React$Component) {
-  _inherits(Spinner, _React$Component);
-
-  function Spinner(props) {
-    _classCallCheck(this, Spinner);
-
-    _get(Object.getPrototypeOf(Spinner.prototype), 'constructor', this).call(this, props);
-    this.state = {};
-  }
-
-  _createClass(Spinner, [{
-    key: 'render',
-    value: function render() {
-      var className = (0, _classnames2['default'])('spinner', { hide: !this.props.spin });
-      return _react2['default'].createElement(
-        'div',
-        { className: className },
-        _react2['default'].createElement(
-          'div',
-          { className: 'spinner-content' },
-          _react2['default'].createElement(
-            'p',
-            null,
-            'Loading...'
-          )
-        )
-      );
-    }
-  }]);
-
-  return Spinner;
-})(_react2['default'].Component);
-
-exports['default'] = Spinner;
-module.exports = exports['default'];
-
-},{"classnames":"/Users/mapineda/Desktop/Coding/recycling-atx/node_modules/classnames/index.js","react":"/Users/mapineda/Desktop/Coding/recycling-atx/node_modules/react/react.js"}],"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/config.js":[function(require,module,exports){
+},{"react":"/Users/mapineda/Desktop/Coding/recycling-atx/node_modules/react/react.js"}],"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/config.js":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -1608,56 +1541,6 @@ module.exports = exports["default"];
 module.exports={
   "defaultPosition": [30.27, -97.746]
 }
-
-},{}],"/Users/mapineda/Desktop/Coding/recycling-atx/node_modules/classnames/index.js":[function(require,module,exports){
-/*!
-  Copyright (c) 2016 Jed Watson.
-  Licensed under the MIT License (MIT), see
-  http://jedwatson.github.io/classnames
-*/
-/* global define */
-
-(function () {
-	'use strict';
-
-	var hasOwn = {}.hasOwnProperty;
-
-	function classNames () {
-		var classes = [];
-
-		for (var i = 0; i < arguments.length; i++) {
-			var arg = arguments[i];
-			if (!arg) continue;
-
-			var argType = typeof arg;
-
-			if (argType === 'string' || argType === 'number') {
-				classes.push(arg);
-			} else if (Array.isArray(arg)) {
-				classes.push(classNames.apply(null, arg));
-			} else if (argType === 'object') {
-				for (var key in arg) {
-					if (hasOwn.call(arg, key) && arg[key]) {
-						classes.push(key);
-					}
-				}
-			}
-		}
-
-		return classes.join(' ');
-	}
-
-	if (typeof module !== 'undefined' && module.exports) {
-		module.exports = classNames;
-	} else if (typeof define === 'function' && typeof define.amd === 'object' && define.amd) {
-		// register as 'classnames', consistent with npm package name
-		define('classnames', [], function () {
-			return classNames;
-		});
-	} else {
-		window.classNames = classNames;
-	}
-}());
 
 },{}],"/Users/mapineda/Desktop/Coding/recycling-atx/node_modules/fbjs/lib/EventListener.js":[function(require,module,exports){
 /**
