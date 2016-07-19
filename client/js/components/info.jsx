@@ -110,9 +110,11 @@ render() {
         </section>
 
         <section className="section goals">
-          <h2>Timeline</h2>
-          <p>By Oct. 1, 2017, <strong>all</strong> properties will be required to ensure tenants and employees have convenient access to recycling.</p>
-          <div class='container'>
+          <div className='subsection'>
+            <h2>Timeline</h2>
+            <p>By Oct. 1, 2017, all properties will be required to ensure tenants and employees have convenient access to recycling.</p>
+          </div>
+          <div className='container'>
             <div className='row'>
               <div className='col-xs-4'>
                 <i className="fa fa-home fa-4x" aria-hidden="true"></i>
