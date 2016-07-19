@@ -47,15 +47,107 @@ render() {
         </section>
 
         <section className="section benefits">
-          <div>
+          <div className='benefit-container'>
             <h2>Benefits</h2>
-
+            <p className='text-center'>Did you know?</p>
+            <h4 className='text-center'>Select the benefits that are not a result of recycling.</h4>
           </div>
+          <div className='container'>
+            <div className='row'>
+              <div className='col-xs-12'>
+                  <div className="card cf">
+                    <div className="content">
+                      <div className="front">
+                      Saves Energy
+                      </div>
+                      <div className="back">
+                      This is a benefit of recycling!
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className='col-xs-12'>
+                  <div className="card cf">
+                    <div className="content">
+                      <div className="front">
+                      Conserves natural resources
+                      </div>
+                      <div className="back">
+                      True! Recycling helps conserve natural resources.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className='row'>
+                <div className='col-xs-12'>
+                  <div className="card cf">
+                    <div className="content">
+                      <div className="front">
+                      Reduces greenhouse gas emissions
+                      </div>
+                      <div className="back">
+                      Recycling helps reduce greenhouse gas emissions!
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className='col-xs-12'>
+                  <div className="card cf">
+                    <div className="content">
+                      <div className="front">
+                      Reduces waste sent to landfills
+                      </div>
+                      <div className="back">
+                      Yes! Reduce, resuse, recycle!
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
         </section>
 
-        <section className="section timeline">
+        <section className="section goals">
           <h2>Timeline</h2>
-          <p>By Oct. 1, 2017, all properties will be required to ensure tenants and employees have convenient access to recycling.</p>
+          <p>By Oct. 1, 2017, <strong>all</strong> properties will be required to ensure tenants and employees have convenient access to recycling.</p>
+          <div class='container'>
+            <div className='row'>
+              <div className='col-xs-4'>
+                <i className="fa fa-home fa-4x" aria-hidden="true"></i>
+              </div>
+              <div className='col-xs-8'>
+              <h5>Multi Residential Properties</h5>
+              <p>including:</p>
+              <ul>
+                <li>Apartments</li>
+                <li>Condominiums</li>
+                <li>Mobile Home Parks</li>
+                <li>Private Funded Dorms</li>
+                <li>Assisted Living Facilities</li>
+              </ul>
+              </div>
+            </div>
+            <div className='row'>
+              <div className='col-xs-4'>
+                <i className="fa fa-building fa-4x" aria-hidden="true"></i>
+              </div>
+              <div className='col-xs-8'>
+              <h5>Multi Residential Properties</h5>
+              <p>including:</p>
+              <ul>
+                <li>Retail</li>
+                <li>Medical Facilities</li>
+                <li>Religious Buildings</li>
+                <li>Commercial Office Buildings</li>
+                <li>Private Educational Facilities</li>
+                <li>Industrial and Manufacturing Facilities</li>
+              </ul>
+              </div>
+            </div>
+          </div>
+
         </section>
 
         <section className="section report">

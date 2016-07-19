@@ -3,7 +3,7 @@ import SearchBar from './search-bar.jsx';
 import MapView from './map-view.jsx';
 import AddNew from './add-new.jsx';
 import Details from './details.jsx';
-import Spinner from './spinner.jsx';
+// import Spinner from './spinner.jsx';
 import api from '../api';
 import GeoCoder from '../geocoder';
 import Footer from './footer.jsx';
@@ -19,8 +19,8 @@ export default class App extends React.Component {
       address: null,
       coordinates: { lat: null, lng: null },
       view: 'map',
-      currentLocation: null,
-      spin: false
+      currentLocation: null
+      // spin: false
     };
   }
 
@@ -77,9 +77,9 @@ export default class App extends React.Component {
     this.setState({ coordinates });
   }
 
-  setSpinner(spin) {
-    this.setState({ spin });
-  }
+  // setSpinner(spin) {
+  //   this.setState({ spin });
+  // }
 
   setCurrentLocation(id) {
     this.setState({ currentLocation: id });
@@ -94,7 +94,6 @@ export default class App extends React.Component {
     }[this.state.view];
 
     return <div className="content">
-      <Spinner spin={this.state.spin} />
       <Info />
       <SearchBar
         onAddressChange={this.onAddressChange.bind(this)}
@@ -108,7 +107,6 @@ export default class App extends React.Component {
         coordinates={this.state.coordinates}
         changeView={this.changeView.bind(this)}
         setCoordinates={this.setCoordinates.bind(this)}
-        setSpinner={this.setSpinner.bind(this)}
         setCurrentLocation={this.setCurrentLocation.bind(this)} />
       <Footer
         changeView={this.changeView.bind(this)} />
