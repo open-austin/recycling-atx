@@ -97,7 +97,7 @@ render() {
                   <div className="card cf">
                     <div className="content">
                       <div className="front">
-                      Reduces the amount of waste sent to landfills
+                      Reduces waste sent to landfills
                       </div>
                       <div className="back">
                       Yes! Reduce, resuse, recycle!

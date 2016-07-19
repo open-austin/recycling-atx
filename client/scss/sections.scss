@@ -21,7 +21,7 @@
 .recycle-header {
   background:
     linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url('/images/atx.jpg');
+    url('http://www.wheatpaste.com/wp-content/uploads/2012/10/Austin-City-Limits-Music-Festival-Jim-nix.jpg');
   background-size: cover;
   height: 500px;
   color: #fff;
@@ -105,6 +105,10 @@
   font-size: 12px;
   border-radius: 5px;
   backface-visibility: hidden;
+}
+
+.front {
+  font-size: 18px;
 }
 
 .back {

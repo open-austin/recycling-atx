@@ -15,13 +15,11 @@ export default class MapView extends React.Component {
 
   componentDidMount() {
     if ('geolocation' in navigator) {
-      this.props.setSpinner(true);
       navigator.geolocation.getCurrentPosition((position) => {
         this.props.setCoordinates({
           lat: position.coords.latitude,
           lng: position.coords.longitude
         });
-        this.props.setSpinner(false);
       });
     } else {
       /* geolocation IS NOT available */
