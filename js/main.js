@@ -1069,24 +1069,22 @@ var Info = (function (_React$Component) {
           'section',
           { className: 'section goals' },
           _react2['default'].createElement(
-            'h2',
-            null,
-            'Timeline'
-          ),
-          _react2['default'].createElement(
-            'p',
-            null,
-            'By Oct. 1, 2017, ',
+            'div',
+            { className: 'subsection' },
             _react2['default'].createElement(
-              'strong',
+              'h2',
               null,
-              'all'
+              'Timeline'
             ),
-            ' properties will be required to ensure tenants and employees have convenient access to recycling.'
+            _react2['default'].createElement(
+              'p',
+              null,
+              'By Oct. 1, 2017, all properties will be required to ensure tenants and employees have convenient access to recycling.'
+            )
           ),
           _react2['default'].createElement(
             'div',
-            { 'class': 'container' },
+            { className: 'container' },
             _react2['default'].createElement(
               'div',
               { className: 'row' },
