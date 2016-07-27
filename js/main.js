@@ -1030,12 +1030,12 @@ var Info = (function (_React$Component) {
                     _react2['default'].createElement(
                       'div',
                       { className: 'front' },
-                      'Reduces greenhouse gas emissions'
+                      'Reduces greenhouse gas'
                     ),
                     _react2['default'].createElement(
                       'div',
                       { className: 'back' },
-                      'Recycling helps reduce greenhouse gas emissions!'
+                      'Recycling helps reduce greenhouse gas!'
                     )
                   )
                 )

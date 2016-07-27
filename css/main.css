@@ -1146,13 +1146,13 @@ input[placeholder] {
 
 .card {
   position: relative;
-  width: 300px;
+  width: 250px;
   height: 300px;
   float: left;
   -webkit-perspective: 500px;
           perspective: 500px;
-  margin-bottom: 5px;
-  margin-left: 3px;
+  margin-bottom: 20px;
+  margin-left: 15px;
   margin-right: 3px; }
 
 .content {
