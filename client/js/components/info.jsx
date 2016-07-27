@@ -85,10 +85,10 @@ render() {
                   <div className="card cf">
                     <div className="content">
                       <div className="front">
-                      Reduces greenhouse gas emissions
+                      Reduces greenhouse gas
                       </div>
                       <div className="back">
-                      Recycling helps reduce greenhouse gas emissions!
+                      Recycling helps reduce greenhouse gas!
                       </div>
                     </div>
                   </div>
