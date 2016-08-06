@@ -114,21 +114,21 @@ render() {
             <h2>Timeline</h2>
             <p>By Oct. 1, 2017, all properties will be required to ensure tenants and employees have convenient access to recycling.</p>
           </div>
-          <div className='container'>
+          <div className='container goal-list'>
             <div className='row'>
               <div className='col-xs-4'>
                 <i className="fa fa-home fa-4x" aria-hidden="true"></i>
               </div>
               <div className='col-xs-8'>
-              <h5>Multi Residential Properties</h5>
-              <p>including:</p>
-              <ul>
-                <li>Apartments</li>
-                <li>Condominiums</li>
-                <li>Mobile Home Parks</li>
-                <li>Private Funded Dorms</li>
-                <li>Assisted Living Facilities</li>
-              </ul>
+                <h5>Multi Residential Properties</h5>
+                <p>including:</p>
+                  <ul>
+                    <li>Apartments</li>
+                    <li>Condominiums</li>
+                    <li>Mobile Home Parks</li>
+                    <li>Private Funded Dorms</li>
+                    <li>Assisted Living Facilities</li>
+                  </ul>
               </div>
             </div>
             <div className='row'>
@@ -136,16 +136,16 @@ render() {
                 <i className="fa fa-building fa-4x" aria-hidden="true"></i>
               </div>
               <div className='col-xs-8'>
-              <h5>Multi Residential Properties</h5>
-              <p>including:</p>
-              <ul>
-                <li>Retail</li>
-                <li>Medical Facilities</li>
-                <li>Religious Buildings</li>
-                <li>Commercial Office Buildings</li>
-                <li>Private Educational Facilities</li>
-                <li>Industrial and Manufacturing Facilities</li>
-              </ul>
+                <h5>Multi Residential Properties</h5>
+                <p>including:</p>
+                  <ul>
+                    <li>Retail</li>
+                    <li>Medical Facilities</li>
+                    <li>Religious Buildings</li>
+                    <li>Commercial Office Buildings</li>
+                    <li>Private Educational Facilities</li>
+                    <li>Industrial and Manufacturing Facilities</li>
+                  </ul>
               </div>
             </div>
           </div>
