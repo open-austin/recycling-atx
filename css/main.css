@@ -821,8 +821,8 @@ there.
 /* Larger than desktop */
 /* Larger than Desktop HD */
 @font-face {
-  font-family: 'BebasNeue';
-  src: url("/fonts/BebasNeue-Bold.otf"); }
+  font-family: 'Oswald';
+  src: url("https://fonts.googleapis.com/css?family=Oswald:700"); }
 
 h1 {
   font-family: "BebasNeue";
@@ -1197,11 +1197,52 @@ input[placeholder] {
 .goals {
   height: 100%;
   padding-right: -20px;
-  background-color: #4ea32a; }
+  background-color: #4ea32a;
+  list-style-type: none; }
   .goals h2 {
-    color: #d03772; }
+    color: #fff; }
   .goals p {
     color: #fff; }
 
+.goal-list ul {
+  list-style-type: none; }
+
+.goal-list li {
+  list-style-type: 'none'; }
+
 .subsection {
   margin-left: 20px; }
+
+/* Media Queries for multiple devices */
+/*** Phones ***
+ ***************/
+/* ----------- iPhone 5 and 5S ----------- */
+/* Portrait and Landscape */
+/* Portrait */
+/* Landscape */
+/* ----------- iPhone 6 ----------- */
+/* Portrait and Landscape */
+/* Portrait */
+/* Landscape */
+/* ----------- iPhone 6+ ----------- */
+/* Portrait and Landscape */
+/* Portrait */
+/* Landscape */
+/*** Tablets ***
+ ***************/
+/* ----------- iPad mini ----------- */
+/* Portrait and Landscape */
+/* Portrait */
+/* Landscape */
+/* ----------- iPad 1 and 2 ----------- */
+/* Portrait and Landscape */
+/* Portrait */
+/* Landscape */
+/* ----------- iPad 3 and 4 ----------- */
+/* Portrait and Landscape */
+/* Portrait */
+/* Landscape */
+/* ----------- Galaxy Tab 10.1 ----------- */
+/* Portrait and Landscape */
+/* Portrait */
+/* Landscape */

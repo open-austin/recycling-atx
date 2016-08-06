@@ -1084,7 +1084,7 @@ var Info = (function (_React$Component) {
           ),
           _react2['default'].createElement(
             'div',
-            { className: 'container' },
+            { className: 'container goal-list' },
             _react2['default'].createElement(
               'div',
               { className: 'row' },
