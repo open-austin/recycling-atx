@@ -278,7 +278,9 @@ var _geocoder = require('../geocoder');
 
 var _geocoder2 = _interopRequireDefault(_geocoder);
 
-// import Footer from './footer.jsx';
+var _footerJsx = require('./footer.jsx');
+
+var _footerJsx2 = _interopRequireDefault(_footerJsx);
 
 var _aboutJsx = require('./about.jsx');
 
@@ -407,7 +409,7 @@ var App = (function (_React$Component) {
           changeView: this.changeView.bind(this),
           setCoordinates: this.setCoordinates.bind(this),
           setCurrentLocation: this.setCurrentLocation.bind(this) }),
-        _react2['default'].createElement(Footer, {
+        _react2['default'].createElement(_footerJsx2['default'], {
           changeView: this.changeView.bind(this) })
       );
     }
@@ -419,7 +421,7 @@ var App = (function (_React$Component) {
 exports['default'] = App;
 module.exports = exports['default'];
 
-},{"../api":"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/api.js","../geocoder":"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/geocoder.js","./about.jsx":"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/components/about.jsx","./add-new.jsx":"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/components/add-new.jsx","./create-view.jsx":"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/components/create-view.jsx","./details.jsx":"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/components/details.jsx","./info.jsx":"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/components/info.jsx","./map-view.jsx":"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/components/map-view.jsx","./search-bar.jsx":"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/components/search-bar.jsx","react":"/Users/mapineda/Desktop/Coding/recycling-atx/node_modules/react/react.js"}],"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/components/create-view.jsx":[function(require,module,exports){
+},{"../api":"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/api.js","../geocoder":"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/geocoder.js","./about.jsx":"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/components/about.jsx","./add-new.jsx":"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/components/add-new.jsx","./create-view.jsx":"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/components/create-view.jsx","./details.jsx":"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/components/details.jsx","./footer.jsx":"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/components/footer.jsx","./info.jsx":"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/components/info.jsx","./map-view.jsx":"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/components/map-view.jsx","./search-bar.jsx":"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/components/search-bar.jsx","react":"/Users/mapineda/Desktop/Coding/recycling-atx/node_modules/react/react.js"}],"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/components/create-view.jsx":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -727,7 +729,99 @@ var Details = (function (_React$Component) {
 exports['default'] = Details;
 module.exports = exports['default'];
 
-},{"../api":"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/api.js","./return-btn.jsx":"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/components/return-btn.jsx","react":"/Users/mapineda/Desktop/Coding/recycling-atx/node_modules/react/react.js"}],"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/components/info.jsx":[function(require,module,exports){
+},{"../api":"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/api.js","./return-btn.jsx":"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/components/return-btn.jsx","react":"/Users/mapineda/Desktop/Coding/recycling-atx/node_modules/react/react.js"}],"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/components/footer.jsx":[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var Footer = (function (_React$Component) {
+  _inherits(Footer, _React$Component);
+
+  function Footer(props) {
+    _classCallCheck(this, Footer);
+
+    _get(Object.getPrototypeOf(Footer.prototype), 'constructor', this).call(this, props);
+    this.state = {};
+  }
+
+  _createClass(Footer, [{
+    key: 'viewAboutOnClick',
+    value: function viewAboutOnClick(id) {
+      var _this = this;
+
+      return function (e) {
+        e.preventDefault();
+        _this.props.changeView('about');
+      };
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2['default'].createElement(
+        'footer',
+        { className: 'footer-container' },
+        _react2['default'].createElement(
+          'div',
+          { className: 'container' },
+          _react2['default'].createElement(
+            'small',
+            null,
+            _react2['default'].createElement(
+              'p',
+              { className: 'footer-text' },
+              _react2['default'].createElement(
+                'a',
+                { className: 'footer-link', href: 'http://open-austin.org', target: '_blank' },
+                ' Open-Austin'
+              ),
+              ' 2016 |',
+              _react2['default'].createElement(
+                'a',
+                { className: 'footer-link', href: 'http://github.com/open-austin/recycling-atx', target: '_blank' },
+                ' Github'
+              ),
+              ' |',
+              _react2['default'].createElement(
+                'a',
+                { className: 'footer-link', href: 'http://www.eventbrite.com/o/austin-resource-recovery-business-outreach-4720676027', target: '_blank' },
+                ' Events'
+              ),
+              ' |',
+              _react2['default'].createElement(
+                'a',
+                { className: 'footer-link', onClick: this.viewAboutOnClick() },
+                ' About'
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Footer;
+})(_react2['default'].Component);
+
+exports['default'] = Footer;
+module.exports = exports['default'];
+
+},{"react":"/Users/mapineda/Desktop/Coding/recycling-atx/node_modules/react/react.js"}],"/Users/mapineda/Desktop/Coding/recycling-atx/client/js/components/info.jsx":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {

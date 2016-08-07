@@ -901,6 +901,27 @@ body {
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   color: #009788; }
 
+footer {
+  height: 35px;
+  margin-top: 3px;
+  text-size: 8px;
+  background-color: #43ab9b; }
+
+footer .container {
+  margin: 1px; }
+
+.footer-text {
+  font-family: 'Open Sans', sans-serif;
+  color: #a9d3cf;
+  padding-left: 50px; }
+
+.footer-link {
+  text-decoration: none;
+  color: #a9d3cf; }
+
+.city-rep {
+  text-align: center; }
+
 .details-view {
   background-color: #f0f0f0; }
 
@@ -1193,8 +1214,7 @@ input[placeholder] {
   margin-left: 20px; }
 
 /* Media Queries for multiple devices */
-/*** Phones ***
- ***************/
+/*** Phones ******************************************************************/
 /* ----------- iPhone 5 and 5S ----------- */
 /* Portrait and Landscape */
 /* Portrait */
@@ -1207,8 +1227,7 @@ input[placeholder] {
 /* Portrait and Landscape */
 /* Portrait */
 /* Landscape */
-/*** Tablets ***
- ***************/
+/*** Tablets ******************************************************************/
 /* ----------- iPad mini ----------- */
 /* Portrait and Landscape */
 /* Portrait */
