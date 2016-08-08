@@ -8,6 +8,7 @@ export default class Info extends React.Component {
     };
   }
 
+
 render() {
   return (
       <div>
@@ -155,6 +156,7 @@ render() {
         <section className="section report">
           <h2>Call To Action</h2>
         </section>
+
       </div>
     );
   }
