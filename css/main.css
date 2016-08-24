@@ -901,14 +901,14 @@ body {
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   color: #009788; }
 
-footer {
-  height: 35px;
-  margin-top: 3px;
-  text-size: 8px;
-  background-color: #43ab9b; }
-
-footer .container {
-  margin: 1px; }
+.footer-container {
+  position: relative;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center; }
 
 .footer-text {
   font-family: 'Open Sans', sans-serif;
