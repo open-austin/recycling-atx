@@ -22,7 +22,7 @@ render() {
             <div className='row'>
               <div className='col-4-xs'></div>
               <div className='col-4-xs text-center'>
-              <button className='btn btn-lg btn-report'>Report!</button>
+              <button className='report-btn btn btn-lg btn-report'>Report!</button>
               <button className='btn btn-lg btn-learn'><a href='http://austintexas.gov/uro'>Learn More.</a></button>
               </div>
               <div className='col-4-xs'></div>
