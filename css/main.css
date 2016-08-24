@@ -1119,11 +1119,16 @@ input[placeholder] {
 
 .btn-report {
   margin-top: 50px;
-  margin-right: 4.5px; }
+  margin-right: 4.5px;
+  color: #fff; }
 
 .btn-learn {
   margin-top: 50px;
-  margin-left: 4.5px; }
+  margin-left: 4.5px;
+  color: #fff; }
+
+.btn-learn a {
+  text-decoration: none; }
 
 /** SECTIONS **/
 .why {

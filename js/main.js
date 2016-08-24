@@ -887,7 +887,7 @@ var Info = (function (_React$Component) {
                 { className: 'col-4-xs text-center' },
                 _react2['default'].createElement(
                   'button',
-                  { className: 'btn btn-lg btn-report' },
+                  { className: 'report-btn btn btn-lg btn-report' },
                   'Report!'
                 ),
                 _react2['default'].createElement(
