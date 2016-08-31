@@ -887,12 +887,12 @@ var Info = (function (_React$Component) {
                 { className: 'col-4-xs text-center' },
                 _react2['default'].createElement(
                   'button',
-                  { className: 'report-btn btn btn-lg btn-report' },
+                  { className: 'header-button btn btn-lg btn-report' },
                   'Report!'
                 ),
                 _react2['default'].createElement(
                   'button',
-                  { className: 'btn btn-lg btn-learn' },
+                  { className: 'btn btn-lg header-button' },
                   _react2['default'].createElement(
                     'a',
                     { href: 'http://austintexas.gov/uro' },
@@ -917,7 +917,7 @@ var Info = (function (_React$Component) {
             ),
             _react2['default'].createElement(
               'p',
-              { className: 'text-center' },
+              null,
               'Currently less than 35% of households and less than 10% of businesses in the U.S. recycle. ',
               _react2['default'].createElement(
                 'a',
@@ -927,7 +927,7 @@ var Info = (function (_React$Component) {
             ),
             _react2['default'].createElement(
               'p',
-              { className: 'text-center' },
+              null,
               'Americans alone generate approximately 250 million tons of household trash each year. ',
               _react2['default'].createElement(
                 'a',
@@ -937,7 +937,7 @@ var Info = (function (_React$Component) {
             ),
             _react2['default'].createElement(
               'p',
-              { className: 'text-center' },
+              null,
               'If the US recycling levels can reach 75% it will be the environmental benefit of removing 50 million cars from the road each year and it will generate 1.5 million new jobs.'
             )
           )
@@ -955,18 +955,18 @@ var Info = (function (_React$Component) {
             ),
             _react2['default'].createElement(
               'p',
-              { className: 'text-center' },
+              null,
               'Did you know?'
             ),
             _react2['default'].createElement(
               'h4',
-              { className: 'text-center' },
+              null,
               'Select the benefits that are not a result of recycling.'
             )
           ),
           _react2['default'].createElement(
             'div',
-            { className: 'container' },
+            { className: 'container card-container' },
             _react2['default'].createElement(
               'div',
               { className: 'row' },
@@ -1013,11 +1013,7 @@ var Info = (function (_React$Component) {
                     )
                   )
                 )
-              )
-            ),
-            _react2['default'].createElement(
-              'div',
-              { className: 'row' },
+              ),
               _react2['default'].createElement(
                 'div',
                 { className: 'col-xs-12' },
@@ -1036,28 +1032,6 @@ var Info = (function (_React$Component) {
                       'div',
                       { className: 'back' },
                       'Recycling helps reduce greenhouse gas!'
-                    )
-                  )
-                )
-              ),
-              _react2['default'].createElement(
-                'div',
-                { className: 'col-xs-12' },
-                _react2['default'].createElement(
-                  'div',
-                  { className: 'card cf' },
-                  _react2['default'].createElement(
-                    'div',
-                    { className: 'content' },
-                    _react2['default'].createElement(
-                      'div',
-                      { className: 'front' },
-                      'Reduces waste sent to landfills'
-                    ),
-                    _react2['default'].createElement(
-                      'div',
-                      { className: 'back' },
-                      'Yes! Reduce, resuse, recycle!'
                     )
                   )
                 )

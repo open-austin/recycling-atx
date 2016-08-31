@@ -838,6 +838,14 @@ h4 {
 body {
   font-family: "Lato", sans-serif; }
 
+@media (max-width: 768px) {
+  h1 {
+    font-size: 4rem; }
+  h2 {
+    font-size: 3em; }
+  h4 {
+    font-size: 1.35em; } }
+
 .about-view {
   background-color: #f0f0f0;
   height: 100%;
@@ -1117,20 +1125,22 @@ input[placeholder] {
       -ms-flex-pack: center;
           justify-content: center; }
 
-.btn-report {
-  margin-top: 50px;
+.header-button {
+  margin-top: 20px;
   margin-right: 4.5px;
-  color: #fff; }
-
-.btn-learn {
-  margin-top: 50px;
-  margin-left: 4.5px;
   color: #fff; }
 
 .btn-learn a {
   text-decoration: none; }
 
 /** SECTIONS **/
+.section {
+  padding: 20px; }
+
+@media (max-width: 768px) {
+  .card-container {
+    padding-left: 0; } }
+
 .why {
   background-color: #007251; }
   .why h2 {
@@ -1208,6 +1218,10 @@ input[placeholder] {
     color: #fff; }
   .goals p {
     color: #fff; }
+
+.goal-list {
+  margin: 0;
+  padding: 0 20px; }
 
 .goal-list ul {
   list-style-type: none; }
