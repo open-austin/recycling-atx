@@ -24,6 +24,8 @@ export default class MapView extends React.Component {
     } else {
       /* geolocation IS NOT available */
     }
+    /* Hide spinner regardless of location availability. */
+    this.props.setSpinner(false);
   }
 
   viewDetailsOnClick(id) {
