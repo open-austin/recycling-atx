@@ -22,8 +22,8 @@ render() {
             <div className='row'>
               <div className='col-4-xs'></div>
               <div className='col-4-xs text-center'>
-              <button className='report-btn btn btn-lg btn-report'>Report!</button>
-              <button className='btn btn-lg btn-learn'><a href='http://austintexas.gov/uro'>Learn More.</a></button>
+              <button className='header-button btn btn-lg btn-report'>Report!</button>
+              <button className='btn btn-lg header-button'><a href='http://austintexas.gov/uro'>Learn More.</a></button>
               </div>
               <div className='col-4-xs'></div>
             </div>
@@ -34,13 +34,13 @@ render() {
         <section className='section why'>
           <div>
             <h2>Why Care?</h2>
-            <p className='text-center'>
+            <p>
             Currently less than 35% of households and less than 10% of businesses in the U.S. recycle. <a href='#' target='_blank'>(EPA 2011)</a>
             </p>
-            <p className='text-center'>
+            <p>
             Americans alone generate approximately 250 million tons of household trash each year. <a href='http://library.cqpress.com/cqresearcher/document.php?id=cqresrre2007121400' target='_blank'>(CQ Researcher)</a>
             </p>
-            <p className='text-center'>
+            <p>
             If the US recycling levels can reach 75% it will be the environmental benefit of removing 50 million cars from the road each year and it will generate 1.5 million new jobs.
             </p>
 
@@ -50,10 +50,10 @@ render() {
         <section className="section benefits">
           <div className='benefit-container'>
             <h2>Benefits</h2>
-            <p className='text-center'>Did you know?</p>
-            <h4 className='text-center'>Select the benefits that are not a result of recycling.</h4>
+            <p>Did you know?</p>
+            <h4>Select the benefits that are not a result of recycling.</h4>
           </div>
-          <div className='container'>
+          <div className='container card-container'>
             <div className='row'>
               <div className='col-xs-12'>
                   <div className="card cf">
@@ -79,9 +79,6 @@ render() {
                     </div>
                   </div>
                 </div>
-              </div>
-
-              <div className='row'>
                 <div className='col-xs-12'>
                   <div className="card cf">
                     <div className="content">
@@ -90,18 +87,6 @@ render() {
                       </div>
                       <div className="back">
                       Recycling helps reduce greenhouse gas!
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className='col-xs-12'>
-                  <div className="card cf">
-                    <div className="content">
-                      <div className="front">
-                      Reduces waste sent to landfills
-                      </div>
-                      <div className="back">
-                      Yes! Reduce, resuse, recycle!
                       </div>
                     </div>
                   </div>

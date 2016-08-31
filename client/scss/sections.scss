@@ -35,17 +35,11 @@
 }
 
 
-.btn-report {
-  margin-top: 50px;
+.header-button {
+  margin-top: 20px;
   margin-right: 4.5px;
   color: #fff;
 
-}
-
-.btn-learn {
-  margin-top: 50px;
-  margin-left: 4.5px;
-  color: #fff;
 }
 
 .btn-learn a {
@@ -53,6 +47,19 @@
 }
 
 /** SECTIONS **/
+
+//GENERAL CLASSES
+
+.section {
+  padding: 20px;
+}
+
+@media (max-width: 768px) {
+  .card-container {
+    padding-left: 0;
+  }
+}
+
 
 // SECTION 1
 .why {
@@ -135,6 +142,11 @@
   h2 { color: #fff;}
   p { color: #fff; }
   list-style-type: none;
+}
+
+.goal-list {
+  margin: 0;
+  padding: 0 20px;
 }
 
 .goal-list ul {
