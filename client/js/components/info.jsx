@@ -102,10 +102,9 @@ render() {
           </div>
           <div className='container goal-list'>
             <div className='row'>
-              <div className='col-xs-4'>
+              <div className='col-xs-6'>
                 <i className="fa fa-home fa-4x" aria-hidden="true"></i>
-              </div>
-              <div className='col-xs-8'>
+
                 <h5>Multi Residential Properties</h5>
                 <p>including:</p>
                   <ul>
@@ -116,12 +115,9 @@ render() {
                     <li>Assisted Living Facilities</li>
                   </ul>
               </div>
-            </div>
-            <div className='row'>
-              <div className='col-xs-4'>
+              <div className='col-xs-6'>
                 <i className="fa fa-building fa-4x" aria-hidden="true"></i>
-              </div>
-              <div className='col-xs-8'>
+
                 <h5>Multi Residential Properties</h5>
                 <p>including:</p>
                   <ul>

@@ -114,7 +114,9 @@
   height: 100%;
   width: 100%;
   background: white;
-  line-height: 300px;
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
   color: #03446A;
   text-align: center;
   font-size: 12px;
@@ -136,17 +138,19 @@
 
 // SECTION 3
 .goals {
+  border: 0;
   height: 100%;
-  padding-right: -20px;
+  // padding-right: -20px;
   background-color: rgb(78,163,42);
   h2 { color: #fff;}
   p { color: #fff; }
   list-style-type: none;
+
 }
 
 .goal-list {
-  margin: 0;
   padding: 0 20px;
+  border: 0;
 }
 
 .goal-list ul {
@@ -162,6 +166,7 @@
 }
 // SECTION 4
 .report {
+  height: 500px;
 
 }
 
