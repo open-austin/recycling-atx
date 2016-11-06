@@ -102,24 +102,25 @@ render() {
           </div>
           <div className='container goal-list'>
             <div className='row'>
-              <div className='col-xs-6'>
-                <i className="fa fa-home fa-4x" aria-hidden="true"></i>
-
+              <div className='col-xs-4 timeline-goal-col'>
                 <h5>Multi Residential Properties</h5>
-                <p>including:</p>
-                  <ul>
-                    <li>Apartments</li>
-                    <li>Condominiums</li>
-                    <li>Mobile Home Parks</li>
-                    <li>Private Funded Dorms</li>
-                    <li>Assisted Living Facilities</li>
-                  </ul>
+                <div className="property-types">
+                    <i className="fa fa-home" aria-hidden="true"></i>
+                    <ul>
+                      <li>Apartments</li>
+                      <li>Condominiums</li>
+                      <li>Mobile Home Parks</li>
+                      <li>Private Funded Dorms</li>
+                      <li>Assisted Living Facilities</li>
+                    </ul>
+                </div>
               </div>
-              <div className='col-xs-6'>
-                <i className="fa fa-building fa-4x" aria-hidden="true"></i>
+              <div className='col-xs-4 timeline-goal-col'>
+
 
                 <h5>Multi Residential Properties</h5>
-                <p>including:</p>
+                <div className="property-types">
+                  <i className="fa fa-building fa-2x" aria-hidden="true"></i>
                   <ul>
                     <li>Retail</li>
                     <li>Medical Facilities</li>
@@ -128,6 +129,20 @@ render() {
                     <li>Private Educational Facilities</li>
                     <li>Industrial and Manufacturing Facilities</li>
                   </ul>
+                </div>
+              </div>
+              <div className='col-xs-4 timeline-goal-col'>
+
+
+                <h5>Multi Residential Properties</h5>
+                <div className="property-types">
+                  <i className="fa fa-cutlery fa-2x" aria-hidden="true"></i>
+                  <ul>
+                    <li>Grocers</li>
+                    <li>Farmer's Markets</li>
+                    <li>Food and Beverage Industry</li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -142,3 +157,144 @@ render() {
     );
   }
 }
+
+
+
+// <div>
+//   <section className="section recycle-header">
+//     <div className='container'>
+//       <div className='row'>
+//         <h1 className="text-center">Recycling ATX</h1>
+//         <h4>By Oct. 1, 2017, all properties will be required to provide
+//           recycling services to their tenants and employees.</h4>
+//       </div>
+//       <div className='row'>
+//         <div className='col-4-xs'></div>
+//         <div className='col-4-xs text-center'>
+//         <button className='header-button btn btn-lg btn-report'>Report!</button>
+//         <button className='btn btn-lg header-button'><a href='http://austintexas.gov/uro'>Learn More.</a></button>
+//         </div>
+//         <div className='col-4-xs'></div>
+//       </div>
+//
+//     </div>
+//   </section>
+//
+//   <section className='section why'>
+//     <div>
+//       <h2>Why Care?</h2>
+//       <p>
+//       Currently less than 35% of households and less than 10% of businesses in the U.S. recycle. <a href='#' target='_blank'>(EPA 2011)</a>
+//       </p>
+//       <p>
+//       Americans alone generate approximately 250 million tons of household trash each year. <a href='http://library.cqpress.com/cqresearcher/document.php?id=cqresrre2007121400' target='_blank'>(CQ Researcher)</a>
+//       </p>
+//       <p>
+//       If the US recycling levels can reach 75% it will be the environmental benefit of removing 50 million cars from the road each year and it will generate 1.5 million new jobs.
+//       </p>
+//
+//     </div>
+//   </section>
+//
+//   <section className="section benefits">
+//     <div className='benefit-container'>
+//       <h2>Benefits</h2>
+//       <p>Did you know?</p>
+//       <h4>Select the benefits that are not a result of recycling.</h4>
+//     </div>
+//     <div className='container card-container'>
+//       <div className='row'>
+//         <div className='col-xs-12'>
+//             <div className="card cf">
+//               <div className="content">
+//                 <div className="front">
+//                 Saves Energy
+//                 </div>
+//                 <div className="back">
+//                 This is a benefit of recycling!
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//           <div className='col-xs-12'>
+//             <div className="card cf">
+//               <div className="content">
+//                 <div className="front">
+//                 Conserves natural resources
+//                 </div>
+//                 <div className="back">
+//                 True! Recycling helps conserve natural resources.
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//           <div className='col-xs-12'>
+//             <div className="card cf">
+//               <div className="content">
+//                 <div className="front">
+//                 Reduces greenhouse gas
+//                 </div>
+//                 <div className="back">
+//                 Recycling helps reduce greenhouse gas!
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//   </section>
+//
+//   <section className="section goals">
+//     <div className='subsection'>
+//       <h2>Timeline</h2>
+//       <p>By Oct. 1, 2017, all properties will be required to ensure tenants and employees have convenient access to recycling.</p>
+//     </div>
+//     <div className='container goal-list'>
+//       <div className='row'>
+//         <div className='col-xs-4 timeline-goal-col'>
+//           <h5>Multi Residential Properties</h5>
+//           <i className="fa fa-hom" aria-hidden="true"></i>
+//           <p>including:</p>
+//             <ul>
+//               <li>Apartments</li>
+//               <li>Condominiums</li>
+//               <li>Mobile Home Parks</li>
+//               <li>Private Funded Dorms</li>
+//               <li>Assisted Living Facilities</li>
+//             </ul>
+//         </div>
+//         <div className='col-xs-4 timeline-goal-col'>
+//           <i className="fa fa-building fa-2x" aria-hidden="true"></i>
+//
+//           <h5>Multi Residential Properties</h5>
+//           <p>including:</p>
+//             <ul>
+//               <li>Retail</li>
+//               <li>Medical Facilities</li>
+//               <li>Religious Buildings</li>
+//               <li>Commercial Office Buildings</li>
+//               <li>Private Educational Facilities</li>
+//               <li>Industrial and Manufacturing Facilities</li>
+//             </ul>
+//         </div>
+//         <div className='col-xs-4 timeline-goal-col'>
+//           <i className="fa fa-cutlery fa-2x" aria-hidden="true"></i>
+//
+//           <h5>Multi Residential Properties</h5>
+//           <p>including:</p>
+//             <ul>
+//               <li>Grocers</li>
+//               <li>Farmer's Markets</li>
+//               <li>Food and Beverage Industry</li>
+//             </ul>
+//         </div>
+//       </div>
+//     </div>
+//
+//   </section>
+//
+//   <section className="section report">
+//     <h2>Call To Action</h2>
+//   </section>
+//
+// </div>

@@ -151,6 +151,9 @@
 .goal-list {
   padding: 0 20px;
   border: 0;
+  margin: 0;
+  max-width: 100%;
+  width: 100%;
 }
 
 .goal-list ul {
@@ -164,6 +167,41 @@
 .subsection {
   margin-left: 20px;
 }
+
+.timeline-goal-col {
+  margin: 0 20px;
+  display: inline-block;
+  vertical-align: top;
+  h5 { font-weight: 700; }
+  i {
+    display: inline-block;
+    float: left;
+    margin-right: 3px;
+    font-size: 4em;
+  }
+}
+
+.property-types {
+  display: flex;
+  ul, i  {
+    align-self: center;
+  }
+  ul  {
+    margin: 0 0 0 10px;
+  }
+  i {
+    font-size: 21rem;
+  }
+  @media (max-width: 1024px) {
+    i {
+      font-size: 12rem;
+    }
+  }
+  @media (max-width: 540px) {
+    flex-flow: column;
+  }
+}
+
 // SECTION 4
 .report {
   height: 500px;
